@@ -8,6 +8,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const sharetribeSdk = require('sharetribe-flex-sdk');
 const apiRouter = require('./apiRouter');
 
 const radix = 10;
