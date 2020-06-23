@@ -163,6 +163,7 @@ export const mapInputsToStripeAccountKeys = (country, values) => {
   // why we have to clean value up first.
 
   switch (country) {
+    case 'RO':
     case 'AT':
     case 'BE':
     case 'DK':

@@ -85,9 +85,9 @@ export const filters = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'smoke', label: 'Smoke' },
-        { key: 'electric', label: 'Electric' },
-        { key: 'wood', label: 'Wood' },
+        { key: 'boxing', label: 'Boxing' },
+        { key: 'kickboxing', label: 'Kickboxing' },
+        { key: 'muaythai', label: 'Muay Thai' },
         { key: 'other', label: 'Other' },
       ],
     },
@@ -108,6 +108,14 @@ export const filters = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
+        {
+          key: 'gloves',
+          label: 'Gloves',
+        },
+        {
+          key: 'shinguards',
+          label: 'Shinguards',
+        },
         {
           key: 'towels',
           label: 'Towels',

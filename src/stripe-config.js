@@ -220,6 +220,14 @@ export const stripeCountryDetails = [
     },
   },
   {
+    // Romania
+    code: 'RO',
+    currency: 'EUR',
+    accountConfig: {
+      iban: true,
+    },
+  },
+  {
     // Singapore
     code: 'SG',
     currency: 'SGD',
