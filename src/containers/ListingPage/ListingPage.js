@@ -451,6 +451,9 @@ export class ListingPageComponent extends Component {
                     onManageDisableScrolling={onManageDisableScrolling}
                   />
                 </div>
+
+                {/* <pre>{JSON.stringify(currentListing.attributes.publicData.category_duration, 0, 2)}</pre> */}
+
                 <BookingPanel
                   className={css.bookingPanel}
                   listing={currentListing}

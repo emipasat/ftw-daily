@@ -53,6 +53,9 @@ export const isSignupEmailTakenError = error => hasErrorWithCode(error, ERROR_CO
  */
 export const isChangeEmailTakenError = error => hasErrorWithCode(error, ERROR_CODE_EMAIL_TAKEN);
 
+
+//export const isMyPropertyTitleExistsAlreadyError = error => hasErrorWithCode(error, ERROR_CODE_MY_PROPERTY_TITLE_ALREADY_EXISTS);
+
 /**
  * Check if the given API error (from
  * `sdk.currentUser.sendVerificationEmail()`) is due to too many

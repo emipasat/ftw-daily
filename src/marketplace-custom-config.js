@@ -74,21 +74,40 @@ export const filters = [
     config: {},
   },
   {
-    id: 'category',
-    label: 'Category',
+    id: 'category_duration',
+    label: 'Duration type',
     type: 'SelectSingleFilter',
     group: 'secondary',
-    queryParamNames: ['pub_category'],
+    queryParamNames: ['pub_category_duration'],
     config: {
       // "key" is the option you see in Flex Console.
       // "label" is set here for the UI only.
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        { key: 'boxing', label: 'Boxing' },
-        { key: 'kickboxing', label: 'Kickboxing' },
-        { key: 'muaythai', label: 'Muay Thai' },
-        { key: 'other', label: 'Other' },
+        { key: 'fixed', label: 'Fixed' },
+        { key: 'variable', label: 'Variable' },
+        //{ key: 'muaythai', label: 'Muay Thai' },
+        //{ key: 'other', label: 'Other' },
+      ],
+    },
+  },
+  {
+    id: 'category_persons',
+    label: 'Number of persons type',
+    type: 'SelectSingleFilter',
+    group: 'secondary',
+    queryParamNames: ['pub_category_persons'],
+    config: {
+      // "key" is the option you see in Flex Console.
+      // "label" is set here for the UI only.
+      // Note: label is not added through the translation files
+      // to make filter customizations a bit easier.
+      options: [
+        { key: 'fixed', label: 'Fixed' },
+        { key: 'variable', label: 'Variable' },
+        //{ key: 'muaythai', label: 'Muay Thai' },
+        //{ key: 'other', label: 'Other' },
       ],
     },
   },

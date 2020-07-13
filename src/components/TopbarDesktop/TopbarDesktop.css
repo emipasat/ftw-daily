@@ -114,7 +114,7 @@
 }
 
 /* Create listing (CTA for providers) */
-.createListingLink {
+.createListingLink, .createPropertyLink {
   @apply --TopbarDesktop_linkHover;
   @apply --marketplaceH4FontStyles;
 
@@ -135,7 +135,7 @@
   }
 }
 
-.createListing {
+.createListing, .createProperty {
   @apply --TopbarDesktop_label;
 }
 
@@ -273,7 +273,7 @@
 }
 
 .profileSettingsLink,
-.yourListingsLink {
+.yourListingsLink, .yourPropertiesLink {
   @apply --marketplaceH4FontStyles;
   position: relative;
   display: block;

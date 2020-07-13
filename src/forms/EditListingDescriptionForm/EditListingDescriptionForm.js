@@ -5,7 +5,7 @@ import { Form as FinalForm } from 'react-final-form';
 import { intlShape, injectIntl, FormattedMessage } from '../../util/reactIntl';
 import classNames from 'classnames';
 import { propTypes } from '../../util/types';
-import { maxLength, required, composeValidators } from '../../util/validators';
+import { maxLength, required, requiredNumber, composeValidators } from '../../util/validators';
 import { Form, Button, FieldTextInput } from '../../components';
 import CustomCategorySelectFieldMaybe from './CustomCategorySelectFieldMaybe';
 
@@ -18,7 +18,8 @@ const EditListingDescriptionFormComponent = props => (
     {...props}
     render={formRenderProps => {
       const {
-        categories,
+        categoryDurations,
+        categoryPersons,
         className,
         disabled,
         ready,
@@ -29,7 +30,8 @@ const EditListingDescriptionFormComponent = props => (
         saveActionMsg,
         updated,
         updateInProgress,
-        fetchErrors,
+        fetchErrors,        
+        values
       } = formRenderProps;
 
       const titleMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.title' });
@@ -57,6 +59,51 @@ const EditListingDescriptionFormComponent = props => (
         id: 'EditListingDescriptionForm.descriptionRequired',
       });
 
+
+      const maxNumberOfNightsMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.maxNumberOfNights' });
+      const maxNumberOfNightsPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.maxNumberOfNightsPlaceholder',
+      });
+      const maxNumberOfNightsRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.maxNumberOfNightsRequired',
+      });
+
+
+      const maxNumberOfPersonsMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.maxNumberOfPersons' });
+      const maxNumberOfPersonsPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.maxNumberOfPersonsPlaceholder',
+      });
+      const maxNumberOfPersonsRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.maxNumberOfPersonsRequired',
+      });
+
+
+      const fixedNumberOfPersonsMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.fixedNumberOfPersons' });
+      const fixedNumberOfPersonsPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.fixedNumberOfPersonsPlaceholder',
+      });
+      const fixedNumberOfPersonsRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.fixedNumberOfPersonsRequired',
+      });
+
+      const fixedNumberOfNightsMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.fixedNumberOfNights' });
+      const fixedNumberOfNightsPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.fixedNumberOfNightsPlaceholder',
+      });
+      const fixedNumberOfNightsRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.fixedNumberOfNightsRequired',
+      });
+
+
+      const roomsMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.rooms' });
+      const roomsPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.roomsPlaceholder',
+      });
+      const roomsRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.roomsRequired',
+      });
+
+
       const { updateListingError, createListingDraftError, showListingsError } = fetchErrors || {};
       const errorMessageUpdateListing = updateListingError ? (
         <p className={css.error}>
@@ -81,6 +128,10 @@ const EditListingDescriptionFormComponent = props => (
       const submitReady = (updated && pristine) || ready;
       const submitInProgress = updateInProgress;
       const submitDisabled = invalid || disabled || submitInProgress;
+
+      //console.log(props.propertyListing);
+
+      values.propertyListing = props.propertyListing;
 
       return (
         <Form className={classes} onSubmit={handleSubmit}>
@@ -109,12 +160,176 @@ const EditListingDescriptionFormComponent = props => (
             validate={composeValidators(required(descriptionRequiredMessage))}
           />
 
-          <CustomCategorySelectFieldMaybe
-            id="category"
-            name="category"
-            categories={categories}
-            intl={intl}
-          />
+      {/* <Field component="input" type="hidden" name="listingOrProperty" /> */}
+      
+
+      { (props.propertyListing === 'listing') ?  [ 
+
+        
+            <CustomCategorySelectFieldMaybe
+                        id="category_duration"
+                        name="category_duration"
+                        categories={categoryDurations}
+                        intl={intl}
+                        index=""            
+                      />, 
+            (values.category_duration === "variable" ? 
+                <FieldTextInput
+                id="maxNumberOfNights"
+                name="maxNumberOfNights"
+                className={css.title}
+                type="text"
+                label={maxNumberOfNightsMessage}
+                placeholder={maxNumberOfNightsPlaceholderMessage}
+                maxLength={TITLE_MAX_LENGTH}            
+                validate={composeValidators(requiredNumber(maxNumberOfNightsRequiredMessage), maxLength60Message)}
+                autoFocus
+              /> 
+              
+              : 
+              
+              <FieldTextInput
+                id="fixedNumberOfNights"
+                name="fixedNumberOfNights"
+                className={css.title}
+                type="text"
+                label={fixedNumberOfNightsMessage}
+                placeholder={fixedNumberOfNightsPlaceholderMessage}
+                maxLength={TITLE_MAX_LENGTH}
+                validate={composeValidators(requiredNumber(fixedNumberOfNightsRequiredMessage), maxLength60Message)}
+                autoFocus
+              />
+
+              ),
+              
+              <CustomCategorySelectFieldMaybe
+                id="category_persons"
+                name="category_persons"
+                categories={categoryPersons}
+                intl={intl}
+                index="1"
+              />,
+
+              (values.category_persons === "variable" ? 
+                <FieldTextInput
+                  id="maxNumberOfPersons"
+                  name="maxNumberOfPersons"
+                  className={css.title}
+                  type="text"
+                  label={maxNumberOfPersonsMessage}
+                  placeholder={maxNumberOfPersonsPlaceholderMessage}
+                  maxLength={TITLE_MAX_LENGTH}
+                  validate={composeValidators(requiredNumber(maxNumberOfPersonsRequiredMessage), maxLength60Message)}
+                  autoFocus
+                />
+
+                : //null}
+  
+                <FieldTextInput
+                  id="fixedNumberOfPersons"
+                  name="fixedNumberOfPersons"
+                  className={css.title}
+                  type="text"
+                  label={fixedNumberOfPersonsMessage}
+                  placeholder={fixedNumberOfPersonsPlaceholderMessage}
+                  maxLength={TITLE_MAX_LENGTH}
+                  validate={composeValidators(requiredNumber(fixedNumberOfPersonsRequiredMessage), maxLength60Message)}
+                  autoFocus
+                />
+              )
+              
+              ] 
+              : 
+              <FieldTextInput
+                  id="rooms"
+                  name="rooms"
+                  className={css.title}
+                  type="text"
+                  label={roomsMessage}
+                  placeholder={roomsPlaceholderMessage}
+                  maxLength={TITLE_MAX_LENGTH}
+                  validate={composeValidators(requiredNumber(roomsRequiredMessage), maxLength60Message)}
+                  autoFocus
+                />
+              }
+
+            
+          
+            {/* <CustomCategorySelectFieldMaybe
+                        id="category_duration"
+                        name="category_duration"
+                        categories={categoryDurations}
+                        intl={intl}
+                        index=""            
+                      /> */}
+              
+              
+            {/* {values.category_duration === "variable" ? (
+              <FieldTextInput
+                id="maxNumberOfNights"
+                name="maxNumberOfNights"
+                className={css.title}
+                type="text"
+                label={maxNumberOfNightsMessage}
+                placeholder={maxNumberOfNightsPlaceholderMessage}
+                maxLength={TITLE_MAX_LENGTH}            
+                validate={composeValidators(requiredNumber(maxNumberOfNightsRequiredMessage), maxLength60Message)}
+                autoFocus
+              />
+              ) : //null}
+
+              <FieldTextInput
+                id="fixedNumberOfNights"
+                name="fixedNumberOfNights"
+                className={css.title}
+                type="text"
+                label={fixedNumberOfNightsMessage}
+                placeholder={fixedNumberOfNightsPlaceholderMessage}
+                maxLength={TITLE_MAX_LENGTH}
+                validate={composeValidators(requiredNumber(fixedNumberOfNightsRequiredMessage), maxLength60Message)}
+                autoFocus
+              />
+            } */}
+
+            {/* <CustomCategorySelectFieldMaybe
+              id="category_persons"
+              name="category_persons"
+              categories={categoryPersons}
+              intl={intl}
+              index="1"
+            /> */}
+
+            {/* {values.category_persons === "variable" ? (
+              <FieldTextInput
+                id="maxNumberOfPersons"
+                name="maxNumberOfPersons"
+                className={css.title}
+                type="text"
+                label={maxNumberOfPersonsMessage}
+                placeholder={maxNumberOfPersonsPlaceholderMessage}
+                maxLength={TITLE_MAX_LENGTH}
+                validate={composeValidators(requiredNumber(maxNumberOfPersonsRequiredMessage), maxLength60Message)}
+                autoFocus
+              />
+              ) : //null}
+
+              <FieldTextInput
+                id="fixedNumberOfPersons"
+                name="fixedNumberOfPersons"
+                className={css.title}
+                type="text"
+                label={fixedNumberOfPersonsMessage}
+                placeholder={fixedNumberOfPersonsPlaceholderMessage}
+                maxLength={TITLE_MAX_LENGTH}
+                validate={composeValidators(requiredNumber(fixedNumberOfPersonsRequiredMessage), maxLength60Message)}
+                autoFocus
+              />
+            } */}
+            
+     {/* ) : null }  */}
+
+
+          
 
           <Button
             className={css.submitButton}
@@ -125,6 +340,7 @@ const EditListingDescriptionFormComponent = props => (
           >
             {saveActionMsg}
           </Button>
+          <pre>{JSON.stringify(values, 0, 2)}</pre>
         </Form>
       );
     }}
@@ -147,7 +363,13 @@ EditListingDescriptionFormComponent.propTypes = {
     showListingsError: propTypes.error,
     updateListingError: propTypes.error,
   }),
-  categories: arrayOf(
+  categoryDurations: arrayOf(
+    shape({
+      key: string.isRequired,
+      label: string.isRequired,
+    })
+  ),
+  categoryPersons: arrayOf(
     shape({
       key: string.isRequired,
       label: string.isRequired,

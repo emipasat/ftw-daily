@@ -57,6 +57,9 @@ const TopbarMobileMenu = props => {
           <NamedLink className={css.createNewListingLink} name="NewListingPage">
             <FormattedMessage id="TopbarMobileMenu.newListingLink" />
           </NamedLink>
+          <NamedLink className={css.createNewPropertyLink} name="NewPropertyPage">
+            <FormattedMessage id="TopbarMobileMenu.newPropertyLink" />
+          </NamedLink>
         </div>
       </div>
     );
@@ -97,6 +100,12 @@ const TopbarMobileMenu = props => {
           name="ManageListingsPage"
         >
           <FormattedMessage id="TopbarMobileMenu.yourListingsLink" />
+        </NamedLink>
+        <NamedLink
+          className={classNames(css.navigationLink, currentPageClass('ManagePropertiesPage'))}
+          name="ManagePropertiesPage"
+        >
+          <FormattedMessage id="TopbarMobileMenu.yourPropertiesLink" />
         </NamedLink>
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('ProfileSettingsPage'))}

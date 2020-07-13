@@ -49,6 +49,8 @@ const pathParamsToNextTab = (params, tab, marketplaceTabs) => {
   return { ...params, tab: nextTab };
 };
 
+
+
 // When user has update draft listing, he should be redirected to next EditListingWizardTab
 const redirectAfterDraftUpdate = (listingId, params, tab, marketplaceTabs, history) => {
   const currentPathParams = {
@@ -153,11 +155,13 @@ const EditListingWizardTab = props => {
       // newListingPublished and fetchInProgress are flags for the last wizard tab
       ready: newListingPublished,
       disabled: fetchInProgress,
+      whatever: params.whatever
     };
   };
 
   switch (tab) {
     case DESCRIPTION: {
+      //console.log(params);
       const submitButtonTranslationKey = isNewListingFlow
         ? 'EditListingWizard.saveNewDescription'
         : 'EditListingWizard.saveEditDescription';
@@ -279,6 +283,7 @@ EditListingWizardTab.propTypes = {
     slug: string.isRequired,
     type: oneOf(LISTING_PAGE_PARAM_TYPES).isRequired,
     tab: oneOf(SUPPORTED_TABS).isRequired,
+    whatever: string.isRequired
   }).isRequired,
   errors: shape({
     createListingDraftError: object,

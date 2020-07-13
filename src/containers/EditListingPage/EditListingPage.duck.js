@@ -93,6 +93,7 @@ const updateCalendarMonth = (state, monthId, data) => {
   };
 };
 
+
 const requestAction = actionType => params => ({ type: actionType, payload: { params } });
 
 const successAction = actionType => result => ({ type: actionType, payload: result.data });
@@ -650,6 +651,60 @@ export const requestDeleteAvailabilityException = params => (dispatch, getState,
 // display the state.
 export function requestUpdateListing(tab, data) {
   return (dispatch, getState, sdk) => {
+
+    console.log(tab);
+
+    console.log(data);
+
+    function updateAvailability(type, plan)
+    {        
+        if (type === 'property') 
+        {
+          sdk.ownListings
+          .update({id : data.id, availabilityPlan: plan})
+          .then(response => {
+            console.log(response);
+          });
+        }
+        
+    }
+
+    sdk.ownListings
+      //.show({id : data.id})
+      .query()//{id : data.id}) // la ownListings e ignored
+      .then(response => {
+        // EditListingPage fetches new listing data, which also needs to be added to global data
+        //dispatch(addMarketplaceEntities(response));
+        // In case of success, we'll clear state.EditListingPage (user will be redirected away)
+        //dispatch(showListingsSuccess(response));
+
+        //console.log(response.data.data);
+
+        var test = response.data.data.filter(
+          attributes => attributes.id.uuid === data.id.uuid);
+
+        var plan = test[0].attributes.availabilityPlan;//.data[0].attributes.availabilityPlan);
+        plan.entries.map(entry => { entry.seats = data.publicData.rooms});
+
+        if (tab === 'description')
+        {
+          updateAvailability(data.privateData.epicVisitsType, plan);
+        }
+        
+        //(data.privateData.epicVisitsType === 'property') ?  updateAvailability(data.privateData.epicVisitsType, plan) : null
+        //1 === 1 ? null : null
+
+        //console.log(plan);
+
+        //return response;
+      });
+      //.catch(e => dispatch(showListingsError(storableError(e))));
+
+    
+
+    // console.log(response); //availabilityPlan
+    //(data.privateData.epicVisitsType === 'property') ? () : ()
+
     dispatch(updateListing(data));
     const { id } = data;
     let updateResponse;

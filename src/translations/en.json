@@ -129,6 +129,10 @@
   "ContactDetailsForm.tooManyVerificationRequests": "Too many email verification requests sent.",
   "ContactDetailsPage.heading": "Contact details",
   "ContactDetailsPage.title": "Contact details",
+
+  "MyPropertiesPage.heading": "My properties",
+  "MyPropertiesPage.title": "My properties",
+
   "CookieConsent.continue": "Continue",
   "CookieConsent.cookieLink": "cookies",
   "CookieConsent.message": "Welcome to Saunatime, friend! We use {cookieLink} to enhance your browsing experience.",
@@ -143,18 +147,49 @@
   "EditListingAvailabilityForm.updateFailed": "Failed to update listing. Please try again.",
   "EditListingAvailabilityPanel.title": "Edit the availability of {listingTitle}",
   "EditListingAvailabilityPanel.createListingTitle": "When is it available?",
-  "EditListingDescriptionForm.categoryLabel": "Experience type",
-  "EditListingDescriptionForm.categoryPlaceholder": "Choose the type of your experience…",
-  "EditListingDescriptionForm.categoryRequired": "You need to select a category for your experience.",
+
+  "EditListingDescriptionForm.categoryLabel": "Experience duration type",
+  "EditListingDescriptionForm.categoryPlaceholder": "Choose the duration type of your experience…",
+  "EditListingDescriptionForm.categoryRequired": "You need to select a category duration for your experience.",
+
+  "EditListingDescriptionForm.category1Label": "Experience persons type",
+  "EditListingDescriptionForm.category1Placeholder": "Choose the persons type of your experience…",
+  "EditListingDescriptionForm.category1Required": "You need to select a category persons for your experience.",
+
+
   "EditListingDescriptionForm.createListingDraftError": "Failed to create a draft listing. Please try again.",
   "EditListingDescriptionForm.description": "Describe your experience",
   "EditListingDescriptionForm.descriptionPlaceholder": "How many people can fit at once? Does the experience come with adrenaline?",
   "EditListingDescriptionForm.descriptionRequired": "A description is required.",
   "EditListingDescriptionForm.maxLength": "Must be {maxLength} characters or less",
   "EditListingDescriptionForm.showListingFailed": "Fetching listing data failed",
+
+  "EditListingDescriptionForm.maxNumberOfNights": "Max number of nights",
+  "EditListingDescriptionForm.maxNumberOfNightsPlaceholder": "Maximum number of nights?",
+  "EditListingDescriptionForm.maxNumberOfNightsRequired": "You need to add max number of nights if duration flexible.",
+
+
+  "EditListingDescriptionForm.maxNumberOfPersons": "Max number of persons",
+  "EditListingDescriptionForm.maxNumberOfPersonsPlaceholder": "Maximum number of persons?",
+  "EditListingDescriptionForm.maxNumberOfPersonsRequired": "You need to add max number of persons if persons flexible.",
+
+  "EditListingDescriptionForm.rooms": "Number of rooms",
+  "EditListingDescriptionForm.roomsPlaceholder": "Number of rooms?",
+  "EditListingDescriptionForm.roomsRequired": "You need to add number of rooms as a number.",
+
+  "EditListingDescriptionForm.fixedNumberOfPersons": "Fixed number of persons",
+  "EditListingDescriptionForm.fixedNumberOfPersonsPlaceholder": "Fixed number of persons?",
+  "EditListingDescriptionForm.fixedNumberOfPersonsRequired": "You need to add the no of persons if persons fixed.",
+
+  "EditListingDescriptionForm.fixedNumberOfNights": "Fixed number of nights",
+  "EditListingDescriptionForm.fixedNumberOfNightsPlaceholder": "Fixed number of nights?",
+  "EditListingDescriptionForm.fixedNumberOfNightsRequired": "You need to add the no of nights if nights fixed.",
+
+
   "EditListingDescriptionForm.title": "The name of your experience",
   "EditListingDescriptionForm.titlePlaceholder": "What's the name of your experience?",
   "EditListingDescriptionForm.titleRequired": "You need to add a name.",
+
   "EditListingDescriptionForm.updateFailed": "Failed to update listing. Please try again.",
   "EditListingDescriptionPanel.createListingTitle": "Add your experience",
   "EditListingDescriptionPanel.title": "Edit details of {listingTitle}",
@@ -229,7 +264,7 @@
   "EditListingWizard.tabLabelAvailability": "Availability",
   "EditListingWizard.tabLabelLocation": "Location",
   "EditListingWizard.tabLabelPhotos": "Photos",
-  "EditListingWizard.tabLabelPolicy": "Sauna rules",
+  "EditListingWizard.tabLabelPolicy": "Experience rules",
   "EditListingWizard.tabLabelPricing": "Pricing",
   "EmailVerificationForm.finishAccountSetup": "We will need to send you email notifications. To allow this, please verify your email address {email}.",
   "EmailVerificationForm.successButtonText": "Continue exploring",
@@ -294,6 +329,7 @@
   "Footer.toFAQPage": "FAQ",
   "Footer.toHelpPage": "Help",
   "Footer.toNewListingPage": "Add your experience",
+  "Footer.toNewPropertyPage": "Add your property",
   "ImageCarousel.imageAltText": "Listing image {index}/{count}",
   "ImageFromFile.couldNotReadFile": "Could not read file",
   "InboxPage.fetchFailed": "Could not load all messages. Please try again.",
@@ -324,6 +360,9 @@
   "LayoutWrapperAccountSettingsSideNav.passwordTabTitle": "Password",
   "LayoutWrapperAccountSettingsSideNav.paymentsTabTitle": "Payout details",
   "LayoutWrapperAccountSettingsSideNav.paymentMethodsTabTitle": "Payment methods",
+
+  "LayoutWrapperAccountSettingsSideNav.myPropertiesTabTitle": "My Properties",
+
   "LimitedAccessBanner.message": "Your are logged in as {firstName} {lastName}. You have limited rights for actions.",
   "LimitedAccessBanner.logout": "Log out",
   "ListingCard.hostedBy": "Hosted by {authorName}.",
@@ -333,6 +372,9 @@
   "ListingCard.unsupportedPrice": "({currency})",
   "ListingCard.unsupportedPriceTitle": "Unsupported currency ({currency})",
   "ListingPage.bookingSubTitle": "Start by choosing your dates.",
+
+  "ListingPage.bookingFixedDurationSubTitle": "Start by choosing your start date ({numberOfNights} nights, fixed duration).",
+
   "ListingPage.bookingTitle": "Book {title}",
   "ListingPage.closedListing": "This listing has been closed and can't be booked.",
   "ListingPage.contactUser": "Contact",
@@ -356,7 +398,7 @@
   "ListingPage.perUnit": "per unit",
   "ListingPage.reviewsError": "Loading reviews failed.",
   "ListingPage.reviewsHeading": "Reviews ({count})",
-  "ListingPage.rulesTitle": "Sauna rules",
+  "ListingPage.rulesTitle": "Experience rules",
   "ListingPage.schemaTitle": "{title} - {price} | {siteTitle}",
   "ListingPage.viewImagesButton": "View photos ({count})",
   "ListingPage.yourHostHeading": "Your host",
@@ -372,6 +414,8 @@
   "LoginForm.passwordLabel": "Password",
   "LoginForm.passwordPlaceholder": "Enter your password…",
   "LoginForm.passwordRequired": "This field is required",
+
+
   "ManageListingCard.actionFailed": "Whoops, something went wrong. Please refresh the page and try again.",
   "ManageListingCard.closeListing": "Close listing",
   "ManageListingCard.closedListing": "This listing is closed and not visible on the marketplace.",
@@ -394,8 +438,15 @@
   "ManageListingsPage.profileSettings": "Profile settings",
   "ManageListingsPage.queryError": "Query failed. Please try again.",
   "ManageListingsPage.title": "Manage listings",
-  "ManageListingsPage.youHaveListings": "You have {count} {count, plural, one {listing} other {listings}}",
-  "ManageListingsPage.yourListings": "Your listings",
+  "ManageListingsPage.youHaveListings": "You have {count} {count, plural, one {experience} other {experiences}}",
+  "ManageListingsPage.yourListings": "Your experiences",
+
+  "ManageListingsPage.yourProperties": "Your properties",
+
+  "ManagePropertiesPage.title": "Manage properties",
+  "ManagePropertiesPage.youHaveProperties": "You have {count} {count, plural, one {property} other {properties}}",
+  "ManagePropertiesPage.noResults": "You don't have any properties.",
+
   "MapPriceMarker.unsupportedPrice": "({currency})",
   "Modal.close": "CLOSE",
   "Modal.closeModal": "Close modal",
@@ -946,24 +997,32 @@
   "Topbar.searchIcon": "Open search",
   "TopbarDesktop.accountSettingsLink": "Account settings",
   "TopbarDesktop.createListing": "+ Add your experience",
+  "TopbarDesktop.createProperty": "+ Add your property",
   "TopbarDesktop.inbox": "Inbox",
   "TopbarDesktop.login": "Log in",
   "TopbarDesktop.logo": "Saunatime",
   "TopbarDesktop.logout": "Log out",
   "TopbarDesktop.profileSettingsLink": "Profile settings",
   "TopbarDesktop.signup": "Sign up",
-  "TopbarDesktop.yourListingsLink": "Your listings",
+
+  "TopbarDesktop.yourListingsLink": "Your experiences1",
+  "TopbarDesktop.yourPropertiesLink": "Your properties1",
+
   "TopbarMobileMenu.accountSettingsLink": "Account settings",
   "TopbarMobileMenu.greeting": "Hello {displayName}",
   "TopbarMobileMenu.inboxLink": "Inbox",
   "TopbarMobileMenu.loginLink": "Log in",
   "TopbarMobileMenu.logoutLink": "Log out",
   "TopbarMobileMenu.newListingLink": "+ Add your experience",
+  "TopbarMobileMenu.newPropertyLink": "+ Add your property",
   "TopbarMobileMenu.profileSettingsLink": "Profile settings",
   "TopbarMobileMenu.signupLink": "Sign up",
   "TopbarMobileMenu.signupOrLogin": "{signup} or {login}",
   "TopbarMobileMenu.unauthorizedGreeting": "Hello there,{lineBreak}would you like to {signupOrLogin}?",
-  "TopbarMobileMenu.yourListingsLink": "Your listings",
+
+  "TopbarMobileMenu.yourListingsLink": "Your experiences2",
+  "TopbarMobileMenu.yourPropertiesLink": "Your properties2",
+
   "TopbarSearchForm.placeholder": "Search experience…",
   "TopbarSearchForm.searchHelp": "Tip: You can also search experiences by zip code, for example \"00500\" or city district \"Sörnäinen\".",
   "TransactionPage.deletedListing": "deleted listing",

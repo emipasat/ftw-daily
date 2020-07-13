@@ -5,18 +5,25 @@ import { FieldSelect } from '../../components';
 import css from './EditListingDescriptionForm.css';
 
 const CustomCategorySelectFieldMaybe = props => {
-  const { name, id, categories, intl } = props;
+  const { name, id, categories, intl, index } = props;
   const categoryLabel = intl.formatMessage({
-    id: 'EditListingDescriptionForm.categoryLabel',
+    id: 'EditListingDescriptionForm.category'+index+'Label',
   });
   const categoryPlaceholder = intl.formatMessage({
-    id: 'EditListingDescriptionForm.categoryPlaceholder',
+    id: 'EditListingDescriptionForm.category'+index+'Placeholder',
   });
   const categoryRequired = required(
     intl.formatMessage({
-      id: 'EditListingDescriptionForm.categoryRequired',
+      id: 'EditListingDescriptionForm.category'+index+'Required',
     })
   );
+
+  //const useHistoryPush = 'vvvv'
+  //const xxx = message => value => {
+  //  window.confirm(value)
+  //};
+
+
   return categories ? (
     <FieldSelect
       className={css.category}

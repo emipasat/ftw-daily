@@ -20,19 +20,19 @@ import {
 import { TopbarContainer } from '../../containers';
 
 import {
-  closeListing,
-  openListing,
-  getOwnListingsById,
-  queryOwnListings,
-} from './ManageListingsPage.duck';
-import css from './ManageListingsPage.css';
+  closeListing1,
+  openListing1,
+  getOwnListingsById1,
+  queryOwnListings1,
+} from './ManagePropertiesPage.duck';
+import css from './ManagePropertiesPage.css';
 
 // Pagination page size might need to be dynamic on responsive page layouts
 // Current design has max 3 columns 42 is divisible by 2 and 3
 // So, there's enough cards to fill all columns on full pagination pages
 const RESULT_PAGE_SIZE = 42;
 
-export class ManageListingsPageComponent extends Component {
+export class ManagePropertiesPageComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -79,7 +79,7 @@ export class ManageListingsPageComponent extends Component {
     const noResults =
       listingsAreLoaded && pagination.totalItems === 0 ? (
         <h1 className={css.title}>
-          <FormattedMessage id="ManageListingsPage.noResults" />
+          <FormattedMessage id="ManagePropertiesPage.noResults" />
         </h1>
       ) : null;
 
@@ -87,7 +87,7 @@ export class ManageListingsPageComponent extends Component {
       listingsAreLoaded && pagination.totalItems > 0 ? (
         <h1 className={css.title}>
           <FormattedMessage
-            id="ManageListingsPage.youHaveListings"
+            id="ManagePropertiesPage.youHaveProperties"
             values={{ count: pagination.totalItems }}
           />
         </h1>
@@ -100,7 +100,7 @@ export class ManageListingsPageComponent extends Component {
       listingsAreLoaded && pagination && pagination.totalPages > 1 ? (
         <PaginationLinks
           className={css.pagination}
-          pageName="ManageListingsPage"
+          pageName="ManagePropertiesPage"
           pageSearchParams={{ page }}
           pagination={pagination}
         />
@@ -120,12 +120,13 @@ export class ManageListingsPageComponent extends Component {
       `${panelWidth / 3}vw`,
     ].join(', ');
 
+    
     return (
       <Page title={title} scrollingDisabled={scrollingDisabled}>
         <LayoutSingleColumn>
           <LayoutWrapperTopbar>
-            <TopbarContainer currentPage="ManageListingsPage" />
-            <UserNav selectedPageName="ManageListingsPage" />
+            <TopbarContainer currentPage="ManagePropertiesPage" />
+            <UserNav selectedPageName="ManagePropertiesPage" />
           </LayoutWrapperTopbar>
           <LayoutWrapperMain>
             {queryInProgress ? loadingResults : null}
@@ -161,7 +162,7 @@ export class ManageListingsPageComponent extends Component {
   }
 }
 
-ManageListingsPageComponent.defaultProps = {
+ManagePropertiesPageComponent.defaultProps = {
   listings: [],
   pagination: null,
   queryListingsError: null,
@@ -174,7 +175,7 @@ ManageListingsPageComponent.defaultProps = {
 
 const { arrayOf, bool, func, object, shape, string } = PropTypes;
 
-ManageListingsPageComponent.propTypes = {
+ManagePropertiesPageComponent.propTypes = {
   closingListing: shape({ uuid: string.isRequired }),
   closingListingError: shape({
     listingId: propTypes.uuid.isRequired,
@@ -198,10 +199,8 @@ ManageListingsPageComponent.propTypes = {
   intl: intlShape.isRequired,
 };
 
-
-
 const mapStateToProps = state => {
-  //console.log(state.ManageListingsPage);
+  //console.log(state);
   const {
     currentPageResultIds,
     pagination,
@@ -212,10 +211,11 @@ const mapStateToProps = state => {
     openingListingError,
     closingListing,
     closingListingError,
-  } = state.ManageListingsPage;
-  const listings = getOwnListingsById(state, currentPageResultIds);
+  } = state.ManagePropertiesPage;
+  const listings = getOwnListingsById1(state, currentPageResultIds);
 
-
+  
+  console.log(listings);
 
   return {
     currentPageResultIds,
@@ -233,32 +233,32 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onCloseListing: listingId => dispatch(closeListing(listingId)),
-  onOpenListing: listingId => dispatch(openListing(listingId)),
+  onCloseListing: listingId => dispatch(closeListing1(listingId)),
+  onOpenListing: listingId => dispatch(openListing1(listingId)),
 });
 
-const ManageListingsPage = compose(
+const ManagePropertiesPage = compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
   ),
   injectIntl
-)(ManageListingsPageComponent);
+)(ManagePropertiesPageComponent);
 
-ManageListingsPage.loadData = (params, search) => {
-  //console.log(search);
-  //const queryParams = {state:'closed'};//parse(search);
-  //const queryParams = {price:'100,200'};
-  const queryParams = parse(search);
+ManagePropertiesPage.loadData = (params, search) => {
+  
+  const queryParams = parse(search);//"state=published");
+  //console.log(queryParams);
+  //console.log('xxxx');
   const page = queryParams.page || 1;
-  return queryOwnListings({
+  return queryOwnListings1({
     ...queryParams,
     page,
     perPage: RESULT_PAGE_SIZE,
-    include: ['images'],
+    include: ['images','state'],
     'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
     'limit.images': 1,
   });
 };
 
-export default ManageListingsPage;
+export default ManagePropertiesPage;

@@ -47,7 +47,7 @@ const closeBookModal = (history, location) => {
   history.push(`${pathname}${searchString}`, state);
 };
 
-const BookingPanel = props => {
+const BookingPanelFixedDuration = props => {
   const {
     rootClassName,
     className,
@@ -81,8 +81,6 @@ const BookingPanel = props => {
     ? intl.formatMessage({ id: 'BookingPanel.subTitleClosedListing' })
     : null;
 
-  const subTitleFixedDurationText = intl.formatMessage({ id: 'BookingPanel.subTitleClosedListing' });
-
   const isNightly = unitType === LINE_ITEM_NIGHT;
   const isDaily = unitType === LINE_ITEM_DAY;
 
@@ -112,26 +110,10 @@ const BookingPanel = props => {
           </div>
         </div>
 
-
-        
-
-        {listing.attributes.publicData.category_duration === "fixed" ? 
-          (
-            <div className={css.bookingHeading}>
-              <h2 className={titleClasses}>{title}</h2>
-              {subTitleText ? <div className={css.bookingHelp}>
-                {/* {intl.formatMessage({ id: 'ListingPage.bookingFixedDurationSubTitle', numberOfNights: 2 })} */}
-                <FormattedMessage id="ListingPage.bookingFixedDurationSubTitle" values={{ numberOfNights: listing.attributes.publicData.fixedNumberOfNights }} />
-                </div> : null}
-            </div>
-          ) : (
-            <div className={css.bookingHeading}>
-              <h2 className={titleClasses}>{title}</h2>
-              {subTitleText ? <div className={css.bookingHelp}>{subTitleText}</div> : null}
-            </div>)
-        }
-
-        {/* <pre>{JSON.stringify(listing.attributes.publicData.category_duration, 0, 2)}</pre> */}
+        <div className={css.bookingHeading}>
+          <h2 className={titleClasses}>{title}</h2>
+          {subTitleText ? <div className={css.bookingHelp}>{subTitleText}</div> : null}
+        </div>
         {showBookingDatesForm ? (
           <BookingDatesForm
             className={css.bookingForm}
@@ -143,9 +125,6 @@ const BookingPanel = props => {
             isOwnListing={isOwnListing}
             timeSlots={timeSlots}
             fetchTimeSlotsError={fetchTimeSlotsError}
-            categoryDuration={listing.attributes.publicData.category_duration}
-            fixedNumberOfNights={listing.attributes.publicData.fixedNumberOfNights}
-            categoryPersons={listing.attributes.publicData.category_persons}
           />
         ) : null}
       </ModalInMobile>
@@ -176,7 +155,7 @@ const BookingPanel = props => {
   );
 };
 
-BookingPanel.defaultProps = {
+BookingPanelFixedDuration.defaultProps = {
   rootClassName: null,
   className: null,
   titleClassName: null,
@@ -187,7 +166,7 @@ BookingPanel.defaultProps = {
   fetchTimeSlotsError: null,
 };
 
-BookingPanel.propTypes = {
+BookingPanelFixedDuration.propTypes = {
   rootClassName: string,
   className: string,
   titleClassName: string,
@@ -217,4 +196,4 @@ BookingPanel.propTypes = {
 export default compose(
   withRouter,
   injectIntl
-)(BookingPanel);
+)(BookingPanelFixedDuration);

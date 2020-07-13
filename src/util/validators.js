@@ -30,6 +30,18 @@ export const required = message => value => {
   return VALID;
 };
 
+export const requiredNumber = message => value => {
+  
+  var newValue = parseNum(value)
+  //window.confirm(newValue)
+  return newValue !== null ? VALID : message;
+  
+  //var newValue = parseInt(value)
+  //window.confirm(isNaN(value)===false)
+  //return isNaN(newValue)===false
+  //return typeof newValue === 'number' && newValue !== NaN ? VALID : message;
+};
+
 export const requiredStringNoTrim = message => value => {
   return typeof value === 'string' && value.length > 0 ? VALID : message;
 };

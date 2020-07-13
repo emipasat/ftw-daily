@@ -53,6 +53,12 @@ const SectionHowItWorks = props => {
           <FormattedMessage id="SectionHowItWorks.createListingLink" />
         </NamedLink>
       </div>
+
+      <div className={css.createPropertyLink}>
+        <NamedLink name="NewPropertyPage">
+          <FormattedMessage id="SectionHowItWorks.createPropertyLink" />
+        </NamedLink>
+      </div>
     </div>
   );
 };

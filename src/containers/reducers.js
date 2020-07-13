@@ -9,10 +9,12 @@ import EditListingPage from './EditListingPage/EditListingPage.duck';
 import InboxPage from './InboxPage/InboxPage.duck';
 import ListingPage from './ListingPage/ListingPage.duck';
 import ManageListingsPage from './ManageListingsPage/ManageListingsPage.duck';
+import ManagePropertiesPage from './ManagePropertiesPage/ManagePropertiesPage.duck';
 import PasswordChangePage from './PasswordChangePage/PasswordChangePage.duck';
 import PasswordRecoveryPage from './PasswordRecoveryPage/PasswordRecoveryPage.duck';
 import PasswordResetPage from './PasswordResetPage/PasswordResetPage.duck';
 import PaymentMethodsPage from './PaymentMethodsPage/PaymentMethodsPage.duck';
+import MyPropertiesPage from './MyPropertiesPage/MyPropertiesPage.duck';
 import ProfilePage from './ProfilePage/ProfilePage.duck';
 import ProfileSettingsPage from './ProfileSettingsPage/ProfileSettingsPage.duck';
 import SearchPage from './SearchPage/SearchPage.duck';
@@ -26,6 +28,7 @@ export {
   InboxPage,
   ListingPage,
   ManageListingsPage,
+  ManagePropertiesPage,
   PasswordChangePage,
   PasswordRecoveryPage,
   PasswordResetPage,

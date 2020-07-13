@@ -48,7 +48,7 @@ export class BookingDatesFormComponent extends Component {
   }
 
   render() {
-    const { rootClassName, className, price: unitPrice, ...rest } = this.props;
+    const { rootClassName, className, price: unitPrice, categoryDuration, fixedNumberOfNights, ...rest } = this.props;
     const classes = classNames(rootClassName || css.root, className);
 
     if (!unitPrice) {
@@ -109,6 +109,8 @@ export class BookingDatesFormComponent extends Component {
             </p>
           ) : null;
 
+          
+
           // This is the place to collect breakdown estimation data. See the
           // EstimatedBreakdownMaybe component to change the calculations
           // for customized payment processes.
@@ -123,6 +125,8 @@ export class BookingDatesFormComponent extends Component {
                   // NOTE: If unitType is `line-item/units`, a new picker
                   // for the quantity should be added to the form.
                   quantity: 1,
+                  categoryDuration,
+                  fixedNumberOfNights
                 }
               : null;
           const bookingInfo = bookingData ? (
@@ -140,11 +144,15 @@ export class BookingDatesFormComponent extends Component {
             day: 'numeric',
           };
 
+
+          const daysToAdd = categoryDuration === "fixed" ? fixedNumberOfNights : 1; 
+
           const now = moment();
           const today = now.startOf('day').toDate();
           const tomorrow = now
             .startOf('day')
-            .add(1, 'days')
+            //.add(1, 'days')
+            .add(daysToAdd, 'days')
             .toDate();
           const startDatePlaceholderText =
             startDatePlaceholder || intl.formatDate(today, dateFormatOptions);

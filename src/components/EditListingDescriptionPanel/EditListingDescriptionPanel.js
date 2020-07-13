@@ -24,11 +24,19 @@ const EditListingDescriptionPanel = props => {
     panelUpdated,
     updateInProgress,
     errors,
+    whatever
   } = props;
+
+  //console.log('xxxxx');
+  //console.log(whatever);
 
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
-  const { description, title, publicData } = currentListing.attributes;
+  const { description, title, publicData, privateData } = currentListing.attributes;
+
+  //console.log('ssss' + whatever); // TODO is undefined in edit
+  //privateData.epicVisitsType = whatever;
+  //console.log(privateData);
 
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
   const panelTitle = isPublished ? (
@@ -40,20 +48,35 @@ const EditListingDescriptionPanel = props => {
     <FormattedMessage id="EditListingDescriptionPanel.createListingTitle" />
   );
 
-  const categoryOptions = findOptionsForSelectFilter('category', config.custom.filters);
+  const categoryDurationOptions = findOptionsForSelectFilter('category_duration', config.custom.filters);
+  const categoryPersonsOptions = findOptionsForSelectFilter('category_persons', config.custom.filters);
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>
       <EditListingDescriptionForm
         className={css.form}
-        initialValues={{ title, description, category: publicData.category }}
+        initialValues={{ title, description, 
+                          category_duration: publicData.category_duration, 
+                          category_persons: publicData.category_persons,
+                          maxNumberOfNights : publicData.maxNumberOfNights,
+                          maxNumberOfPersons : publicData.maxNumberOfPersons,
+                          fixedNumberOfNights : publicData.fixedNumberOfNights,
+                          fixedNumberOfPersons : publicData.fixedNumberOfPersons,
+                          rooms : publicData.rooms,
+                          epicVisitsType: privateData.epicVisitsType || whatever
+                         }}
         saveActionMsg={submitButtonText}
         onSubmit={values => {
-          const { title, description, category } = values;
+          const { title, description, category_duration, category_persons, 
+            maxNumberOfNights, maxNumberOfPersons, 
+            fixedNumberOfNights, fixedNumberOfPersons, 
+            rooms, epicVisitsType } = values;
           const updateValues = {
             title: title.trim(),
             description,
-            publicData: { category },
+            publicData: { category_duration, category_persons, 
+              maxNumberOfNights, maxNumberOfPersons, fixedNumberOfPersons, fixedNumberOfNights, rooms },
+            privateData: { epicVisitsType }
           };
 
           onSubmit(updateValues);
@@ -64,7 +87,9 @@ const EditListingDescriptionPanel = props => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         fetchErrors={errors}
-        categories={categoryOptions}
+        categoryDurations={categoryDurationOptions}
+        categoryPersons={categoryPersonsOptions}
+        propertyListing={whatever}
       />
     </div>
   );

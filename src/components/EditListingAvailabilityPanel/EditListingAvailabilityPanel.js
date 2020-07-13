@@ -28,19 +28,35 @@ const EditListingAvailabilityPanel = props => {
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
+
+  console.log(currentListing.attributes.privateData);
+  console.log(currentListing.attributes.publicData);
+
+  const seats = currentListing.attributes.publicData.rooms;
+
+  var myVariable = (currentListing.attributes.privateData.epicVisitsType === 'property') ? seats : 1
+
+  //console.log(currentListing.attributes);
+  //currentListing.attributes.privateData.epicVisitsType === 'property' ? seats = 
+
   const defaultAvailabilityPlan = {
     type: 'availability-plan/day',
     entries: [
-      { dayOfWeek: 'mon', seats: 1 },
-      { dayOfWeek: 'tue', seats: 1 },
-      { dayOfWeek: 'wed', seats: 1 },
-      { dayOfWeek: 'thu', seats: 1 },
-      { dayOfWeek: 'fri', seats: 1 },
-      { dayOfWeek: 'sat', seats: 1 },
-      { dayOfWeek: 'sun', seats: 1 },
+      { dayOfWeek: 'mon', seats: myVariable },
+      { dayOfWeek: 'tue', seats: myVariable },
+      { dayOfWeek: 'wed', seats: myVariable },
+      { dayOfWeek: 'thu', seats: myVariable },
+      { dayOfWeek: 'fri', seats: myVariable },
+      { dayOfWeek: 'sat', seats: myVariable },
+      { dayOfWeek: 'sun', seats: myVariable },
     ],
   };
   const availabilityPlan = currentListing.attributes.availabilityPlan || defaultAvailabilityPlan;
+
+  //TODO handle case when room number changes, a react foreach here to change seats
+  // TODO later, different seats per day handling
+
+  //console.log(availabilityPlan);
 
   return (
     <div className={classes}>

@@ -10,6 +10,7 @@ import {
   LandingPage,
   ListingPage,
   ManageListingsPage,
+  ManagePropertiesPage,
   NotFoundPage,
   PasswordChangePage,
   PasswordRecoveryPage,
@@ -19,6 +20,7 @@ import {
   PrivacyPolicyPage,
   ProfilePage,
   ProfileSettingsPage,
+  MyPropertiesPage,
   SearchPage,
   StyleguidePage,
   TermsOfServicePage,
@@ -35,6 +37,7 @@ export const ACCOUNT_SETTINGS_PAGES = [
   'PasswordChangePage',
   'StripePayoutPage',
   'PaymentMethodsPage',
+  'MyPropertiesPage'
 ];
 
 // https://en.wikipedia.org/wiki/Universally_unique_identifier#Nil_UUID
@@ -120,12 +123,31 @@ const routeConfiguration = () => {
       component: () => (
         <NamedRedirect
           name="EditListingPage"
-          params={{ slug: draftSlug, id: draftId, type: 'new', tab: 'description' }}
+          params={{ slug: draftSlug, id: draftId, type: 'new', tab: 'description', whatever: 'listing' }}
         />
       ),
     },
     {
-      path: '/l/:slug/:id/:type/:tab',
+      path: '/p/new',
+      name: 'NewPropertyPage',
+      auth: true,
+      component: () => (
+        <NamedRedirect
+          name="EditPropertyPage"
+          params={{ slug: draftSlug, id: draftId, type: 'new', tab: 'description', whatever: 'property' }}
+        />
+      ),
+    },
+    {
+      path: '/p/:slug/:id/:type/:tab/:whatever',
+      name: 'EditPropertyPage',
+      auth: true,
+      component: props => <EditListingPage {...props} />,
+      loadData: EditListingPage.loadData,
+    },
+    {
+      //path: '/l/:slug/:id/:type/:tab/',
+      path: '/l/:slug/:id/:type/:tab/:whatever',
       name: 'EditListingPage',
       auth: true,
       component: props => <EditListingPage {...props} />,
@@ -235,6 +257,14 @@ const routeConfiguration = () => {
       loadData: ManageListingsPage.loadData,
     },
     {
+      path: '/properties',
+      name: 'ManagePropertiesPage',
+      auth: true,
+      authPage: 'LoginPage',
+      component: props => <ManagePropertiesPage {...props} />,
+      loadData: ManagePropertiesPage.loadData,
+    },
+    {
       path: '/account',
       name: 'AccountSettingsPage',
       auth: true,
@@ -279,6 +309,14 @@ const routeConfiguration = () => {
       authPage: 'LoginPage',
       component: props => <PaymentMethodsPage {...props} />,
       loadData: PaymentMethodsPage.loadData,
+    },
+    {
+      path: '/account/my-properties',
+      name: 'MyPropertiesPage',
+      auth: true,
+      authPage: 'LoginPage',
+      component: props => <MyPropertiesPage {...props} />,
+      loadData: ProfilePage.loadData,
     },
     {
       path: '/terms-of-service',

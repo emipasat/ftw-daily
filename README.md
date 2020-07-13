@@ -71,3 +71,12 @@ channel at https://www.sharetribe.com/flex-slack
 This project is licensed under the terms of the Apache-2.0 license.
 
 See [LICENSE](LICENSE)
+
+## Links for dev
+https://www.sharetribe.com/api-reference/api-error-codes.html
+https://stripe.com/docs/connect/testing
+https://stripe.com/docs/connect/testing#payouts
+https://www.sharetribe.com/docs/cookbook-payments/set-up-and-use-stripe/
+https://github.com/emipasat/ftw-daily
+https://dashboard.stripe.com/test/apikeys
+

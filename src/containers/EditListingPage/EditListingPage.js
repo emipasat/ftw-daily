@@ -87,6 +87,7 @@ export const EditListingPageComponent = props => {
     updateStripeAccountError,
   } = props;
 
+
   const { id, type, returnURLType } = params;
   const isNewURI = type === LISTING_PAGE_PARAM_TYPE_NEW;
   const isDraftURI = type === LISTING_PAGE_PARAM_TYPE_DRAFT;
@@ -96,11 +97,15 @@ export const EditListingPageComponent = props => {
   const currentListing = ensureOwnListing(getOwnListing(listingId));
   const { state: currentListingState } = currentListing.attributes;
 
+  //console.log(currentListing.attributes);
+
   const isPastDraft = currentListingState && currentListingState !== LISTING_STATE_DRAFT;
   const shouldRedirect = isNewListingFlow && listingId && isPastDraft;
 
   const hasStripeOnboardingDataIfNeeded = returnURLType ? !!(currentUser && currentUser.id) : true;
   const showForm = hasStripeOnboardingDataIfNeeded && (isNewURI || currentListing.id);
+
+  //console.log(params.whatever);
 
   if (shouldRedirect) {
     const isPendingApproval =
@@ -168,6 +173,7 @@ export const EditListingPageComponent = props => {
     const title = isNewListingFlow
       ? intl.formatMessage({ id: 'EditListingPage.titleCreateListing' })
       : intl.formatMessage({ id: 'EditListingPage.titleEditListing' });
+
 
     return (
       <Page title={title} scrollingDisabled={scrollingDisabled}>
@@ -279,6 +285,7 @@ EditListingPageComponent.propTypes = {
     slug: string.isRequired,
     type: oneOf(LISTING_PAGE_PARAM_TYPES).isRequired,
     tab: string.isRequired,
+    whatever: string.isRequired,
     returnURLType: oneOf(STRIPE_ONBOARDING_RETURN_URL_TYPES),
   }).isRequired,
   stripeAccountFetched: bool,

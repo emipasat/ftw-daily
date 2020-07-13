@@ -67,6 +67,7 @@ const createListingURL = (routes, listing) => {
   const slug = createSlug(listing.attributes.title);
   const isPendingApproval = listing.attributes.state === LISTING_STATE_PENDING_APPROVAL;
   const isDraft = listing.attributes.state === LISTING_STATE_DRAFT;
+  const whatever = listing.attributes.privateData ? listing.attributes.privateData.epicVisitsType : 'listing';
   const variant = isDraft
     ? LISTING_PAGE_DRAFT_VARIANT
     : isPendingApproval
@@ -81,11 +82,12 @@ const createListingURL = (routes, listing) => {
             id,
             slug,
             variant,
+            whatever
           },
         }
       : {
           name: 'ListingPage',
-          params: { id, slug },
+          params: { id, slug, whatever },
         };
 
   return createResourceLocatorString(linkProps.name, routes, linkProps.params, {});
@@ -133,12 +135,17 @@ export const ManageListingCardComponent = props => {
   const isPendingApproval = state === LISTING_STATE_PENDING_APPROVAL;
   const isClosed = state === LISTING_STATE_CLOSED;
   const isDraft = state === LISTING_STATE_DRAFT;
+  const whatever1 = currentListing.attributes.privateData ? currentListing.attributes.privateData.epicVisitsType : 'listing';
+  const whatever = whatever1 ? whatever1 : 'listing';
   const firstImage =
     currentListing.images && currentListing.images.length > 0 ? currentListing.images[0] : null;
 
   const menuItemClasses = classNames(css.menuItem, {
     [css.menuItemDisabled]: !!actionsInProgressListingId,
   });
+
+
+  //console.log(whatever);
 
   const { formattedPrice, priceTitle } = priceData(price, intl);
 
@@ -248,7 +255,7 @@ export const ManageListingCardComponent = props => {
               <NamedLink
                 className={css.finishListingDraftLink}
                 name="EditListingPage"
-                params={{ id, slug, type: LISTING_PAGE_PARAM_TYPE_DRAFT, tab: 'photos' }}
+                params={{ id, slug, type: LISTING_PAGE_PARAM_TYPE_DRAFT, tab: 'photos', whatever }}
               >
                 <FormattedMessage id="ManageListingCard.finishListingDraft" />
               </NamedLink>
@@ -331,7 +338,7 @@ export const ManageListingCardComponent = props => {
           <NamedLink
             className={css.manageLink}
             name="EditListingPage"
-            params={{ id, slug, type: editListingLinkType, tab: 'description' }}
+            params={{ id, slug, type: editListingLinkType, tab: 'description', whatever }}
           >
             <FormattedMessage id="ManageListingCard.editListing" />
           </NamedLink>
@@ -343,7 +350,7 @@ export const ManageListingCardComponent = props => {
               <NamedLink
                 className={css.manageLink}
                 name="EditListingPage"
-                params={{ id, slug, type: editListingLinkType, tab: 'availability' }}
+                params={{ id, slug, type: editListingLinkType, tab: 'availability', whatever }}
               >
                 <FormattedMessage id="ManageListingCard.manageAvailability" />
               </NamedLink>
