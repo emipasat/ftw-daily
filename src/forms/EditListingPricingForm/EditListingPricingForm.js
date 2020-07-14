@@ -32,6 +32,7 @@ export const EditListingPricingFormComponent = props => (
         fetchErrors,
       } = formRenderProps;
 
+      //console.log(props.initialValues.publicData);
       const unitType = config.bookingUnitType;
       const isNightly = unitType === LINE_ITEM_NIGHT;
       const isDaily = unitType === LINE_ITEM_DAY;
@@ -42,8 +43,18 @@ export const EditListingPricingFormComponent = props => (
         ? 'EditListingPricingForm.pricePerDay'
         : 'EditListingPricingForm.pricePerUnit';
 
+      const translationKey1 = 
+        props.initialValues.publicData.category_duration === 'fixed' && 
+        props.initialValues.publicData.category_persons === "fixed" ? 
+        'EditListingPricingForm.pricePerExperience' : translationKey;
+
+      const translationKey2 = 
+        props.initialValues.publicData.category_duration === 'fixed' && 
+        props.initialValues.publicData.category_persons === "variable" ? 
+        'EditListingPricingForm.pricePerUnit' : translationKey1;
+
       const pricePerUnitMessage = intl.formatMessage({
-        id: translationKey,
+        id: translationKey2,
       });
 
       const pricePlaceholderMessage = intl.formatMessage({

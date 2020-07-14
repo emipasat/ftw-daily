@@ -50,6 +50,7 @@ const EditListingDescriptionPanel = props => {
 
   const categoryDurationOptions = findOptionsForSelectFilter('category_duration', config.custom.filters);
   const categoryPersonsOptions = findOptionsForSelectFilter('category_persons', config.custom.filters);
+
   return (
     <div className={classes}>
       <h1 className={css.title}>{panelTitle}</h1>
@@ -63,7 +64,7 @@ const EditListingDescriptionPanel = props => {
                           fixedNumberOfNights : publicData.fixedNumberOfNights,
                           fixedNumberOfPersons : publicData.fixedNumberOfPersons,
                           rooms : publicData.rooms,
-                          epicVisitsType: privateData.epicVisitsType || whatever
+                          epicVisitsType: privateData && privateData.epicVisitsType ? privateData.epicVisitsType : whatever
                          }}
         saveActionMsg={submitButtonText}
         onSubmit={values => {

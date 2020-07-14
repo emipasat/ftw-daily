@@ -75,6 +75,9 @@ const BookingPanel = props => {
   const { formattedPrice, priceTitle } = priceData(price, intl);
   const isBook = !!parse(location.search).book;
 
+
+  console.log(listing.attributes.publicData);
+
   const subTitleText = !!subTitle
     ? subTitle
     : showClosedListingHelpText
@@ -96,6 +99,7 @@ const BookingPanel = props => {
   const titleClasses = classNames(titleClassName || css.bookingTitle);
 
   return (
+
     <div className={classes}>
       <ModalInMobile
         containerClassName={css.modalContainer}
@@ -111,8 +115,6 @@ const BookingPanel = props => {
             <FormattedMessage id="BookingPanel.hostedBy" values={{ name: authorDisplayName }} />
           </div>
         </div>
-
-
         
 
         {listing.attributes.publicData.category_duration === "fixed" ? 

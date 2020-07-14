@@ -56,16 +56,25 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
   const isNightly = unitType === LINE_ITEM_NIGHT;
   const isDaily = unitType === LINE_ITEM_DAY;
 
-  
+  //const unitType1 = categoryDuration == "fixed" && categoryPersons == "variable" ? "line-item/units" : unitType;
+
   const unitCount = isNightly
     ? nightsBetween(bookingStart, bookingEnd)
     : isDaily
     ? daysBetween(bookingStart, bookingEnd)
     : quantity;
 
-  var unitCount1 = categoryDuration === "fixed" ? 1 : unitCount;
+    // de fapt, eu fac un unit reinventat. ar trebui investigat cu seats si units mai corect
 
-  const totalPrice = estimatedTotalPrice(unitPrice, unitCount1);
+  var unitCount1 = categoryDuration === "fixed" && categoryPersons === "fixed" ? 1 : unitCount;
+
+  
+  var unitCount2 = categoryPersons === "variable" && categoryDuration === "fixed" ? unitCount * quantity : unitCount1;
+  //console.log(unitCount2);
+
+  const totalPrice = estimatedTotalPrice(unitPrice, unitCount2);
+
+  console.log(quantity);//xxxx lipseste e undefined!!!!! de aici se strica tot
 
   // bookingStart: "Fri Mar 30 2018 12:00:00 GMT-1100 (SST)" aka "Fri Mar 30 2018 23:00:00 GMT+0000 (UTC)"
   // Server normalizes night/day bookings to start from 00:00 UTC aka "Thu Mar 29 2018 13:00:00 GMT-1100 (SST)"
@@ -96,7 +105,7 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
       payoutTotal: totalPrice,
       lineItems: [
         {
-          code: categoryDuration === "fixed" ? 'line-item/full-experience' : unitType, //'line-item/full-experience', //unitType,
+          code: unitType, //categoryDuration === "fixed" && categoryPersons === "fixed" ? 'line-item/experience-fee' : unitType, //'line-item/full-experience', //unitType,
           includeFor: ['customer', 'provider'],
           unitPrice: unitPrice,
           quantity: new Decimal(unitCount1), //new Decimal(unitCount),
@@ -132,7 +141,9 @@ const EstimatedBreakdownMaybe = props => {
     return null;
   }
 
-  var quantity1 = categoryDuration ==="fixed" ? quantity1 = 1 : quantity1 = quantity
+  console.log(quantity);
+
+  var quantity1 = categoryDuration ==="fixed" && categoryPersons == "fixed" ? quantity1 = 1 : quantity1 = quantity
   const tx = estimatedTransaction(unitType, startDate, endDate, unitPrice, quantity1, categoryDuration, categoryPersons);
 
   return (
