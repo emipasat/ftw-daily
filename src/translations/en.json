@@ -197,6 +197,8 @@
   "EditListingFeaturesForm.updateFailed": "Failed to update listing. Please try again.",
   "EditListingFeaturesPanel.createListingTitle": "What amenities does your experience have?",
   "EditListingFeaturesPanel.title": "Edit the amenities of {listingTitle}",
+  "EditListingParentPanel.title": "Parent property of {listingTitle}",
+  "EditListingParentPanel.createListingTitle": "What is your experience parent property?",
   "EditListingLocationForm.address": "Address",
   "EditListingLocationForm.addressNotRecognized": "We didn't recognize this location. Please try another location.",
   "EditListingLocationForm.addressPlaceholder": "123 Example Street",
@@ -269,6 +271,7 @@
   "EditListingWizard.tabLabelLocation": "Location",
   "EditListingWizard.tabLabelPhotos": "Photos",
   "EditListingWizard.tabLabelPolicy": "Experience rules",
+  "EditListingWizard.tabLabelParent": "Parent property",
   "EditListingWizard.tabLabelPricing": "Pricing",
   "EmailVerificationForm.finishAccountSetup": "We will need to send you email notifications. To allow this, please verify your email address {email}.",
   "EmailVerificationForm.successButtonText": "Continue exploring",
@@ -1013,8 +1016,8 @@
   "TopbarDesktop.profileSettingsLink": "Profile settings",
   "TopbarDesktop.signup": "Sign up",
 
-  "TopbarDesktop.yourListingsLink": "Your experiences1",
-  "TopbarDesktop.yourPropertiesLink": "Your properties1",
+  "TopbarDesktop.yourListingsLink": "Your experiences",
+  "TopbarDesktop.yourPropertiesLink": "Your properties",
 
   "TopbarMobileMenu.accountSettingsLink": "Account settings",
   "TopbarMobileMenu.greeting": "Hello {displayName}",

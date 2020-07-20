@@ -60,6 +60,7 @@ export const EditListingPageComponent = props => {
     fetchInProgress,
     fetchStripeAccountError,
     getOwnListing,
+    getOwnProperties,
     getAccountLinkError,
     getAccountLinkInProgress,
     history,
@@ -97,7 +98,9 @@ export const EditListingPageComponent = props => {
   const currentListing = ensureOwnListing(getOwnListing(listingId));
   const { state: currentListingState } = currentListing.attributes;
 
-  //console.log(currentListing.attributes);
+  const properties = getOwnProperties();
+  console.log('jjjjjjjjjjjjjjjjjj');
+  console.log(properties);
 
   const isPastDraft = currentListingState && currentListingState !== LISTING_STATE_DRAFT;
   const shouldRedirect = isNewListingFlow && listingId && isPastDraft;
@@ -264,6 +267,7 @@ EditListingPageComponent.propTypes = {
   currentUser: propTypes.currentUser,
   fetchInProgress: bool.isRequired,
   getOwnListing: func.isRequired,
+  getOwnProperties: func.isRequired,
   onFetchAvailabilityExceptions: func.isRequired,
   onCreateAvailabilityException: func.isRequired,
   onDeleteAvailabilityException: func.isRequired,
@@ -318,6 +322,14 @@ const mapStateToProps = state => {
 
   const fetchInProgress = createStripeAccountInProgress;
 
+  const getOwnProperties = () => {
+    const properties = getMarketplaceEntities(state, [{ type: 'ownListing' }]);
+
+    console.log('asdfsadfsdf');
+    console.log(properties);
+    return properties;
+  };
+
   const getOwnListing = id => {
     const listings = getMarketplaceEntities(state, [{ id, type: 'ownListing' }]);
 
@@ -334,6 +346,7 @@ const mapStateToProps = state => {
     currentUser,
     fetchInProgress,
     getOwnListing,
+    getOwnProperties,
     page,
     scrollingDisabled: isScrollingDisabled(state),
   };

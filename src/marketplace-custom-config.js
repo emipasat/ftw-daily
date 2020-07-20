@@ -74,6 +74,25 @@ export const filters = [
     config: {},
   },
   {
+    id: 'parents',
+    label: 'Parents',
+    type: 'SelectSingleFilter',
+    group: 'secondary',
+    queryParamNames: ['pub_parent'],
+    config: {
+      // "key" is the option you see in Flex Console.
+      // "label" is set here for the UI only.
+      // Note: label is not added through the translation files
+      // to make filter customizations a bit easier.
+      options: [
+        { key: 'tutu', label: 'Pensiunea Tutu' },
+        { key: 'other_prop', label: 'Pensiunea Test' },
+        //{ key: 'muaythai', label: 'Muay Thai' },
+        //{ key: 'other', label: 'Other' },
+      ],
+    },
+  },
+  {
     id: 'category_duration',
     label: 'Duration type',
     type: 'SelectSingleFilter',

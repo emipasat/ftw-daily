@@ -483,10 +483,38 @@ export function requestShowListing(actionPayload) {
     return sdk.ownListings
       .show(actionPayload)
       .then(response => {
+
+        console.log(response);
+
         // EditListingPage fetches new listing data, which also needs to be added to global data
         dispatch(addMarketplaceEntities(response));
         // In case of success, we'll clear state.EditListingPage (user will be redirected away)
         dispatch(showListingsSuccess(response));
+        return response;
+      })
+      .catch(e => dispatch(showListingsError(storableError(e))));
+  };
+}
+
+export function requestShowProperties(actionPayload) {
+  return (dispatch, getState, sdk) => {
+    //dispatch(showListings(actionPayload));
+    return sdk.ownListings
+      //.show(actionPayload)
+      .query()
+      .then(response => {
+
+        console.log('xxxxxxx');
+        console.log(response);
+
+        //plan.entries.map(entry => { entry.seats = data.publicData.rooms});
+
+        // filter only property types si get an array of ids, title
+
+        // EditListingPage fetches new listing data, which also needs to be added to global data
+        dispatch(addMarketplaceEntities(response));
+        // In case of success, we'll clear state.EditListingPage (user will be redirected away)
+        //dispatch(showListingsSuccess(response));
         return response;
       })
       .catch(e => dispatch(showListingsError(storableError(e))));
@@ -770,7 +798,9 @@ export const loadData = params => (dispatch, getState, sdk) => {
     'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
   };
 
-  return Promise.all([dispatch(requestShowListing(payload)), dispatch(fetchCurrentUser())])
+  const payloadProperties = {};
+
+  return Promise.all([dispatch(requestShowListing(payload)), dispatch(requestShowProperties(payloadProperties)), dispatch(fetchCurrentUser())])
     .then(response => {
       const currentUser = getState().user.currentUser;
       if (currentUser && currentUser.stripeAccount) {
