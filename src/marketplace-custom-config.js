@@ -87,8 +87,6 @@ export const filters = [
       options: [
         { key: 'tutu', label: 'Pensiunea Tutu' },
         { key: 'other_prop', label: 'Pensiunea Test' },
-        //{ key: 'muaythai', label: 'Muay Thai' },
-        //{ key: 'other', label: 'Other' },
       ],
     },
   },

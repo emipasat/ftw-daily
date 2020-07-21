@@ -4,7 +4,7 @@ import { denormalisedResponseEntities, ensureAvailabilityException } from '../..
 import { isSameDate, monthIdStringInUTC } from '../../util/dates';
 import { storableError } from '../../util/errors';
 import * as log from '../../util/log';
-import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
+import { addMarketplaceEntities, addPropertiesEntities } from '../../ducks/marketplaceData.duck';
 import {
   createStripeAccount,
   updateStripeAccount,
@@ -484,7 +484,7 @@ export function requestShowListing(actionPayload) {
       .show(actionPayload)
       .then(response => {
 
-        console.log(response);
+        console.log(actionPayload);
 
         // EditListingPage fetches new listing data, which also needs to be added to global data
         dispatch(addMarketplaceEntities(response));
@@ -512,7 +512,7 @@ export function requestShowProperties(actionPayload) {
         // filter only property types si get an array of ids, title
 
         // EditListingPage fetches new listing data, which also needs to be added to global data
-        dispatch(addMarketplaceEntities(response));
+        dispatch(addPropertiesEntities(response));
         // In case of success, we'll clear state.EditListingPage (user will be redirected away)
         //dispatch(showListingsSuccess(response));
         return response;
@@ -777,6 +777,30 @@ export const loadData = params => (dispatch, getState, sdk) => {
   dispatch(clearUpdatedTab());
   const { id, type } = params;
 
+  //console.log("in load data duck");
+  
+  const payloadProperties = {};
+  
+  var response = Promise.all([dispatch(requestShowProperties(payloadProperties))])
+    .then(response => {
+
+      const properties = getState();
+     
+      console.log('ccccccccccccccccccccccc');
+
+      console.log(properties.marketplaceData);
+      // const apiResponse = sdkResponse.data;
+      // return {
+      //   ...state,
+      //   entities: updatedEntities({ ...state.entities }, apiResponse),
+      // };
+
+      return response;
+    })
+    .catch(e => {
+      throw e;
+    });
+
   if (type === 'new') {
     // No need to listing data when creating a new listing
     return Promise.all([dispatch(fetchCurrentUser())])
@@ -798,9 +822,9 @@ export const loadData = params => (dispatch, getState, sdk) => {
     'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
   };
 
-  const payloadProperties = {};
+  
 
-  return Promise.all([dispatch(requestShowListing(payload)), dispatch(requestShowProperties(payloadProperties)), dispatch(fetchCurrentUser())])
+  return Promise.all([dispatch(requestShowListing(payload)), dispatch(fetchCurrentUser())])
     .then(response => {
       const currentUser = getState().user.currentUser;
       if (currentUser && currentUser.stripeAccount) {

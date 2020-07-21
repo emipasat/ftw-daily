@@ -1,6 +1,7 @@
 import React from 'react';
 import { bool, func, shape, string } from 'prop-types';
 import classNames from 'classnames';
+import { compose } from 'redux';
 import { Form as FinalForm } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 //import { FormattedMessage } from '../../util/reactIntl';
@@ -20,7 +21,6 @@ const EditListingParentFormComponent = props => (
     render={formRenderProps => {
       const {
         disabled,
-        properties,
         parents,
         intl,
         ready,
@@ -54,23 +54,22 @@ const EditListingParentFormComponent = props => (
         </p>
       ) : null;
 
-      const options = findOptionsForSelectFilter('parents', filterConfig);
-      console.log(options);
+
 
       return (
         <Form className={classes} onSubmit={handleSubmit}>
           {errorMessage}
           {errorMessageShowListing}
 
-          {/* <CustomCategorySelectFieldMaybe
-                id="properties"
-                name="properties"
-                categories={options}
+          <CustomCategorySelectFieldMaybe
+                id="parent"
+                name="parent"
+                categories={parents}
                 intl={intl}
-                index="1"
-              /> */}
+                index="2"
+              />
 
-          <FieldCheckboxGroup className={css.parent} id={name} name={name} options={options} />
+          {/* <FieldCheckboxGroup className={css.parent} id={name} name={name} options={options} /> */}
 
 
           <Button
@@ -112,6 +111,7 @@ EditListingParentFormComponent.propTypes = {
   filterConfig: propTypes.filterConfig,
 };
 
-const EditListingParentForm = EditListingParentFormComponent;
+//const EditListingParentForm = EditListingParentFormComponent;
 
-export default EditListingParentForm;
+//export default EditListingParentForm;
+export default compose(injectIntl)(EditListingParentFormComponent);

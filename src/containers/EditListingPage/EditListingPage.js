@@ -14,7 +14,7 @@ import {
 } from '../../util/urlHelpers';
 import { LISTING_STATE_DRAFT, LISTING_STATE_PENDING_APPROVAL, propTypes } from '../../util/types';
 import { ensureOwnListing } from '../../util/data';
-import { getMarketplaceEntities } from '../../ducks/marketplaceData.duck';
+import { getMarketplaceEntities, getPropertiesEntities } from '../../ducks/marketplaceData.duck';
 import { manageDisableScrolling, isScrollingDisabled } from '../../ducks/UI.duck';
 import {
   stripeAccountClearError,
@@ -98,9 +98,13 @@ export const EditListingPageComponent = props => {
   const currentListing = ensureOwnListing(getOwnListing(listingId));
   const { state: currentListingState } = currentListing.attributes;
 
-  const properties = getOwnProperties();
-  console.log('jjjjjjjjjjjjjjjjjj');
-  console.log(properties);
+  const currentProperties = getOwnProperties();
+  //console.log('jjjjjjjjjjjjjjjjjj');
+  //console.log(currentProperties);
+
+ 
+
+  
 
   const isPastDraft = currentListingState && currentListingState !== LISTING_STATE_DRAFT;
   const shouldRedirect = isNewListingFlow && listingId && isPastDraft;
@@ -197,6 +201,7 @@ export const EditListingPageComponent = props => {
           history={history}
           images={images}
           listing={currentListing}
+          properties={currentProperties}
           availability={{
             calendar: page.availabilityCalendar,
             onFetchAvailabilityExceptions,
@@ -325,13 +330,71 @@ const mapStateToProps = state => {
   const getOwnProperties = () => {
     const properties = getMarketplaceEntities(state, [{ type: 'ownListing' }]);
 
-    console.log('asdfsadfsdf');
-    console.log(properties);
-    return properties;
+    //console.log('propertiesbbbbbbbbbbbbbbbbbbbbbbb');
+
+    //const { entities } = state.marketplaceData;
+
+    //var data = Array.from(state.marketplaceData);
+    //console.log(data);
+
+    const parents = [];
+    const mad = Object.values(state.marketplaceData.entities);
+    mad.map(res=>{
+      var res1 = Object.values(res);
+      res1.map(res2=> {
+        if (res2.type === "ownListing")
+        {
+          //console.log(res2.attributes.privateData);
+          if (res2.attributes.privateData.epicVisitsType === 'property')
+          {
+            parents.push({key: res2.id.uuid, label: res2.attributes.title})
+          }
+        }
+        console.log(res2.type);
+      });
+      //console.log(res1);
+    });
+
+    console.log(parents);
+    //console.log(Object.keys(mad[0]));
+    //console.log(mad[0].ownListing);
+    //const mad1 = mad[0].ownListing;
+    //console.log(mad1);
+
+    //const mad2 = Object.values(mad1);
+    //console.log(mad2);
+
+    //const mad1 = Object.values(mad[0].ownListing);
+    //console.log(mad1);
+
+    // data.map(res => {
+    //   const { id, type } = res;
+    //   console.log(id);
+    // });
+
+    var newStuff = mad; ////state.marketplaceData.entities.ownListing;//.map(function(item) {
+    //  return item;
+    //});
+    console.log(newStuff);
+    return parents;
   };
 
   const getOwnListing = id => {
     const listings = getMarketplaceEntities(state, [{ id, type: 'ownListing' }]);
+
+    //console.log('in editlistingPage');
+
+    //console.log(state.marketplaceData);
+
+
+    // const listingImages = state.marketplaceData.entities.ownListing.map(image => {
+    //       const variants = image.attributes.privataData;
+
+    //       return variants.epicVisitsType;
+    //     })
+    //     .filter(variants => variants === 'property');
+    
+    // console.log(listingImages);
 
     return listings.length === 1 ? listings[0] : null;
   };

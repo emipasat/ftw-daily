@@ -156,6 +156,10 @@
   "EditListingDescriptionForm.category1Placeholder": "Choose the persons type of your experience…",
   "EditListingDescriptionForm.category1Required": "You need to select a category persons for your experience.",
 
+  "EditListingDescriptionForm.category2Label": "Experience parent",
+  "EditListingDescriptionForm.category2Placeholder": "Choose the parent of your experience…",
+  "EditListingDescriptionForm.category2Required": "You need to select a parent for your experience.",
+
 
   "EditListingDescriptionForm.createListingDraftError": "Failed to create a draft listing. Please try again.",
   "EditListingDescriptionForm.description": "Describe your experience",
@@ -254,6 +258,10 @@
   "EditListingWizard.saveEditDescription": "Save description",
   "EditListingWizard.saveEditFeatures": "Save amenities",
   "EditListingWizard.saveEditLocation": "Save location",
+
+  "EditListingWizard.saveEditParent": "Save parent",
+
+
   "EditListingWizard.saveEditAvailability": "Save availability",
   "EditListingWizard.saveEditPhotos": "Save photos",
   "EditListingWizard.saveEditPolicies": "Save rules",

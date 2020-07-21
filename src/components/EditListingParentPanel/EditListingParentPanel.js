@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { FormattedMessage } from '../../util/reactIntl';
+import { findOptionsForSelectFilter } from '../../util/search';
+import config from '../../config';
 
 import { LISTING_STATE_DRAFT } from '../../util/types';
 import { ensureListing } from '../../util/data';
@@ -16,7 +18,7 @@ const EditListingParentPanel = props => {
   const {
     rootClassName,
     className,
-    listing,
+    listing,    
     properties,
     disabled,
     ready,
@@ -42,6 +44,12 @@ const EditListingParentPanel = props => {
     <FormattedMessage id="EditListingParentPanel.createListingTitle" />
   );
 
+
+
+  const parentOptions = properties;//findOptionsForSelectFilter('parents', config.custom.filters);
+
+  //console.log(parentOptions);
+
   const parent = publicData && publicData.parent;
   const initialValues = { parent };
 
@@ -53,7 +61,7 @@ const EditListingParentPanel = props => {
         name={PARENT_NAME}
         initialValues={initialValues}
         onSubmit={values => {
-          const { parent = [] } = values;
+          const { parent } = values;
 
           const updatedValues = {
             publicData: { parent },
@@ -67,6 +75,7 @@ const EditListingParentPanel = props => {
         updated={panelUpdated}
         updateInProgress={updateInProgress}
         fetchErrors={errors}
+        parents={parentOptions}
       />
     </div>
   );
@@ -98,3 +107,4 @@ EditListingParentPanel.propTypes = {
 };
 
 export default EditListingParentPanel;
+//export default compose(injectIntl)(EditListingParentPanel);
