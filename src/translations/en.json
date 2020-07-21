@@ -201,6 +201,9 @@
   "EditListingFeaturesForm.updateFailed": "Failed to update listing. Please try again.",
   "EditListingFeaturesPanel.createListingTitle": "What amenities does your experience have?",
   "EditListingFeaturesPanel.title": "Edit the amenities of {listingTitle}",
+
+  "EditListingThemesPanel.title": "Edit the themes of {listingTitle}",
+
   "EditListingParentPanel.title": "Parent property of {listingTitle}",
   "EditListingParentPanel.createListingTitle": "What is your experience parent property?",
   "EditListingLocationForm.address": "Address",
@@ -260,6 +263,7 @@
   "EditListingWizard.saveEditLocation": "Save location",
 
   "EditListingWizard.saveEditParent": "Save parent",
+  "EditListingWizard.saveEditThemes": "Save themes",
 
 
   "EditListingWizard.saveEditAvailability": "Save availability",
@@ -275,6 +279,7 @@
   "EditListingWizard.saveNewPricing": "Next: Availability",
   "EditListingWizard.tabLabelDescription": "Description",
   "EditListingWizard.tabLabelFeatures": "Amenities",
+  "EditListingWizard.tabLabelThemes": "Themes",
   "EditListingWizard.tabLabelAvailability": "Availability",
   "EditListingWizard.tabLabelLocation": "Location",
   "EditListingWizard.tabLabelPhotos": "Photos",

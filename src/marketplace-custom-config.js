@@ -187,6 +187,65 @@ export const filters = [
       ],
     },
   },
+  {
+    id: 'themes',
+    label: 'Themes',
+    type: 'SelectMultipleFilter',
+    group: 'secondary',
+    queryParamNames: ['pub_themes'],
+    config: {
+      // Optional modes: 'has_all', 'has_any'
+      // https://www.sharetribe.com/api-reference/marketplace.html#extended-data-filtering
+      searchMode: 'has_all',
+
+      // "key" is the option you see in Flex Console.
+      // "label" is set here for this web app's UI only.
+      // Note: label is not added through the translation files
+      // to make filter customizations a bit easier.
+      options: [
+        {
+          key: 'nature_wonders',
+          label: 'Nature Wonders',
+        },
+        {
+          key: 'living_traditions',
+          label: 'Living Traditions',
+        },
+        {
+          key: 'fun_with_the_kids',
+          label: 'Fun with the Kids',
+        },
+        {
+          key: 'tasty_treasures',
+          label: 'Tasty Treasures',
+        },
+        {
+          key: 'urban_discoveries',
+          label: 'Urban Discoveries',
+        },
+        {
+          key: 'romantic_escapes',
+          label: 'Romantic Escapes',
+        },
+        {
+          key: 'energy_and_adrenaline',
+          label: 'Energy and Adrenaline',
+        },
+        {
+          key: 'spiritual_journey',
+          label: 'Spiritual Journey',
+        },
+        {
+          key: 'health_and_wellness',
+          label: 'Health and Wellness',
+        },
+        {
+          key: 'simply_chill',
+          label: 'Simply Chill',
+        },
+      ],
+    },
+  },
 ];
 
 export const sortConfig = {

@@ -22,6 +22,7 @@ import EditListingWizardTab, {
   AVAILABILITY,
   PARENT,
   DESCRIPTION,
+  THEMES,
   FEATURES,
   POLICY,
   LOCATION,
@@ -39,6 +40,7 @@ const availabilityMaybe = config.enableAvailability ? [AVAILABILITY] : [];
 // and listing publishing happens after last panel.
 export const TABS = [
   DESCRIPTION,
+  THEMES,
   PARENT,
   FEATURES,
   POLICY,
@@ -58,6 +60,8 @@ const tabLabel = (intl, tab) => {
   let key = null;
   if (tab === DESCRIPTION) {
     key = 'EditListingWizard.tabLabelDescription';
+  } else if (tab === THEMES) {
+    key = 'EditListingWizard.tabLabelThemes';
   } else if (tab === PARENT) {
     key = 'EditListingWizard.tabLabelParent';
   } else if (tab === FEATURES) {
@@ -102,6 +106,8 @@ const tabCompleted = (tab, listing) => {
       return !!(description && title);
     case FEATURES:
       return !!(publicData && publicData.amenities);
+    case THEMES:
+        return !!(publicData && publicData.themes);
     case PARENT:
         return !!(publicData && publicData.parent);
     case POLICY:
