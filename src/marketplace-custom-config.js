@@ -188,7 +188,7 @@ export const filters = [
     },
   },
   {
-    id: 'themes',
+    id: 'themes', //fasdfsadf
     label: 'Themes',
     type: 'SelectMultipleFilter',
     group: 'secondary',

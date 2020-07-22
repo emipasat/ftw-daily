@@ -12,7 +12,7 @@ const SectionHowItWorks = props => {
 
   const classes = classNames(rootClassName || css.root, className);
   return (
-    <div className={classes}>
+    <div className={classes} style={{backgroundColor: '#DE1FA1', color: '#FFFFFF', padding: '20px'}}>
       <div className={css.title}>
         <FormattedMessage id="SectionHowItWorks.titleLineOne" />
         <br />
@@ -49,16 +49,16 @@ const SectionHowItWorks = props => {
       </div>
 
       <div className={css.createListingLink}>
-        <NamedLink name="NewListingPage">
+        <NamedLink name="NewListingPage" style={{color: '#FFFFFF'}}>
           <FormattedMessage id="SectionHowItWorks.createListingLink" />
         </NamedLink>
       </div>
 
-      <div className={css.createPropertyLink}>
+      {/* <div className={css.createPropertyLink}>
         <NamedLink name="NewPropertyPage">
           <FormattedMessage id="SectionHowItWorks.createPropertyLink" />
         </NamedLink>
-      </div>
+      </div> */}
     </div>
   );
 };
