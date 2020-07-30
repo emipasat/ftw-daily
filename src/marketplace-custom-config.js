@@ -144,14 +144,14 @@ export const filters = [
       // Note: label is not added through the translation files
       // to make filter customizations a bit easier.
       options: [
-        {
-          key: 'gloves',
-          label: 'Gloves',
-        },
-        {
-          key: 'shinguards',
-          label: 'Shinguards',
-        },
+        // {
+        //   key: 'gloves',
+        //   label: 'Gloves',
+        // },
+        // {
+        //   key: 'shinguards',
+        //   label: 'Shinguards',
+        // },
         {
           key: 'towels',
           label: 'Towels',
@@ -188,7 +188,7 @@ export const filters = [
     },
   },
   {
-    id: 'themes', //fasdfsadf
+    id: 'themes', 
     label: 'Themes',
     type: 'SelectMultipleFilter',
     group: 'secondary',

@@ -460,8 +460,8 @@ export class ListingPageComponent extends Component {
                   />
                 </div>
 
-                {/* <pre>{JSON.stringify(currentListing.attributes.publicData.category_duration, 0, 2)}</pre> */}
-
+                {/* { <pre>{JSON.stringify(currentListing)}</pre> } */}
+                
                 <BookingPanel
                   className={css.bookingPanel}
                   listing={currentListing}
@@ -474,6 +474,7 @@ export class ListingPageComponent extends Component {
                   onManageDisableScrolling={onManageDisableScrolling}
                   timeSlots={timeSlots}
                   fetchTimeSlotsError={fetchTimeSlotsError}
+                  attributesInCaseNotLoadedYet={currentListing.attributes}
                 />
               </div>
             </div>

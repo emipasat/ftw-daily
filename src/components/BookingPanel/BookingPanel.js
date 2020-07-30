@@ -64,8 +64,11 @@ const BookingPanel = props => {
     fetchTimeSlotsError,
     history,
     location,
+    attributesInCaseNotLoadedYet,
     intl,
   } = props;
+
+  console.log(attributesInCaseNotLoadedYet);
 
   const price = listing.attributes.price;
   const hasListingState = !!listing.attributes.state;
@@ -76,7 +79,7 @@ const BookingPanel = props => {
   const isBook = !!parse(location.search).book;
 
 
-  //console.log(listing.attributes.publicData);
+  console.log(listing);//.attributes.publicData);
 
   const subTitleText = !!subTitle
     ? subTitle
@@ -84,7 +87,7 @@ const BookingPanel = props => {
     ? intl.formatMessage({ id: 'BookingPanel.subTitleClosedListing' })
     : null;
 
-  const subTitleFixedDurationText = intl.formatMessage({ id: 'BookingPanel.subTitleClosedListing' });
+  //const subTitleFixedDurationText = intl.formatMessage({ id: 'BookingPanel.subTitleClosedListing' });
 
   const isNightly = unitType === LINE_ITEM_NIGHT;
   const isDaily = unitType === LINE_ITEM_DAY;

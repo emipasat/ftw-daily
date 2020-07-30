@@ -164,9 +164,19 @@ export const searchListings = searchParams => (dispatch, getState, sdk) => {
   return sdk.listings
     .query(params)
     .then(response => {
-      dispatch(addMarketplaceEntities(response));
-      dispatch(searchListingsSuccess(response));
-      return response;
+
+      
+
+      var response1 = response;//.data.data.filter(x=>x.attributes.price.amount > 0);
+
+      response1.data.data = response.data.data.filter(x=>x.attributes.price.amount > 0);
+      response1.data.meta.totalItems = response.data.data.length;
+
+      console.log(response1);
+
+      dispatch(addMarketplaceEntities(response1));
+      dispatch(searchListingsSuccess(response1));
+      return response1;
     })
     .catch(e => {
       dispatch(searchListingsError(storableError(e)));

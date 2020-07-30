@@ -177,9 +177,9 @@
   "EditListingDescriptionForm.maxNumberOfPersonsPlaceholder": "Maximum number of persons?",
   "EditListingDescriptionForm.maxNumberOfPersonsRequired": "You need to add max number of persons if persons flexible.",
 
-  "EditListingDescriptionForm.rooms": "Number of rooms",
-  "EditListingDescriptionForm.roomsPlaceholder": "Number of rooms?",
-  "EditListingDescriptionForm.roomsRequired": "You need to add number of rooms as a number.",
+  "EditListingDescriptionForm.rooms": "Max number of persons available",
+  "EditListingDescriptionForm.roomsPlaceholder": "Max number of persons available?",
+  "EditListingDescriptionForm.roomsRequired": "You need to add max number of persons as a number.",
 
   "EditListingDescriptionForm.fixedNumberOfPersons": "Fixed number of persons",
   "EditListingDescriptionForm.fixedNumberOfPersonsPlaceholder": "Fixed number of persons?",
