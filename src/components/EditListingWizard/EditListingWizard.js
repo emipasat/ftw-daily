@@ -50,6 +50,16 @@ export const TABS = [
   PHOTOS,
 ];
 
+export const TABS1 = [
+  DESCRIPTION,
+  FEATURES,
+  POLICY,
+  LOCATION,
+  PRICING,
+  ...availabilityMaybe,
+  PHOTOS,
+];
+
 // Tabs are horizontal in small screens
 const MAX_HORIZONTAL_NAV_SCREEN_WIDTH = 1023;
 
@@ -291,6 +301,8 @@ class EditListingWizard extends Component {
       ...rest
     } = this.props;
 
+    //console.log(params.whatever); // listing si property
+
     const selectedTab = params.tab;
     const isNewListingFlow = [LISTING_PAGE_PARAM_TYPE_NEW, LISTING_PAGE_PARAM_TYPE_DRAFT].includes(
       params.type
@@ -379,14 +391,20 @@ class EditListingWizard extends Component {
       return <NamedRedirect name="EditListingPage" params={pathParams} />;
     }
 
+    var TABS_FINAL = TABS;
+    params.whatever === 'property' ? TABS_FINAL = TABS1 : TABS_FINAL = TABS
+
     return (
       <div className={classes}>
+        {/* <pre>{JSON.stringify(params, 0, 2)}</pre> */}
         <Tabs
           rootClassName={css.tabsContainer}
           navRootClassName={css.nav}
           tabRootClassName={css.tab}
         >
-          {TABS.map(tab => {
+          
+          
+          {TABS_FINAL.map(tab => {
             return (
               <EditListingWizardTab
                 {...rest}

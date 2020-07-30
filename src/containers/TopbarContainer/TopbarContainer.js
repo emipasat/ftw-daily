@@ -23,6 +23,7 @@ export const TopbarContainerComponent = props => {
     hasGenericError,
     location,
     notificationCount,
+    epicVisitsType,
     onLogout,
     onManageDisableScrolling,
     sendVerificationEmailInProgress,
@@ -44,6 +45,7 @@ export const TopbarContainerComponent = props => {
       authScopes={authScopes}
       location={location}
       notificationCount={notificationCount}
+      epicVisitsType={epicVisitsType}
       onLogout={onLogout}
       onManageDisableScrolling={onManageDisableScrolling}
       onResendVerificationEmail={onResendVerificationEmail}
@@ -75,6 +77,7 @@ TopbarContainerComponent.propTypes = {
   isAuthenticated: bool.isRequired,
   authScopes: array,
   notificationCount: number,
+  epicVisitsType: string,
   onLogout: func.isRequired,
   onManageDisableScrolling: func.isRequired,
   sendVerificationEmailInProgress: bool.isRequired,

@@ -189,6 +189,7 @@ export const EditListingPageComponent = props => {
           mobileRootClassName={css.mobileTopbar}
           desktopClassName={css.desktopTopbar}
           mobileClassName={css.mobileTopbar}
+          epicVisitsType={params.whatever}
         />
         <EditListingWizard
           id="EditListingWizard"
@@ -233,6 +234,7 @@ export const EditListingPageComponent = props => {
             createStripeAccountError || updateStripeAccountError || fetchStripeAccountError
           }
           stripeAccountLinkError={getAccountLinkError}
+          epicVisitsType={params.whatever}
         />
       </Page>
     );
