@@ -484,7 +484,7 @@ export function requestShowListing(actionPayload) {
       .show(actionPayload)
       .then(response => {
 
-        console.log(actionPayload);
+        //console.log(actionPayload);
 
         // EditListingPage fetches new listing data, which also needs to be added to global data
         dispatch(addMarketplaceEntities(response));
@@ -609,6 +609,9 @@ export const requestFetchAvailabilityExceptions = fetchParams => (dispatch, getS
       const exceptions = denormalisedResponseEntities(response).map(availabilityException => ({
         availabilityException,
       }));
+
+      console.log(exceptions);
+
       return dispatch(fetchAvailabilityExceptionsSuccess({ data: { monthId, exceptions } }));
     })
     .catch(e => {

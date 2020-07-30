@@ -268,9 +268,16 @@ class ManageAvailabilityCalendar extends Component {
     const { start, end } = dateStartAndEndInUTC(date);
 
     const planEntries = ensureDayAvailabilityPlan(availabilityPlan).entries;
+
     const seatsFromPlan = planEntries.find(
       weekDayEntry => weekDayEntry.dayOfWeek === DAYS_OF_WEEK[date.isoWeekday() - 1]
     ).seats;
+
+    console.log(this.state);
+    console.log("--------------");
+    console.log(seatsFromPlan); // asta e 1, nu e corect
+    console.log(seats); // se face zero la remove, sigur vine de sus
+    console.log("--------------");
 
     const currentException = findException(exceptions, date);
     const draftException = makeDraftException(exceptions, start, end, seatsFromPlan);
@@ -326,7 +333,7 @@ class ManageAvailabilityCalendar extends Component {
       return;
     } else if (isBlocked) {
       // Unblock the date (seats = 1)
-      this.onDayAvailabilityChange(date, 1, exceptions);
+      this.onDayAvailabilityChange(date, 4, exceptions);
     } else {
       // Block the date (seats = 0)
       this.onDayAvailabilityChange(date, 0, exceptions);

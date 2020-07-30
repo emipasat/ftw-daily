@@ -19,10 +19,12 @@ const identity = v => v;
 export class BookingDatesFormComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { focusedInput: null };
+    this.state = { focusedInput: null, persons: null };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onFocusedInputChange = this.onFocusedInputChange.bind(this);
   }
+
+
 
   // Function that can be passed to nested components
   // so that they can notify this component when the
@@ -47,8 +49,26 @@ export class BookingDatesFormComponent extends Component {
     }
   }
 
+  
+
+  // handleInput1Change(e) { 
+  //   // this.setState({
+  //   //   inputVal_1: "",
+  //   //   inputVal_2: "",
+  //   //   ...
+  //   //   inputVal_n: "",
+  //   // });
+
+  //   console.log("sdfdf");
+
+  //   //this.props.onChange(e);
+
+  //   this.setState({ });
+  // }
+
+
   render() {
-    const { rootClassName, className, price: unitPrice, categoryDuration, categoryPersons, fixedNumberOfNights, ...rest } = this.props;
+    const { rootClassName, className, price: unitPrice, categoryDuration, categoryPersons, fixedNumberOfNights, parentId, ...rest } = this.props;
     const classes = classNames(rootClassName || css.root, className);
 
     if (!unitPrice) {
@@ -115,7 +135,11 @@ export class BookingDatesFormComponent extends Component {
             </p>
           ) : null;
 
-          console.log(unitType);
+          //console.log(unitType);
+
+          values.parentId = parentId;
+
+          //console.log(values);
 
           // This is the place to collect breakdown estimation data. See the
           // EstimatedBreakdownMaybe component to change the calculations
@@ -135,10 +159,11 @@ export class BookingDatesFormComponent extends Component {
                   persons,
                   categoryDuration,
                   fixedNumberOfNights,
-                  categoryPersons
+                  categoryPersons,
+                  parentId
                 }
               : null;
-          const bookingInfo = bookingData ? (
+          var bookingInfo = bookingData ? (
             <div className={css.priceBreakdownContainer}>
               <h3 className={css.priceBreakdownTitle}>
                 <FormattedMessage id="BookingDatesForm.priceBreakdownTitle" />
@@ -147,7 +172,8 @@ export class BookingDatesFormComponent extends Component {
             </div>
           ) : null;
 
-          const numberOfPersons = categoryPersons == "variable" ? (
+          
+          const numberOfPersons = categoryPersons === "variable" ? (
             <FieldTextInput
               id="persons"
               name="persons"
@@ -156,6 +182,13 @@ export class BookingDatesFormComponent extends Component {
               label="Number of persons"
               placeholder="1"
               autoFocus
+              //onChange={() => { 
+                //this.myFormRef.reset();
+               
+                //document.getElementById("myDatesForm").reset();
+                //document.getElementById("BookingPanel.bookingStartDate").value = null;
+                //console.log('asdfsadf');
+              //}}
             />) : null;
 
           const dateFormatOptions = {
@@ -182,9 +215,55 @@ export class BookingDatesFormComponent extends Component {
             submitButtonWrapperClassName || css.submitButtonWrapper
           );
 
+          var timeSlots1 = timeSlots;
+
+          (categoryPersons === "variable" && values.persons > 0) ? 
+                  timeSlots1 = timeSlots.filter(t=> t.attributes.seats >= values.persons)
+                  :
+                  timeSlots1 = timeSlots
+
+          
+          // si uite asa resetez! e cam aiurea, fara onchange si cu var pe bookingInfo sa'l pot face null dar works
+          //console.log(this.state);
+
+          if (values.persons != this.state.persons)
+          {
+            
+            //console.log(values);
+            if (values.bookingDates)
+            {
+              values.bookingDates.startDate = null ;
+              values.bookingDates.endDate = null;
+              bookingInfo = null; //TODO any drawback to make it a constant?
+            }
+            
+            this.state.persons = values.persons;
+          }
+          /*
+          if (values.bookingDates && values.bookingDates.startDate != null && values.persons > 0)
+          {
+            //values.persons > 0 ? values.bookingDates.startDate = null 
+            //  : (values.bookingDates ? values.bookingDates.endDate = null : console.log('x'));   
+            values.bookingDates.startDate = null ;
+            values.bookingDates.endDate = null;
+            values.persons = null;
+          }
+           */  
+          
+
+
+
           return (
-            <Form onSubmit={handleSubmit} className={classes}>
+            <Form onSubmit={handleSubmit} className={classes} id="myDatesForm">
               {timeSlotsError}
+
+              {/* {
+                (categoryPersons === "variable" && values.persons > 0) ? 
+                  timeSlots1 = timeSlots.filter(t=> t.attributes.seats >= values.persons) 
+                  :
+                  timeSlots1 = timeSlots
+              } */}
+
               <FieldDateRangeInput
                 className={css.bookingDates}
                 name="bookingDates"
@@ -198,7 +277,7 @@ export class BookingDatesFormComponent extends Component {
                 focusedInput={this.state.focusedInput}
                 onFocusedInputChange={this.onFocusedInputChange}
                 format={identity}
-                timeSlots={timeSlots}
+                timeSlots={timeSlots1}
                 useMobileMargins
                 validate={composeValidators(
                   required(requiredMessage),
@@ -223,6 +302,8 @@ export class BookingDatesFormComponent extends Component {
                   <FormattedMessage id="BookingDatesForm.requestToBook" />
                 </PrimaryButton>
               </div>
+
+              {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
             </Form>
           );
         }}

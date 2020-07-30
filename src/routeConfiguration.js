@@ -22,10 +22,12 @@ import {
   ProfileSettingsPage,
   MyPropertiesPage,
   SearchPage,
-  ThemePage,
   StyleguidePage,
   TermsOfServicePage,
   TransactionPage,
+  ThemeArtsAndCraftsPage,
+  ThemeEnergyAndAdrenalinePage,
+  ThemeNatureWondersPage
 } from './containers';
 
 // routeConfiguration needs to initialize containers first
@@ -73,17 +75,21 @@ const routeConfiguration = () => {
       component: props => <SearchPage {...props} />,
       loadData: SearchPage.loadData,
     },
-    // {
-    //   path: '/natureWonders',
-    //   name: 'NatureWondersPage',
-    //   component: NatureWondersPage,
-    // },
-    // {
-    //   path: '/th',
-    //   name: 'ThemePage',
-    //   component: props => <ThemePage {...props} />,
-    //   loadData: ThemePage.loadData,
-    // },
+    {
+      path: '/natureWonders',
+      name: 'ThemeNatureWondersPage',
+      component: ThemeNatureWondersPage,
+    },
+    {
+      path: '/energyAndAdrenaline',
+      name: 'ThemeEnergyAndAdrenalinePage',
+      component: ThemeEnergyAndAdrenalinePage,
+    },
+    {
+      path: '/artsAndCrafts',
+      name: 'ThemeArtsAndCraftsPage',
+      component: ThemeArtsAndCraftsPage,
+    },
     {
       path: '/s/filters',
       name: 'SearchFiltersPage',

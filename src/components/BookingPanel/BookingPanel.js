@@ -76,7 +76,7 @@ const BookingPanel = props => {
   const isBook = !!parse(location.search).book;
 
 
-  console.log(listing.attributes.publicData);
+  //console.log(listing.attributes.publicData);
 
   const subTitleText = !!subTitle
     ? subTitle
@@ -133,6 +133,7 @@ const BookingPanel = props => {
             </div>)
         }
 
+{/* <pre>{JSON.stringify(listing.attributes.publicData)}</pre> */}
         {/* <pre>{JSON.stringify(listing.attributes.publicData.category_duration, 0, 2)}</pre> */}
         {showBookingDatesForm ? (
           <BookingDatesForm
@@ -148,6 +149,7 @@ const BookingPanel = props => {
             categoryDuration={listing.attributes.publicData.category_duration}
             fixedNumberOfNights={listing.attributes.publicData.fixedNumberOfNights}
             categoryPersons={listing.attributes.publicData.category_persons}
+            parentId={listing.attributes.publicData.parent}
           />
         ) : null}
       </ModalInMobile>

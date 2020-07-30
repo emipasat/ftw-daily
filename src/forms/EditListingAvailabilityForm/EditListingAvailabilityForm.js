@@ -45,6 +45,7 @@ export class EditListingAvailabilityFormComponent extends Component {
           const submitInProgress = updateInProgress;
           const submitDisabled = invalid || disabled || submitInProgress;
 
+          
           return (
             <Form className={classes} onSubmit={handleSubmit}>
               {errorMessage}

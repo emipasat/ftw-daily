@@ -143,6 +143,8 @@ export class CheckoutPageComponent extends Component {
       history,
     } = this.props;
 
+    console.log(bookingData);
+
     // Fetch currentUser with stripeCustomer entity
     // Note: since there's need for data loading in "componentWillMount" function,
     //       this is added here instead of loadData static function.
@@ -311,6 +313,16 @@ export class CheckoutPageComponent extends Component {
     // Parameter should contain { paymentIntent, transactionId } returned in step 2
     const fnConfirmPayment = fnParams => {
       createdPaymentIntent = fnParams.paymentIntent;
+
+      const { bookingData, bookingDates, listing } = pageData;
+
+      fnParams.parentId = bookingData.parentId;
+      fnParams.bookingDates = pageData.bookingDates; // bookingStart, bookingEnd
+      fnParams.persons = bookingData.persons;
+
+      //console.log(pageData);
+      //console.log(fnParams); // avem se poate sterge
+      
       return onConfirmPayment(fnParams);
     };
 

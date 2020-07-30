@@ -190,12 +190,15 @@ export const fetchReviews = listingId => (dispatch, getState, sdk) => {
 
 const timeSlotsRequest = params => (dispatch, getState, sdk) => {
   return sdk.timeslots.query(params).then(response => {
+    console.log(response);
     return denormalisedResponseEntities(response);
   });
 };
 
 export const fetchTimeSlots = listingId => (dispatch, getState, sdk) => {
   dispatch(fetchTimeSlotsRequest);
+
+  console.log(listingId);
 
   // Time slots can be fetched for 90 days at a time,
   // for at most 180 days from now. If max number of bookable
@@ -221,6 +224,8 @@ export const fetchTimeSlots = listingId => (dispatch, getState, sdk) => {
     .then(timeSlots => {
       const secondRequest = bookingRange > maxTimeSlots;
 
+      console.log(timeSlots);
+
       if (secondRequest) {
         const secondRange = Math.min(maxTimeSlots, bookingRange - maxTimeSlots);
         const secondParams = {
@@ -240,6 +245,7 @@ export const fetchTimeSlots = listingId => (dispatch, getState, sdk) => {
       }
     })
     .catch(e => {
+      console.log(e);
       dispatch(fetchTimeSlotsError(storableError(e)));
     });
 };
@@ -279,8 +285,17 @@ export const loadData = (params, search) => dispatch => {
 
   if (config.enableAvailability) {
     return Promise.all([
-      dispatch(showListing(listingId)),
-      dispatch(fetchTimeSlots(listingId)),
+      dispatch(showListing(listingId))
+        .then(data=> {
+
+          var mad = Object.values(data.data);
+          var parentId = mad[0].attributes.publicData.parent;
+
+          var parentSlots = dispatch(fetchTimeSlots(parentId));
+          return parentSlots; 
+        })
+        ,
+      //dispatch(fetchTimeSlots(listingId)), // nu imi trebuie
       dispatch(fetchReviews(listingId)),
     ]);
   } else {

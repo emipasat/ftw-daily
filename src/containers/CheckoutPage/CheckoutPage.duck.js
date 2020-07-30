@@ -1,7 +1,9 @@
 import pick from 'lodash/pick';
 import config from '../../config';
-import { denormalisedResponseEntities } from '../../util/data';
+import { types as sdkTypes } from '../../util/sdkLoader';
+import { denormalisedResponseEntities, ensureAvailabilityException } from '../../util/data';
 import { storableError } from '../../util/errors';
+import { isSameDate, monthIdStringInUTC } from '../../util/dates';
 import {
   TRANSITION_REQUEST_PAYMENT,
   TRANSITION_REQUEST_PAYMENT_AFTER_ENQUIRY,
@@ -44,6 +46,8 @@ const initialState = {
   confirmPaymentError: null,
   stripeCustomerFetched: false,
 };
+
+const { UUID } = sdkTypes;
 
 export default function checkoutPageReducer(state = initialState, action = {}) {
   const { type, payload } = action;
@@ -203,16 +207,100 @@ export const initiateOrder = (orderParams, transactionId) => (dispatch, getState
 export const confirmPayment = orderParams => (dispatch, getState, sdk) => {
   dispatch(confirmPaymentRequest());
 
+  console.log(orderParams.bookingDates); // avem si aici ce trebuie
+
+  console.log(new Intl.DateTimeFormat('en-UK').format(orderParams.bookingDates.bookingStart));
+
+  //fnParams.parentId = bookingData.parentId;
+  //fnParams.bookingDates = pageData.bookingDates; // bookingStart, bookingEnd
+  // avem si persons
+
+
+  // save exceptions
+  // nu avem permisii aici ca nu e propreitatea mea. 
+  // doar la accept/reject la proprietar
+
+  // dar pot pune info in transaction protectedData (persons, parentId, )
+
+  // // When using time-based process, you might want to deal with local dates using monthIdString
+  // const monthId = monthIdStringInUTC(orderParams.bookingDates.bookingStart);
+
+  // const queryExceptions = {
+  //   listingId : orderParams.parentId, 
+  //   start : orderParams.bookingDates.bookingStart,
+  //   end : orderParams.bookingDates.bookingStart
+  // };
+
+
+  // const createParams = {
+  //   listingId : new UUID(orderParams.parentId), 
+  //   start : new Date(orderParams.bookingDates.bookingStart),
+  //   end : new Date(orderParams.bookingDates.bookingStart),
+  //   seats : orderParams.persons
+  // };
+
+  // console.log(createParams);
+
+  // sdk.availabilityExceptions
+  //   .create(createParams, {
+  //     expand: true
+  //   })
+  //   .then(response => {
+  //     console.log(response);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+
+
+  // console.log(queryExceptions);
+
+  // sdk.availabilityExceptions
+  //   .query({ queryExceptions })//, { expand: true })
+  //   .then(response => {
+  //     const exceptions = denormalisedResponseEntities(response).map(availabilityException => ({
+  //       availabilityException,
+  //     }));
+  //     var info = { data: { monthId, exceptions } };
+  //     console.log(info);
+  //   })
+  //   .catch(e => {
+  //     var info1 = { monthId, error: storableError(e) };
+  //     console.log(info1);
+  //   });
+
+  //2018-04-20T00:00:00.000Z
+
+  var xxx1 = new Intl.DateTimeFormat('en-UK').format(new Date(orderParams.bookingDates.bookingStart));
+  var array1 = xxx1.split('/');
+  var startAsString = array1[2] + "-" + array1[1] + "-" + array1[0] + "T00:00:00.000Z";
+
+
+  var xxx2 = new Intl.DateTimeFormat('en-UK').format(new Date(orderParams.bookingDates.bookingEnd));
+  var array2 = xxx2.split('/');
+  var endAsString = array2[2] + "-" + array2[1] + "-" + array2[0] + "T00:00:00.000Z";
+
+  
   const bodyParams = {
     id: orderParams.transactionId,
     transition: TRANSITION_CONFIRM_PAYMENT,
-    params: {},
+    params: {
+      protectedData : {
+        parentId : orderParams.parentId,
+        persons: orderParams.persons,
+        startDate: startAsString,
+        endDate: endAsString
+      },
+    },
   };
 
   return sdk.transactions
     .transition(bodyParams)
     .then(response => {
       const order = response.data.data;
+
+      console.log(order);
+
       dispatch(confirmPaymentSuccess(order.id));
       return order;
     })

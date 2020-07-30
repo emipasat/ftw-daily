@@ -25,3 +25,6 @@ export { default as StyleguidePage } from './StyleguidePage/StyleguidePage';
 export { default as TermsOfServicePage } from './TermsOfServicePage/TermsOfServicePage';
 export { default as TopbarContainer } from './TopbarContainer/TopbarContainer';
 export { default as TransactionPage } from './TransactionPage/TransactionPage';
+export { default as ThemeArtsAndCraftsPage } from './ThemeArtsAndCraftsPage/ThemeArtsAndCraftsPage';
+export { default as ThemeEnergyAndAdrenalinePage } from './ThemeEnergyAndAdrenalinePage/ThemeEnergyAndAdrenalinePage';
+export { default as ThemeNatureWondersPage } from './ThemeNatureWondersPage/ThemeNatureWondersPage';

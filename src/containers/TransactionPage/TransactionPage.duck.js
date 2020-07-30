@@ -328,6 +328,94 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
   }
   dispatch(acceptSaleRequest());
 
+
+  
+  
+
+
+  // When using time-based process, you might want to deal with local dates using monthIdString
+  // const monthId = monthIdStringInUTC(orderParams.bookingDates.bookingStart);
+
+  // const queryExceptions = {
+  //   listingId : orderParams.parentId, 
+  //   start : orderParams.bookingDates.bookingStart,
+  //   end : orderParams.bookingDates.bookingStart
+  // };
+
+
+  // const createParams = {
+  //   listingId : new UUID(orderParams.parentId), 
+  //   start : new Date(orderParams.bookingDates.bookingStart),
+  //   end : new Date(orderParams.bookingDates.bookingStart),
+  //   seats : orderParams.persons
+  // };
+
+  // console.log(createParams);
+
+  // sdk.availabilityExceptions
+  //   .create(createParams, {
+  //     expand: true
+  //   })
+  //   .then(response => {
+  //     console.log(response);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+
+
+  // console.log(queryExceptions);
+
+  // sdk.availabilityExceptions
+  //   .query({ queryExceptions })//, { expand: true })
+  //   .then(response => {
+  //     const exceptions = denormalisedResponseEntities(response).map(availabilityException => ({
+  //       availabilityException,
+  //     }));
+  //     var info = { data: { monthId, exceptions } };
+  //     console.log(info);
+  //   })
+  //   .catch(e => {
+  //     var info1 = { monthId, error: storableError(e) };
+  //     console.log(info1);
+  //   });
+
+
+  sdk.transactions.show({
+    id: id,
+    include: ['booking', 'listing'],
+  }).then(res => {
+    // res.data contains the response data
+    console.log(res);
+
+    var parentId= res.data.data.attributes.protectedData.parentId;
+    var persons = res.data.data.attributes.protectedData.persons;
+    var startDate = res.data.data.attributes.protectedData.startDate;
+    var endDate = res.data.data.attributes.protectedData.endDate;
+
+    const createParams = {
+      listingId : new UUID(parentId), 
+      start : new Date(startDate),
+      end : new Date(endDate),
+      seats : 0 // rooms - persons TODO !!!!!!!!!!!
+    };
+
+    console.log(createParams);
+
+    sdk.availabilityExceptions
+      .create(createParams, {
+        expand: true
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  });
+
+
+
   return sdk.transactions
     .transition({ id, transition: TRANSITION_ACCEPT, params: {} }, { expand: true })
     .then(response => {

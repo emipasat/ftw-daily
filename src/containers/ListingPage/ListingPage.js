@@ -104,6 +104,12 @@ export class ListingPageComponent extends Component {
 
     const { bookingDates, ...bookingData } = values;
 
+    // here put persons, parentId ca sa pot adauga exceptii in checkout
+    // datele le am... si apoi look in exceptiile / datele parintelui si adauga
+
+    console.log(bookingData);
+    //return;
+
     const initialValues = {
       listing,
       bookingData,
@@ -331,6 +337,8 @@ export class ListingPageComponent extends Component {
       if (isOwnListing || isCurrentlyClosed) {
         window.scrollTo(0, 0);
       } else {
+        console.log(values);
+        
         this.handleSubmit(values);
       }
     };
