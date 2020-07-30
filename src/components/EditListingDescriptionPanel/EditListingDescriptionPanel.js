@@ -27,8 +27,8 @@ const EditListingDescriptionPanel = props => {
     whatever
   } = props;
 
-  //console.log('xxxxx');
-  //console.log(whatever);
+  console.log('xxxxx');
+  console.log(whatever);
 
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
@@ -45,7 +45,8 @@ const EditListingDescriptionPanel = props => {
       values={{ listingTitle: <ListingLink listing={listing} /> }}
     />
   ) : (
-    <FormattedMessage id="EditListingDescriptionPanel.createListingTitle" />
+    whatever === "listing" ? <FormattedMessage id="EditListingDescriptionPanel.createListingTitle" /> : 
+      <FormattedMessage id="EditListingDescriptionPanel.createPropertyTitle" />
   );
 
   const categoryDurationOptions = findOptionsForSelectFilter('category_duration', config.custom.filters);

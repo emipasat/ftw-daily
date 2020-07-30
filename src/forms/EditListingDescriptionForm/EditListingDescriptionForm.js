@@ -340,7 +340,7 @@ const EditListingDescriptionFormComponent = props => (
           >
             {saveActionMsg}
           </Button>
-          <pre>{JSON.stringify(values, 0, 2)}</pre>
+          {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
         </Form>
       );
     }}
