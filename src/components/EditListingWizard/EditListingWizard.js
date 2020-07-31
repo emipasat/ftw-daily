@@ -32,7 +32,8 @@ import EditListingWizardTab, {
 import css from './EditListingWizard.css';
 
 // Show availability calendar only if environment variable availabilityEnabled is true
-const availabilityMaybe = config.enableAvailability ? [AVAILABILITY] : [];
+const availabilityMaybe = config.enableAvailability ? [AVAILABILITY] : [AVAILABILITY];
+//TODO how to deploy
 
 // You can reorder these panels.
 // Note 1: You need to change save button translations for new listing flow
