@@ -37,6 +37,9 @@ export const BookingBreakdownComponent = props => {
     intl,
     dateType,
 
+
+    units,
+    seats,
     persons,
     quantity,
     categoryDuration,
@@ -98,6 +101,7 @@ export const BookingBreakdownComponent = props => {
       <LineItemBookingPeriod booking={booking} unitType={unitType} dateType={dateType} />
 
       {/* this is only for unit, ce inseamna unit, etc dar noi nu avem unit, avem night */}
+
       <LineItemUnitsMaybe transaction={transaction} unitType={unitType} />
 
       {/* this is pretul * 5 nights */}
@@ -105,6 +109,9 @@ export const BookingBreakdownComponent = props => {
           unitType={unitType} 
           intl={intl}
 
+          seats={seats}
+          units={units}
+          
           //quantity vine din tx deja, calculul e bun
           persons={persons}
           categoryDuration={categoryDuration}

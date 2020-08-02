@@ -4,9 +4,13 @@ import { formatMoney } from '../../util/currency';
 import { LINE_ITEM_NIGHT, LINE_ITEM_DAY, propTypes } from '../../util/types';
 
 import css from './BookingBreakdown.css';
+import { number } from 'prop-types';
 
 const LineItemBasePriceMaybe = props => {
-  const { transaction, unitType, intl, categoryDuration, categoryPersons, persons } = props;
+  const { transaction, unitType, intl, categoryDuration, categoryPersons, //persons, 
+    units, seats } = props;
+
+  var persons = props.persons;
   const isNightly = unitType === LINE_ITEM_NIGHT;
   const isDaily = unitType === LINE_ITEM_DAY;
   const translationKey = isNightly
@@ -17,7 +21,7 @@ const LineItemBasePriceMaybe = props => {
 
   var translationKey1 = "";
   
-//console.log(persons);
+console.log(categoryDuration);
 
   categoryDuration === "fixed" && categoryPersons === "variable" ?
       translationKey1 = "BookingBreakdown.baseUnitPersonPerNight" 
@@ -40,7 +44,16 @@ const LineItemBasePriceMaybe = props => {
   const unitPrice = unitPurchase ? formatMoney(intl, unitPurchase.unitPrice) : null;
   const total = unitPurchase ? formatMoney(intl, unitPurchase.lineTotal) : null;
 
-  const numberOfNights = parseInt(quantity/persons);
+  var numberOfNights = parseInt(quantity/persons);
+
+
+    // cazul din checkout, nu din listing estimation
+    units && seats ? translationKey1 = "BookingBreakdown.baseUnitPersonPerNight" : console.log(1)
+    units && seats ? numberOfNights = units : console.log(2)
+    units && seats ? persons = seats : console.log(2)
+
+
+console.log(translationKey1);
 
   return quantity && total ? (
     <div className={css.lineItem}>

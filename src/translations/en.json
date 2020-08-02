@@ -64,8 +64,10 @@
   "BookingBreakdown.providerTotalDeclined": "Final sum",
   "BookingBreakdown.providerTotalDefault": "You'll make",
   "BookingBreakdown.providerTotalDelivered": "You made",
-  "BookingBreakdown.quantity": "{quantity, number} {quantity, plural, one {person} other {persons}}",
-  "BookingBreakdown.quantityUnit": "Number of persons",
+
+  "BookingBreakdown.quantity": "{quantity, number} {quantity, plural, one {unit} other {units}}",
+  "BookingBreakdown.quantityUnit": "Number of total units",
+
   "BookingBreakdown.refund": "Refund",
   "BookingBreakdown.refundCustomerFee": "Refund Saunatime fee",
   "BookingBreakdown.refundProviderFee": "Refund Saunatime fee",

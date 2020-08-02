@@ -611,6 +611,12 @@ export class CheckoutPageComponent extends Component {
           userRole="customer"
           unitType={config.bookingUnitType}
           transaction={tx}
+
+          units={this.state.pageData.bookingData.units}
+          seats={this.state.pageData.bookingData.seats}
+
+          
+
           booking={txBooking}
           dateType={DATE_TYPE_DATE}
         />
