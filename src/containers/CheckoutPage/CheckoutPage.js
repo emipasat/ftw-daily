@@ -143,6 +143,7 @@ export class CheckoutPageComponent extends Component {
       history,
     } = this.props;
 
+    //console.log(bookingDates);
     console.log(bookingData);
 
     // Fetch currentUser with stripeCustomer entity
@@ -181,9 +182,17 @@ export class CheckoutPageComponent extends Component {
       pageData.bookingDates.bookingEnd &&
       !isBookingCreated;
 
+    console.log(isBookingCreated);
+
     if (shouldFetchSpeculatedTransaction) {
       const listingId = pageData.listing.id;
       const { bookingStart, bookingEnd } = pageData.bookingDates;
+
+      console.log(pageData);
+
+      //pageData.bookingData.quantity = pageData.bookingData.persons;
+
+      //console.log(pageData);
 
       // Convert picked date to date that will be converted on the API as
       // a noon of correct year-month-date combo in UTC
@@ -197,6 +206,8 @@ export class CheckoutPageComponent extends Component {
         listingId,
         bookingStart: bookingStartForAPI,
         bookingEnd: bookingEndForAPI,
+        seats: parseInt(pageData.bookingData.seats),
+        units : pageData.bookingData.units
       });
     }
 
@@ -590,6 +601,9 @@ export class CheckoutPageComponent extends Component {
     // (i.e. have an id)
     const tx = existingTransaction.booking ? existingTransaction : speculatedTransaction;
     const txBooking = ensureBooking(tx.booking);
+
+    console.log(tx)
+
     const breakdown =
       tx.id && txBooking.id ? (
         <BookingBreakdown

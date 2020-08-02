@@ -352,12 +352,12 @@ const mapStateToProps = state => {
             parents.push({key: res2.id.uuid, label: res2.attributes.title})
           }
         }
-        console.log(res2.type);
+        //console.log(res2.type);
       });
       //console.log(res1);
     });
 
-    console.log(parents);
+    //console.log(parents);
     //console.log(Object.keys(mad[0]));
     //console.log(mad[0].ownListing);
     //const mad1 = mad[0].ownListing;
@@ -377,7 +377,7 @@ const mapStateToProps = state => {
     var newStuff = mad; ////state.marketplaceData.entities.ownListing;//.map(function(item) {
     //  return item;
     //});
-    console.log(newStuff);
+    //console.log(newStuff);
     return parents;
   };
 

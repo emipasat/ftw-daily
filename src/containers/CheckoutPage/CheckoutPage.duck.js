@@ -349,6 +349,18 @@ export const sendMessage = params => (dispatch, getState, sdk) => {
  */
 export const speculateTransaction = params => (dispatch, getState, sdk) => {
   dispatch(speculateTransactionRequest());
+
+  console.log(params);
+
+  //https://app.slack.com/client/TCVV5B6V6/CCWFD4NMA/thread/CCWFD4NMA-1575281067.260900
+
+  //params.quantity = 3;
+
+  // ori una ori alta!
+
+  //params.units = 4;
+  //params.seats = 5;
+
   const bodyParams = {
     transition: TRANSITION_REQUEST_PAYMENT,
     processAlias: config.bookingProcessAlias,
@@ -364,11 +376,17 @@ export const speculateTransaction = params => (dispatch, getState, sdk) => {
   return sdk.transactions
     .initiateSpeculative(bodyParams, queryParams)
     .then(response => {
+
+      
+
       const entities = denormalisedResponseEntities(response);
       if (entities.length !== 1) {
         throw new Error('Expected a resource in the sdk.transactions.initiateSpeculative response');
       }
       const tx = entities[0];
+
+      console.log(tx);
+
       dispatch(speculateTransactionSuccess(tx));
     })
     .catch(e => {

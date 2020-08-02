@@ -29,8 +29,8 @@ const EditListingAvailabilityPanel = props => {
   const currentListing = ensureOwnListing(listing);
   const isPublished = currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
 
-  console.log(currentListing.attributes.privateData);
-  console.log(currentListing.attributes.publicData);
+  //console.log(currentListing.attributes.privateData);
+  //console.log(currentListing.attributes.publicData);
 
   const seats = currentListing.attributes.publicData.rooms;
 

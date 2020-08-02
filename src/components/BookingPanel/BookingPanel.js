@@ -68,7 +68,7 @@ const BookingPanel = props => {
     intl,
   } = props;
 
-  console.log(attributesInCaseNotLoadedYet);
+  console.log(listing);
 
   const price = listing.attributes.price;
   const hasListingState = !!listing.attributes.state;
@@ -79,7 +79,7 @@ const BookingPanel = props => {
   const isBook = !!parse(location.search).book;
 
 
-  console.log(listing);//.attributes.publicData);
+  //console.log(listing);//.attributes.publicData);
 
   const subTitleText = !!subTitle
     ? subTitle
@@ -138,6 +138,8 @@ const BookingPanel = props => {
 
 {/* <pre>{JSON.stringify(listing.attributes.publicData)}</pre> */}
         {/* <pre>{JSON.stringify(listing.attributes.publicData.category_duration, 0, 2)}</pre> */}
+
+      
         {showBookingDatesForm ? (
           <BookingDatesForm
             className={css.bookingForm}

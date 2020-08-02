@@ -39,7 +39,17 @@
   "Avatar.bannedUserDisplayName": "Banned user",
   "Avatar.deletedUserDisplayName": "Deleted user",
   "BookingBreakdown.baseUnitDay": "{unitPrice} * {quantity, number} {quantity, plural, one {day} other {days}}",
+  
+  
+  
   "BookingBreakdown.baseUnitNight": "{unitPrice} * {quantity, number} {quantity, plural, one {night} other {nights}}",
+  
+  "BookingBreakdown.baseUnitPersonPerNight": "{unitPrice} * {numberOfNights, number} {numberOfNights, plural, one {night} other {nights}} * {persons, number} {persons, plural, one {person} other {persons}} ",
+  
+  "BookingBreakdown.baseUnitPackage": "{unitPrice} * {quantity, number} {quantity, plural, one {package} other {packages}}",
+  
+  
+  
   "BookingBreakdown.baseUnitQuantity": "{unitPrice} * {quantity, number} {quantity, plural, one {person} other {persons}}",
   "BookingBreakdown.bookingEnd": "Booking end",
   "BookingBreakdown.bookingStart": "Booking start",

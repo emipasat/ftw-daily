@@ -11,6 +11,8 @@ const LineItemUnitsMaybe = props => {
     return null;
   }
 
+  console.log(transaction.attributes.lineItems);
+
   const unitPurchase = transaction.attributes.lineItems.find(
     item => item.code === unitType && !item.reversal
   );
@@ -19,6 +21,9 @@ const LineItemUnitsMaybe = props => {
     throw new Error(`LineItemUnitsMaybe: lineItem (${unitType}) missing`);
   }
 
+
+  console.log(unitPurchase);
+  
   const quantity = unitPurchase.quantity;
 
   return (

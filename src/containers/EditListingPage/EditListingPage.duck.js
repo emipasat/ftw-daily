@@ -80,6 +80,9 @@ const updateException = (exception, calendar) => {
 const updateCalendarMonth = (state, monthId, data) => {
   // Ensure that every month has array for bookings and exceptions
   const defaultMonthData = { bookings: [], exceptions: [] };
+
+  console.log(data);
+
   return {
     ...state,
     availabilityCalendar: {
@@ -504,8 +507,8 @@ export function requestShowProperties(actionPayload) {
       .query()
       .then(response => {
 
-        console.log('xxxxxxx');
-        console.log(response);
+        //console.log('xxxxxxx');
+        //console.log(response);
 
         //plan.entries.map(entry => { entry.seats = data.publicData.rooms});
 
@@ -589,6 +592,10 @@ export const requestFetchBookings = fetchParams => (dispatch, getState, sdk) => 
     .query({ listingId, start, end, state }, { expand: true })
     .then(response => {
       const bookings = denormalisedResponseEntities(response);
+
+
+      console.log(bookings);
+
       return dispatch(fetchBookingsSuccess({ data: { monthId, bookings } }));
     })
     .catch(e => {
@@ -610,7 +617,7 @@ export const requestFetchAvailabilityExceptions = fetchParams => (dispatch, getS
         availabilityException,
       }));
 
-      console.log(exceptions);
+      //console.log(exceptions);
 
       return dispatch(fetchAvailabilityExceptionsSuccess({ data: { monthId, exceptions } }));
     })
@@ -789,9 +796,9 @@ export const loadData = params => (dispatch, getState, sdk) => {
 
       const properties = getState();
      
-      console.log('ccccccccccccccccccccccc');
+      //console.log('ccccccccccccccccccccccc');
 
-      console.log(properties.marketplaceData);
+      //console.log(properties.marketplaceData);
       // const apiResponse = sdkResponse.data;
       // return {
       //   ...state,

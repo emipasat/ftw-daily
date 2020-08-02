@@ -163,11 +163,14 @@ export class BookingDatesFormComponent extends Component {
                   parentId
                 }
               : null;
+
+          //console.log(bookingData);
           var bookingInfo = bookingData ? (
             <div className={css.priceBreakdownContainer}>
               <h3 className={css.priceBreakdownTitle}>
                 <FormattedMessage id="BookingDatesForm.priceBreakdownTitle" />
               </h3>
+              
               <EstimatedBreakdownMaybe bookingData={bookingData} />
             </div>
           ) : null;

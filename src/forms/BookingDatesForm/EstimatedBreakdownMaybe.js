@@ -58,24 +58,27 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
 
   //const unitType1 = categoryDuration == "fixed" && categoryPersons == "variable" ? "line-item/units" : unitType;
 
-  const unitCount = isNightly
-    ? nightsBetween(bookingStart, bookingEnd)
-    : isDaily
-    ? daysBetween(bookingStart, bookingEnd)
-    : quantity;
+  const unitCount = //isNightly
+    //? 
+    nightsBetween(bookingStart, bookingEnd)
+    //: isDaily
+    //? daysBetween(bookingStart, bookingEnd)
+    //: quantity;
+
 
     // de fapt, eu fac un unit reinventat. ar trebui investigat cu seats si units mai corect
 
-  var unitCount1 = categoryDuration === "fixed" && categoryPersons === "fixed" ? 1 : unitCount;
+  var unitCountFixedFixed = categoryDuration === "fixed" && categoryPersons === "fixed" ? 1 : unitCount;
+  // iar night devine "package" SAU inlocuiesc cu totul line item?
 
   
-  var unitCount2 = categoryPersons === "variable" && categoryDuration === "fixed" ? unitCount * quantity : unitCount1;
-  //console.log(unitCount2);
+  var unitCountFixedVariable = categoryPersons === "variable" && categoryDuration === "fixed" 
+                                        ? unitCount * quantity : unitCountFixedFixed;
+  console.log(unitCountFixedVariable);
 
-  const totalPrice = estimatedTotalPrice(unitPrice, unitCount2);
+  const totalPrice = estimatedTotalPrice(unitPrice, unitCountFixedVariable);
 
-  console.log(quantity);//xxxx lipseste e undefined!!!!! de aici se strica tot
-
+  
   // bookingStart: "Fri Mar 30 2018 12:00:00 GMT-1100 (SST)" aka "Fri Mar 30 2018 23:00:00 GMT+0000 (UTC)"
   // Server normalizes night/day bookings to start from 00:00 UTC aka "Thu Mar 29 2018 13:00:00 GMT-1100 (SST)"
   // The result is: local timestamp.subtract(12h).add(timezoneoffset) (in eg. -23 h)
@@ -92,8 +95,7 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
       .toDate()
   );
 
-  //console.log(unitType);
-
+  
   return {
     id: new UUID('estimated-transaction'),
     type: 'transaction',
@@ -108,7 +110,9 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
           code: unitType, //categoryDuration === "fixed" && categoryPersons === "fixed" ? 'line-item/experience-fee' : unitType, //'line-item/full-experience', //unitType,
           includeFor: ['customer', 'provider'],
           unitPrice: unitPrice,
-          quantity: new Decimal(unitCount1), //new Decimal(unitCount),
+          units: unitCountFixedFixed,
+          seats: quantity,
+          quantity: new Decimal(unitCountFixedVariable), //new Decimal(unitCount), // 1 pt fixed, 2 e pt pers var
           lineTotal: totalPrice,
           reversal: false,
         },
@@ -133,19 +137,30 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
 };
 
 const EstimatedBreakdownMaybe = props => {
-  const { unitType, unitPrice, startDate, endDate, quantity, categoryDuration, fixedNumberOfNights, categoryPersons } = props.bookingData;
+  const { unitType, unitPrice, startDate, endDate, quantity, categoryDuration, fixedNumberOfNights, categoryPersons, persons } = props.bookingData;
   const isUnits = unitType === LINE_ITEM_UNITS;
-  const quantityIfUsingUnits = !isUnits || Number.isInteger(quantity);
+  const quantityIfUsingUnits = !isUnits || quantity;//Number.isInteger(quantity);
   const canEstimatePrice = startDate && endDate && unitPrice && quantityIfUsingUnits;
+
+  //TODO why quantity is not integer?????????
+
+  //console.log(quantity); quanityt sunt persons, i.e seats
+
   if (!canEstimatePrice) {
     return null;
   }
+  
+  var quantity1 = categoryDuration ==="fixed" && categoryPersons == "fixed" 
+      ? quantity1 = 1 
+      : 
+      quantity1 = quantity // this is number of persons, seats. 
 
-  console.log(quantity);
-
-  var quantity1 = categoryDuration ==="fixed" && categoryPersons == "fixed" ? quantity1 = 1 : quantity1 = quantity
   const tx = estimatedTransaction(unitType, startDate, endDate, unitPrice, quantity1, categoryDuration, categoryPersons);
 
+  // in estimatedTx ignor unittype si folosesc totusi nr de nopti (ca si cum ar fi nightly)
+  // so far so good
+
+  
   return (
     <BookingBreakdown
       className={css.receipt}
@@ -154,6 +169,13 @@ const EstimatedBreakdownMaybe = props => {
       transaction={tx}
       booking={tx.booking}
       dateType={DATE_TYPE_DATE}
+
+      //this are just to resolve base line item "naming": nights, package, person per night
+      persons={persons}
+      quantity={quantity} // asta e nights or persons
+      categoryDuration={categoryDuration}
+      categoryPersons={categoryPersons}
+
     />
   );
 };

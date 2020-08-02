@@ -30,47 +30,47 @@ exports.transactionLineItems = (listing, bookingData) => {
   // ne uitam in listing dc e fixed / fixed si nu BAGAM booking in lista!!!! asa se face
   // apoi salvam price per experience in publicData. si asta ramane "per unit, nu per night"
   const booking = {
-    code: 'line-item/nights',
+    code: 'line-item/units',
     unitPrice,
     quantity: calculateQuantityFromDates(startDate, endDate, unitType),
     includeFor: ['customer', 'provider'],
   };
 
-  const experienceFeePrice = resolveExperienceFeePrice(listing);
-  const experienceFee = experienceFeePrice
-   ? [
-       {
-         code: 'line-item/experience-fee',
-         unitPrice: experienceFeePrice,
-         quantity: 1,
-         includeFor: ['customer', 'provider'],
-       },
-     ]
-   : [];
+  // const experienceFeePrice = resolveExperienceFeePrice(listing);
+  // const experienceFee = experienceFeePrice
+  //  ? [
+  //      {
+  //        code: 'line-item/experience-fee',
+  //        unitPrice: experienceFeePrice,
+  //        quantity: 1,
+  //        includeFor: ['customer', 'provider'],
+  //      },
+  //    ]
+  //  : [];
 
 
   const providerCommission = {
     code: 'line-item/provider-commission',
-    unitPrice: calculateTotalFromLineItems([booking, ...experienceFee]),
+    unitPrice: calculateTotalFromLineItems([booking]),//, ...experienceFee]),
     percentage: PROVIDER_COMMISSION_PERCENTAGE,
     includeFor: ['provider'],
   };
 
-  const lineItems = [booking, ...experienceFee, providerCommission];
+  const lineItems = [booking, providerCommission];//...experienceFee
 
   console.log(lineItems);
   return lineItems;
 };
 
 
-const resolveExperienceFeePrice = listing => {
-  const publicData = listing.attributes.publicData;
-  const experienceFee = publicData && publicData.experienceFee;
-  const { amount, currency } = experienceFee;
+// const resolveExperienceFeePrice = listing => {
+//   const publicData = listing.attributes.publicData;
+//   const experienceFee = publicData && publicData.experienceFee;
+//   const { amount, currency } = experienceFee;
 
-  if (amount && currency) {
-    return new Money(amount, currency);
-  }
+//   if (amount && currency) {
+//     return new Money(amount, currency);
+//   }
 
-  return null;
-};
+//   return null;
+// };

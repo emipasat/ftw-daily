@@ -36,7 +36,13 @@ export const BookingBreakdownComponent = props => {
     booking,
     intl,
     dateType,
+
+    persons,
+    quantity,
+    categoryDuration,
+    categoryPersons
   } = props;
+
 
   const isCustomer = userRole === 'customer';
   const isProvider = userRole === 'provider';
@@ -85,13 +91,27 @@ export const BookingBreakdownComponent = props => {
    * LineItemTotalPrice: prints total price of the transaction
    *
    */
-
+  
   return (
     <div className={classes}>
+
       <LineItemBookingPeriod booking={booking} unitType={unitType} dateType={dateType} />
+
+      {/* this is only for unit, ce inseamna unit, etc dar noi nu avem unit, avem night */}
       <LineItemUnitsMaybe transaction={transaction} unitType={unitType} />
 
-      <LineItemBasePriceMaybe transaction={transaction} unitType={unitType} intl={intl} />
+      {/* this is pretul * 5 nights */}
+      <LineItemBasePriceMaybe transaction={transaction} 
+          unitType={unitType} 
+          intl={intl}
+
+          //quantity vine din tx deja, calculul e bun
+          persons={persons}
+          categoryDuration={categoryDuration}
+          categoryPersons={categoryPersons}
+          />
+
+
       <LineItemUnknownItemsMaybe transaction={transaction} intl={intl} />
 
       <LineItemSubTotalMaybe

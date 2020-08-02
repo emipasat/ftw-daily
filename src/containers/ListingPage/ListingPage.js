@@ -10,6 +10,7 @@ import routeConfiguration from '../../routeConfiguration';
 import { findOptionsForSelectFilter } from '../../util/search';
 import { LISTING_STATE_PENDING_APPROVAL, LISTING_STATE_CLOSED, propTypes } from '../../util/types';
 import { types as sdkTypes } from '../../util/sdkLoader';
+import { dateFromLocalToAPI, nightsBetween, daysBetween } from '../../util/dates';
 import {
   LISTING_PAGE_DRAFT_VARIANT,
   LISTING_PAGE_PENDING_APPROVAL_VARIANT,
@@ -104,10 +105,20 @@ export class ListingPageComponent extends Component {
 
     const { bookingDates, ...bookingData } = values;
 
+    // put quantity units seats.
+    // units sunt noptile seats sunt persons
+
     // here put persons, parentId ca sa pot adauga exceptii in checkout
     // datele le am... si apoi look in exceptiile / datele parintelui si adauga
 
-    console.log(bookingData);
+    
+
+    const unitCount = nightsBetween(bookingDates.startDate, bookingDates.endDate)
+
+    bookingData.seats = bookingData.persons;
+    bookingData.units = unitCount;
+
+    //console.log(bookingData);
     //return;
 
     const initialValues = {
@@ -119,6 +130,8 @@ export class ListingPageComponent extends Component {
       },
       confirmPaymentError: null,
     };
+
+    console.log(initialValues);
 
     const routes = routeConfiguration();
     // Customize checkout page state with current listing and selected bookingDates
@@ -460,7 +473,7 @@ export class ListingPageComponent extends Component {
                   />
                 </div>
 
-                {/* { <pre>{JSON.stringify(currentListing)}</pre> } */}
+                 {/* <pre>{JSON.stringify(unitType)}</pre>  */}
                 
                 <BookingPanel
                   className={css.bookingPanel}
