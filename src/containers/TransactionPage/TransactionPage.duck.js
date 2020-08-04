@@ -4,7 +4,10 @@ import isEmpty from 'lodash/isEmpty';
 import moment from 'moment';
 import config from '../../config';
 import { types as sdkTypes } from '../../util/sdkLoader';
+import { nightsBetween, dateFromAPIToLocalNoon } from '../../util/dates';
 import { isTransactionsTransitionInvalidTransition, storableError } from '../../util/errors';
+import { ensureAvailabilityException } from '../../util/data';
+import { isSameDay } from 'react-dates';
 import {
   txIsEnquired,
   getReview1Transition,
@@ -23,6 +26,10 @@ import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
 import { fetchCurrentUserNotifications } from '../../ducks/user.duck';
 
 const { UUID } = sdkTypes;
+
+
+
+//const { nightsBetween } = require('../../dates');
 
 const MESSAGES_PAGE_SIZE = 100;
 const CUSTOMER = 'customer';
@@ -189,6 +196,19 @@ export default function checkoutPageReducer(state = initialState, action = {}) {
   }
 }
 
+const dateStartAndEndInUTC = date => {
+  const start = moment(date)
+    .utc()
+    .startOf('day')
+    .toDate();
+  const end = moment(date)
+    .utc()
+    .add(1, 'days')
+    .startOf('day')
+    .toDate();
+  return { start, end };
+};
+
 // ================ Selectors ================ //
 
 export const acceptOrDeclineInProgress = state => {
@@ -248,6 +268,34 @@ const fetchTimeSlotsError = e => ({
   error: true,
   payload: e,
 });
+
+
+
+// Returns an array of dates between the two dates
+const getDates = function(startDate, endDate) {
+  var dates = [],
+      currentDate = startDate,
+      addDays = function(days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+      };
+  while (currentDate <= endDate) {
+    dates.push(currentDate);
+    currentDate = addDays.call(currentDate, 1);
+  }
+  return dates;
+};
+
+const findException = (exceptions, day) => {
+  return exceptions.find(exception => {
+    const availabilityException = ensureAvailabilityException(exception.availabilityException);
+    const start = availabilityException.attributes.start;
+    const dayInUTC = day.clone().utc();
+    return isSameDay(moment(start).utc(), dayInUTC);
+  });
+};
+
 
 // ================ Thunks ================ //
 
@@ -326,12 +374,11 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
   if (acceptOrDeclineInProgress(getState())) {
     return Promise.reject(new Error('Accept or decline already in progress'));
   }
+
   dispatch(acceptSaleRequest());
-
+  //TODO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! nu uita de ea
 
   
-  
-
 
   // When using time-based process, you might want to deal with local dates using monthIdString
   // const monthId = monthIdStringInUTC(orderParams.bookingDates.bookingStart);
@@ -381,6 +428,18 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
   //   });
 
 
+  
+
+  // Usage
+  // var dates = getDates(new Date(2013,10,22), new Date(2013,11,25));                                                                                                           
+  // dates.forEach(function(date) {
+  //   console.log(date);
+  // });
+
+
+
+  //TODO fa asta si la reject, pune la loc locurile
+
   sdk.transactions.show({
     id: id,
     include: ['booking', 'listing'],
@@ -392,29 +451,119 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
     var persons = res.data.data.attributes.protectedData.persons;
     var startDate = res.data.data.attributes.protectedData.startDate;
     var endDate = res.data.data.attributes.protectedData.endDate;
+    
+    var seats = parseInt(persons);
+    var units = parseInt(nightsBetween(startDate, endDate))
 
-    const createParams = {
-      listingId : new UUID(parentId), 
-      start : new Date(startDate),
-      end : new Date(endDate),
-      seats : 0 // rooms - persons TODO !!!!!!!!!!!
-    };
+    console.log(res.data.data);
 
-    console.log(createParams);
+    console.log(units)
+    console.log(seats);
+
+    var listingId = new UUID(parentId);
 
     sdk.availabilityExceptions
-      .create(createParams, {
-        expand: true
-      })
+      .query({ 
+        listingId, 
+        start: startDate, 
+        end: endDate 
+      }, { expand: true })
       .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
+        const exceptions = denormalisedResponseEntities(response).map(availabilityException => ({
+          availabilityException,
+        }));
+
+        console.log(exceptions);
+
+        sdk.listings.show({id: listingId}).then(res1 => {
+          const rooms = res1.data.data.attributes.publicData.rooms
+
+          console.log(rooms);
+
+          var reservedSeats = [];
+          var dates = getDates(new Date(startDate), new Date(endDate));                                                                                                           
+          dates.forEach(function(date) {
+            var exception = findException(exceptions, date);
+            if (exception) {
+
+              console.log(exception)
+
+              reservedSeats.push(rooms - exception.attributes.seats - seats) 
+              //TODO validare, am negativ?? sau nu ajung
+            }
+            else 
+            {
+              reservedSeats.push(rooms - seats)
+            }
+          });
+
+          console.log(dates)
+          console.log(reservedSeats)
+          
+          for (var j=0; j< units; j++) //dates.length; j++) // altfel imi ia cu o zi in plus ca e ziua iesirii
+          {
+
+
+            const { start, end } = dateStartAndEndInUTC(dates[j]);
+
+            const createParams = {
+              listingId : parentId, //new UUID(parentId), 
+              start : start, //new Date(dates[j]),
+              end : end, //new Date(dates[j]),
+              seats : reservedSeats[j] // rooms - persons TODO !!!!!!!!!!!
+            };
+        
+            console.log(createParams);
+
+            // TODO trebuie sa vad cand rezerv... sa am rooms available minim cate persoane
+
+            var exception1 = findException(exceptions, dates[j]);
+
+            if (exception1) {
+              sdk.availabilityExceptions.delete({
+                id: exception1.id // new UUID(exception1.id)
+                }, 
+                { expand: false})
+                .then(res => {
+                  
+                    sdk.availabilityExceptions
+                    .create(createParams, {
+                      expand: true
+                    })
+                    .then(response => {
+                      console.log(response);
+                    });
+  
+              });
+            }
+            else 
+            {
+              sdk.availabilityExceptions
+                    .create(createParams, {
+                      expand: true
+                    })
+                    .then(response => {
+                      console.log(response);
+                    });
+            }
+          
+              
+          }
+
+        });
+
+        
       });
-  });
 
 
+    
+
+
+    // create an eventual array cu key date, value 0 pe durata rezervarii (pt a sterge exceptiile)
+    //get parentId listing pt a vedea rooms
+    // get exception for each day! foreach day, if exception
+
+    
 
   return sdk.transactions
     .transition({ id, transition: TRANSITION_ACCEPT, params: {} }, { expand: true })
@@ -432,6 +581,8 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
       });
       throw e;
     });
+
+  });
 };
 
 export const declineSale = id => (dispatch, getState, sdk) => {

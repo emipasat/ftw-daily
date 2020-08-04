@@ -181,6 +181,13 @@
     text-decoration: line-through;
     color: lightgrey;
   }
+
+  & .seatsNumber {
+
+    text-decoration: none;
+    
+    font-size: large;
+  }
 }
 
 .today {

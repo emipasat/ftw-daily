@@ -11,6 +11,7 @@ import {
 } from '../../util/transaction';
 import * as log from '../../util/log';
 import { fetchCurrentUserHasOrdersSuccess, fetchCurrentUser } from '../../ducks/user.duck';
+import { dateFromAPIToLocalNoon } from '../../util/dates';
 
 // ================ Action types ================ //
 
@@ -164,6 +165,9 @@ export const stripeCustomerError = e => ({
 /* ================ Thunks ================ */
 
 export const initiateOrder = (orderParams, transactionId) => (dispatch, getState, sdk) => {
+  
+  console.log(orderParams);
+  
   dispatch(initiateOrderRequest());
   const bodyParams = transactionId
     ? {
@@ -271,6 +275,9 @@ export const confirmPayment = orderParams => (dispatch, getState, sdk) => {
 
   //2018-04-20T00:00:00.000Z
 
+  //TODO try dateFromAPIToLocalNoon instead of this parsing
+  // nu merge sa salvezi protectedData de la dateFrom APi. de vazut later
+
   var xxx1 = new Intl.DateTimeFormat('en-UK').format(new Date(orderParams.bookingDates.bookingStart));
   var array1 = xxx1.split('/');
   var startAsString = array1[2] + "-" + array1[1] + "-" + array1[0] + "T00:00:00.000Z";
@@ -288,8 +295,8 @@ export const confirmPayment = orderParams => (dispatch, getState, sdk) => {
       protectedData : {
         parentId : orderParams.parentId,
         persons: orderParams.persons,
-        startDate: startAsString,
-        endDate: endAsString
+        startDate: startAsString, //dateFromAPIToLocalNoon(new Date(orderParams.bookingDates.bookingStart)), //startAsString,
+        endDate: endAsString //dateFromAPIToLocalNoon(new Date(orderParams.bookingDates.bookingEnd)), //endAsString
       },
     },
   };

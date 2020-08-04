@@ -13,12 +13,23 @@ const LineItemUnitsMaybe = props => {
 
   console.log(transaction.attributes.lineItems);
 
-  const unitPurchase = transaction.attributes.lineItems.find(
+  //TODO handle: dc avem tx din trecut pe unit-type/night... nu le poate afisa aici ca am schimbat pe units
+  // pune fortat, ca sa putem afisa. desi.. mai bine throw si stim o treaba. ca nu le tot foim
+
+  var unitPurchase = transaction.attributes.lineItems.find(
     item => item.code === unitType && !item.reversal
   );
 
+  console.log(unitType);
+
+
   if (!unitPurchase) {
-    throw new Error(`LineItemUnitsMaybe: lineItem (${unitType}) missing`);
+
+    unitPurchase = transaction.attributes.lineItems.find(
+      item => item.code === 'line-item/night' && !item.reversal
+    );
+
+    //throw new Error(`LineItemUnitsMaybe: lineItem (${unitType}) missing`);
   }
 
 

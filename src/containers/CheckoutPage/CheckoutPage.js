@@ -393,6 +393,12 @@ export class CheckoutPageComponent extends Component {
         ? { setupPaymentMethodForSaving: true }
         : {};
 
+
+    console.log(pageData.bookingData)
+
+    optionalPaymentParams.seats = parseInt(pageData.bookingData.seats);
+    optionalPaymentParams.units = parseInt(pageData.bookingData.units);
+
     const orderParams = {
       listingId: pageData.listing.id,
       bookingStart: tx.booking.attributes.start,

@@ -173,6 +173,20 @@ const renderDayContents = (calendar, availabilityPlan) => date => {
     date
   );
 
+  //console.log(exceptions)//date)
+  var currentException = findException(exceptions, date)
+  
+  var seats = 4; // TODO put it the current number of rooms
+
+  if (currentException)
+  {
+      console.log(currentException);
+      var mad = Object.values(currentException)[0].attributes;
+      seats = mad.seats;
+      console.log(mad)
+  }
+  //console.log(exceptions.filter(x=>isSameDay(moment(x.availabilityException.attributes.end), date)[0].seats))
+
   const dayClasses = classNames(css.default, {
     [css.outsideRange]: isOutsideRange,
     [css.today]: isSameDay,
@@ -187,7 +201,19 @@ const renderDayContents = (calendar, availabilityPlan) => date => {
         {isInProgress ? (
           <IconSpinner rootClassName={css.inProgress} />
         ) : (
-          <span className={css.dayNumber}>{date.format('D')}</span>
+          currentException
+          ? 
+
+          <span>
+            <span className={css.seatsNumber} 
+              style={{ marginRight: '2rem', marginTop: 0, color: '#FFCCCC', fontSize: 'large' }}>{seats}</span>
+
+            <span className={css.dayNumber}>{date.format('D')}</span> 
+          </span>
+          
+          : 
+          <span className={css.dayNumber}>{date.format('D')}</span> 
+          
         )}
       </span>
     </div>
