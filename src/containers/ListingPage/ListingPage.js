@@ -255,6 +255,7 @@ export class ListingPageComponent extends Component {
       publicData,
     } = currentListing.attributes;
 
+
     const richTitle = (
       <span>
         {richText(title, {
@@ -338,6 +339,9 @@ export class ListingPageComponent extends Component {
     const currentAuthor = authorAvailable ? currentListing.author : null;
     const ensuredAuthor = ensureUser(currentAuthor);
 
+    console.log(currentListing)
+
+    
     // When user is banned or deleted the listing is also deleted.
     // Because listing can be never showed with banned or deleted user we don't have to provide
     // banned or deleted display names for the function
@@ -473,8 +477,8 @@ export class ListingPageComponent extends Component {
                   />
                 </div>
 
-                 {/* <pre>{JSON.stringify(unitType)}</pre>  */}
-                
+                 {/* <pre>{JSON.stringify(Object.values(currentListing.attributes))}</pre> 
+                 */}
                 <BookingPanel
                   className={css.bookingPanel}
                   listing={currentListing}

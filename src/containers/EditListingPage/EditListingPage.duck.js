@@ -721,13 +721,20 @@ export function requestUpdateListing(tab, data) {
         var test = response.data.data.filter(
           attributes => attributes.id.uuid === data.id.uuid);
 
-        var plan = test[0].attributes.availabilityPlan;//.data[0].attributes.availabilityPlan);
-        plan.entries.map(entry => { entry.seats = data.publicData.rooms});
+        console.log(test)
 
-        if (tab === 'description')
+        var plan = test[0].attributes.availabilityPlan; 
+        // if is draft... no plan yet
+        if (plan)
         {
-          updateAvailability(data.privateData.epicVisitsType, plan);
+          plan.entries.map(entry => { entry.seats = data.publicData.rooms});
+
+          if (tab === 'description')
+          {
+            updateAvailability(data.privateData.epicVisitsType, plan);
+          }
         }
+        
         
         //(data.privateData.epicVisitsType === 'property') ?  updateAvailability(data.privateData.epicVisitsType, plan) : null
         //1 === 1 ? null : null
@@ -742,6 +749,8 @@ export function requestUpdateListing(tab, data) {
 
     // console.log(response); //availabilityPlan
     //(data.privateData.epicVisitsType === 'property') ? () : ()
+
+    console.log('test')
 
     dispatch(updateListing(data));
     const { id } = data;
@@ -758,8 +767,13 @@ export function requestUpdateListing(tab, data) {
         return dispatch(requestShowListing(payload));
       })
       .then(() => {
+
+        console.log(tab)
+
         dispatch(markTabUpdated(tab));
         dispatch(updateListingSuccess(updateResponse));
+
+        console.log(updateResponse)
         return updateResponse;
       })
       .catch(e => {

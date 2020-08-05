@@ -101,9 +101,23 @@ const BookingPanel = props => {
   const classes = classNames(rootClassName || css.root, className);
   const titleClasses = classNames(titleClassName || css.bookingTitle);
 
+  
+  //var mad = Object.values(listing.attributes)
+  //console.log(listing.attributes.publicData.category_duration)
+
+  const isFixedDuration = listing.attributes.publicData && listing.attributes.publicData.category_duration === "fixed"
+
+
+  console.log(listing.attributes.publicData)
+
   return (
 
+    
+
     <div className={classes}>
+
+      {/* <pre>{JSON.stringify(listing.attributes.publicData)}</pre> */}
+
       <ModalInMobile
         containerClassName={css.modalContainer}
         id="BookingDatesFormInModal"
@@ -112,20 +126,22 @@ const BookingPanel = props => {
         showAsModalMaxWidth={MODAL_BREAKPOINT}
         onManageDisableScrolling={onManageDisableScrolling}
       >
-        <div className={css.modalHeading}>
+         <div className={css.modalHeading}>
           <h1 className={css.title}>{title}</h1>
           <div className={css.author}>
             <FormattedMessage id="BookingPanel.hostedBy" values={{ name: authorDisplayName }} />
           </div>
         </div>
-        
 
-        {listing.attributes.publicData.category_duration === "fixed" ? 
+        {/* {isFixedDuration ? (<div>sss</div>) : (<div>vvv</div>)} */}
+        
+        {/* listing.attributes.publicData.category_duration === "fixed" ?  */}
+
+        {isFixedDuration ? 
           (
             <div className={css.bookingHeading}>
               <h2 className={titleClasses}>{title}</h2>
               {subTitleText ? <div className={css.bookingHelp}>
-                {/* {intl.formatMessage({ id: 'ListingPage.bookingFixedDurationSubTitle', numberOfNights: 2 })} */}
                 <FormattedMessage id="ListingPage.bookingFixedDurationSubTitle" values={{ numberOfNights: listing.attributes.publicData.fixedNumberOfNights }} />
                 </div> : null}
             </div>

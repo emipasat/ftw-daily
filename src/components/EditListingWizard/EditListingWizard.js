@@ -61,6 +61,8 @@ export const TABS1 = [
   PHOTOS,
 ];
 
+export var TABS_FINAL = TABS;
+
 // Tabs are horizontal in small screens
 const MAX_HORIZONTAL_NAV_SCREEN_WIDTH = 1023;
 
@@ -146,10 +148,10 @@ const tabCompleted = (tab, listing) => {
  * @return object containing activity / editability of different tabs of this wizard
  */
 const tabsActive = (isNew, listing) => {
-  return TABS.reduce((acc, tab) => {
-    const previousTabIndex = TABS.findIndex(t => t === tab) - 1;
+  return TABS_FINAL.reduce((acc, tab) => {
+    const previousTabIndex = TABS_FINAL.findIndex(t => t === tab) - 1;
     const isActive =
-      previousTabIndex >= 0 ? !isNew || tabCompleted(TABS[previousTabIndex], listing) : true;
+      previousTabIndex >= 0 ? !isNew || tabCompleted(TABS_FINAL[previousTabIndex], listing) : true;
     return { ...acc, [tab]: isActive };
   }, {});
 };
@@ -304,6 +306,8 @@ class EditListingWizard extends Component {
 
     //console.log(params.whatever); // listing si property
 
+    
+
     const selectedTab = params.tab;
     const isNewListingFlow = [LISTING_PAGE_PARAM_TYPE_NEW, LISTING_PAGE_PARAM_TYPE_DRAFT].includes(
       params.type
@@ -313,10 +317,12 @@ class EditListingWizard extends Component {
     const currentListing = ensureListing(listing);
     const tabsStatus = tabsActive(isNewListingFlow, currentListing);
 
+    console.log(tabsStatus)
+
     // If selectedTab is not active, redirect to the beginning of wizard
     if (!tabsStatus[selectedTab]) {
-      const currentTabIndex = TABS.indexOf(selectedTab);
-      const nearestActiveTab = TABS.slice(0, currentTabIndex)
+      const currentTabIndex = TABS_FINAL.indexOf(selectedTab);
+      const nearestActiveTab = TABS_FINAL.slice(0, currentTabIndex)
         .reverse()
         .find(t => tabsStatus[t]);
 
@@ -392,7 +398,7 @@ class EditListingWizard extends Component {
       return <NamedRedirect name="EditListingPage" params={pathParams} />;
     }
 
-    var TABS_FINAL = TABS;
+    
     params.whatever === 'property' ? TABS_FINAL = TABS1 : TABS_FINAL = TABS
 
     return (
@@ -419,7 +425,7 @@ class EditListingWizard extends Component {
                 intl={intl}
                 params={params}
                 listing={listing}
-                marketplaceTabs={TABS}
+                marketplaceTabs={TABS_FINAL}
                 errors={errors}
                 handleCreateFlowTabScrolling={this.handleCreateFlowTabScrolling}
                 handlePublishListing={this.handlePublishListing}
@@ -522,7 +528,7 @@ EditListingWizard.propTypes = {
     id: string.isRequired,
     slug: string.isRequired,
     type: oneOf(LISTING_PAGE_PARAM_TYPES).isRequired,
-    tab: oneOf(TABS).isRequired,
+    tab: oneOf(TABS_FINAL).isRequired,
   }).isRequired,
   stripeAccount: object,
   stripeAccountFetched: bool,

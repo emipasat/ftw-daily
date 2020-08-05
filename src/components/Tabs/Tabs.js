@@ -52,10 +52,12 @@ const Tabs = props => {
   const childArray = React.Children.toArray(children);
   const selectedTabPanel = childArray.find(c => c.props.selected);
 
-  if (!selectedTabPanel)
-  {
-    childArray[0].props.selected = true;
-  }
+  console.log(childArray)
+
+  //if (!selectedTabPanel)
+  //{
+    //childArray[0].props.selected = true;
+  //}
 
   // One of the children needs to be selected
   if (!selectedTabPanel) {
