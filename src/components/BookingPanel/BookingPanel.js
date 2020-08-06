@@ -110,6 +110,8 @@ const BookingPanel = props => {
 
   console.log(listing.attributes.publicData)
 
+  // var test 1
+
   return (
 
     
