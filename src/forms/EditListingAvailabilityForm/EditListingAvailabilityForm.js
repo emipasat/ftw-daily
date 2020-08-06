@@ -32,6 +32,7 @@ export class EditListingAvailabilityFormComponent extends Component {
             availability,
             availabilityPlan,
             listingId,
+            seats
           } = formRenderProps;
 
           const errorMessage = updateError ? (
@@ -54,6 +55,7 @@ export class EditListingAvailabilityFormComponent extends Component {
                   availability={availability}
                   availabilityPlan={availabilityPlan}
                   listingId={listingId}
+                  seats={seats}
                 />
               </div>
 
@@ -88,7 +90,7 @@ EditListingAvailabilityFormComponent.propTypes = {
   updateError: propTypes.error,
   updateInProgress: bool.isRequired,
   availability: object.isRequired,
-  availabilityPlan: propTypes.availabilityPlan.isRequired,
+  availabilityPlan: propTypes.availabilityPlan.isRequired
 };
 
 export default compose(injectIntl)(EditListingAvailabilityFormComponent);

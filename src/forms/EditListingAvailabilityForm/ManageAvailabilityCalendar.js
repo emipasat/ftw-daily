@@ -162,7 +162,7 @@ const dateModifiers = (availabilityPlan, exceptions, bookings, date) => {
   };
 };
 
-const renderDayContents = (calendar, availabilityPlan) => date => {
+const renderDayContents = (calendar, availabilityPlan, seats) => date => {
   // This component is for day/night based processes. If time-based process is used,
   // you might want to deal with local dates using monthIdString instead of monthIdStringInUTC.
   const { exceptions = [], bookings = [] } = calendar[monthIdStringInUTC(date)] || {};
@@ -176,7 +176,9 @@ const renderDayContents = (calendar, availabilityPlan) => date => {
   //console.log(exceptions)//date)
   var currentException = findException(exceptions, date)
   
-  var seats = 4; // TODO put it the current number of rooms
+  //var seats = 4; // TODO put it the current number of rooms
+  console.log(seats);
+  console.log('seats')
 
   if (currentException)
   {
@@ -406,6 +408,7 @@ class ManageAvailabilityCalendar extends Component {
       availabilityPlan,
       onMonthChanged,
       monthFormat,
+      seats,
       ...rest
     } = this.props;
     const { focused, date, currentMonth } = this.state;
@@ -450,7 +453,7 @@ class ManageAvailabilityCalendar extends Component {
               navNext={<IconArrowHead direction="right" />}
               weekDayFormat="ddd"
               daySize={daySize}
-              renderDayContents={renderDayContents(calendar, availabilityPlan)}
+              renderDayContents={renderDayContents(calendar, availabilityPlan, seats)}
               focused={focused}
               date={date}
               onDateChange={this.onDateChange}
@@ -545,6 +548,7 @@ ManageAvailabilityCalendar.propTypes = {
     onCreateAvailabilityException: func.isRequired,
   }).isRequired,
   availabilityPlan: propTypes.availabilityPlan.isRequired,
+  seats: object.isRequired,
   onMonthChanged: func,
 };
 

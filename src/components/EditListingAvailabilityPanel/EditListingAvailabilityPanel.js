@@ -76,6 +76,7 @@ const EditListingAvailabilityPanel = props => {
         initialValues={{ availabilityPlan }}
         availability={availability}
         availabilityPlan={availabilityPlan}
+        seats={seats}
         onSubmit={() => {
           // We save the default availability plan
           // I.e. this listing is available every night.
@@ -90,6 +91,7 @@ const EditListingAvailabilityPanel = props => {
         updated={panelUpdated}
         updateError={errors.updateListingError}
         updateInProgress={updateInProgress}
+        seats={seats}
       />
     </div>
   );
