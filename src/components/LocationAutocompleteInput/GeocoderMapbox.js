@@ -112,8 +112,9 @@ class GeocoderMapbox {
       .geocoding.forwardGeocode({
         query: search,
         limit: 5,
+        //types: ["address"],
         ...limitCountriesMaybe,
-        language: [config.locale],
+        language: ['ro'],//config.locale],
       })
       .send()
       .then(response => {

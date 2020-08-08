@@ -108,6 +108,28 @@ export const EditListingLocationFormComponent = props => (
             placeholder={buildingPlaceholderMessage}
           />
 
+        <p className={css.root}>
+          Or... you can provide Lat/Long directly:
+        </p>
+
+          <FieldTextInput
+            className={css.building}
+            type="text"
+            name="latitude"
+            id="latitude"
+            label="Latitude"
+            placeholder="Latitude"
+          />
+
+          <FieldTextInput
+            className={css.building}
+            type="text"
+            name="longitude"
+            id="longitude"
+            label="Longitude"
+            placeholder="Longitude"
+          />
+
           <Button
             className={css.submitButton}
             type="submit"
