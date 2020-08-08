@@ -190,6 +190,8 @@ export class CheckoutPageComponent extends Component {
 
       console.log(pageData);
 
+      const seats1 =  pageData.bookingData.seats ? parseInt(pageData.bookingData.seats) : 1
+
       //pageData.bookingData.quantity = pageData.bookingData.persons;
 
       //console.log(pageData);
@@ -206,7 +208,7 @@ export class CheckoutPageComponent extends Component {
         listingId,
         bookingStart: bookingStartForAPI,
         bookingEnd: bookingEndForAPI,
-        seats: parseInt(pageData.bookingData.seats),
+        seats: seats1, //parseInt(pageData.bookingData.seats),
         units : pageData.bookingData.units
       });
     }

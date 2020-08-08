@@ -53,7 +53,7 @@ export const TABS = [
 
 export const TABS1 = [
   DESCRIPTION,
-  FEATURES,
+  //FEATURES,
   POLICY,
   LOCATION,
   PRICING,

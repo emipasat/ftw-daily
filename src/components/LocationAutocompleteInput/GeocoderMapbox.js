@@ -22,6 +22,9 @@ const PLACE_TYPE_BOUNDS_DISTANCES = {
 };
 
 const locationBounds = (latlng, distance) => {
+  
+  console.log('ddddd location bounds')
+
   if (!latlng) {
     return null;
   }
@@ -42,6 +45,9 @@ const placeOrigin = prediction => {
 };
 
 const placeBounds = prediction => {
+
+  console.log('asdfasdf asdfsdhhhh')
+
   if (prediction) {
     if (Array.isArray(prediction.bbox) && prediction.bbox.length === 4) {
       // Bounds in Mapbox features are represented as [minX, minY, maxX, maxY]
