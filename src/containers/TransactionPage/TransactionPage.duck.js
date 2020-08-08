@@ -456,6 +456,12 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
     var persons = res.data.data.attributes.protectedData.persons;
     var startDate = res.data.data.attributes.protectedData.startDate;
     var endDate = res.data.data.attributes.protectedData.endDate;
+
+    var fixedNumberOfPersons = res.data.data.attributes.protectedData.fixedNumberOfPersons;
+
+
+    var currentListingId = res.data.data.attributes.protectedData.listingId;
+    var currentListingIdObject = new UUID(currentListingId);
     
     var seats = parseInt(persons);
     var units = parseInt(nightsBetween(startDate, endDate))
@@ -498,7 +504,21 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
               console.log(date)
 
               //TODO pp mereu ca experienta fixed are 2 locuri!
-              Number.isNaN(seats) ? seats = 2 : console.log('hardoced!')
+              //Number.isNaN(seats) ? seats = 2 : console.log('hardoced!')
+
+
+              if (Number.isNaN(seats)) {
+
+                seats = fixedNumberOfPersons;
+                console.log('is fixed setteed!!!!!')
+
+                
+
+              } 
+              else 
+              {
+
+              }
 
               var exception = findException(exceptions, date);
               if (exception) {

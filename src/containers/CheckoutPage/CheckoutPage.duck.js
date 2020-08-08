@@ -294,6 +294,11 @@ export const confirmPayment = orderParams => (dispatch, getState, sdk) => {
     params: {
       protectedData : {
         parentId : orderParams.parentId,
+
+
+        //listingId: orderParams.listingId,
+        fixedNumberOfPersons: orderParams.fixedNumberOfPersons, // this is from fixed
+
         persons: orderParams.persons,
         startDate: startAsString, //dateFromAPIToLocalNoon(new Date(orderParams.bookingDates.bookingStart)), //startAsString,
         endDate: endAsString //dateFromAPIToLocalNoon(new Date(orderParams.bookingDates.bookingEnd)), //endAsString

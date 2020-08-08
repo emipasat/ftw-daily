@@ -343,9 +343,12 @@ export class CheckoutPageComponent extends Component {
 
       const { bookingData, bookingDates, listing } = pageData;
 
+      console.log(listing)
+
       fnParams.parentId = bookingData.parentId;
       fnParams.bookingDates = pageData.bookingDates; // bookingStart, bookingEnd
       fnParams.persons = bookingData.persons;
+      fnParams.fixedNumberOfPersons = listing.attributes.publicData.fixedNumberOfPersons; // this is from fixed
 
       //fnParams.seats =  bookingData.seats ? parseInt(bookingData.seats) : 1
       //TODO cazul cu fixed fixed, care nu are seats
