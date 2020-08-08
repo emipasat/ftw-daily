@@ -291,7 +291,12 @@ const findException = (exceptions, day) => {
   return exceptions.find(exception => {
     const availabilityException = ensureAvailabilityException(exception.availabilityException);
     const start = availabilityException.attributes.start;
-    const dayInUTC = day.clone().utc();
+
+    console.log(day)
+
+//moment(this.props.endDate)
+    const dayInUTC = moment(day).clone().utc();
+
     return isSameDay(moment(start).utc(), dayInUTC);
   });
 };
@@ -475,80 +480,94 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
 
         console.log(exceptions);
 
-        sdk.listings.show({id: listingId}).then(res1 => {
-          const rooms = res1.data.data.attributes.publicData.rooms
+        sdk.listings
+          .show({id: listingId})
+          .then(res1 => {
+            const rooms = res1.data.data.attributes.publicData.rooms
 
-          console.log(rooms);
+            console.log(rooms);
 
-          var reservedSeats = [];
-          var dates = getDates(new Date(startDate), new Date(endDate));                                                                                                           
-          dates.forEach(function(date) {
-            var exception = findException(exceptions, date);
-            if (exception) {
+            var reservedSeats = [];
+            var dates = getDates(new Date(startDate), new Date(endDate));     
+            
+            console.log(dates)
 
-              console.log(exception)
+            dates.forEach(function(date) {
 
-              reservedSeats.push(rooms - exception.attributes.seats - seats) 
-              //TODO validare, am negativ?? sau nu ajung
-            }
-            else 
-            {
-              reservedSeats.push(rooms - seats)
-            }
-          });
 
-          console.log(dates)
-          console.log(reservedSeats)
+              console.log(date)
+
+              //TODO pp mereu ca experienta fixed are 2 locuri!
+              Number.isNaN(seats) ? seats = 2 : console.log('hardoced!')
+
+              var exception = findException(exceptions, date);
+              if (exception) {
+
+                console.log(exception)
+
+                console.log(rooms)
+
+                reservedSeats.push(rooms - exception.availabilityException.attributes.seats - seats) 
+                //TODO validare, am negativ?? sau nu ajung
+              }
+              else 
+              {
+
+                reservedSeats.push(rooms - seats)
+              }
+            });
+
+            console.log(dates)
+            console.log(reservedSeats)
           
-          for (var j=0; j< units; j++) //dates.length; j++) // altfel imi ia cu o zi in plus ca e ziua iesirii
-          {
-
-
-            const { start, end } = dateStartAndEndInUTC(dates[j]);
-
-            const createParams = {
-              listingId : parentId, //new UUID(parentId), 
-              start : start, //new Date(dates[j]),
-              end : end, //new Date(dates[j]),
-              seats : reservedSeats[j] // rooms - persons TODO !!!!!!!!!!!
-            };
-        
-            console.log(createParams);
-
-            // TODO trebuie sa vad cand rezerv... sa am rooms available minim cate persoane
-
-            var exception1 = findException(exceptions, dates[j]);
-
-            if (exception1) {
-              sdk.availabilityExceptions.delete({
-                id: exception1.id // new UUID(exception1.id)
-                }, 
-                { expand: false})
-                .then(res => {
-                  
-                    sdk.availabilityExceptions
-                    .create(createParams, {
-                      expand: true
-                    })
-                    .then(response => {
-                      console.log(response);
-                    });
-  
-              });
-            }
-            else 
+            for (var j=0; j< units; j++) //dates.length; j++) // altfel imi ia cu o zi in plus ca e ziua iesirii
             {
-              sdk.availabilityExceptions
-                    .create(createParams, {
-                      expand: true
-                    })
-                    .then(response => {
-                      console.log(response);
-                    });
-            }
+
+              const { start, end } = dateStartAndEndInUTC(dates[j]);
+
+              const createParams = {
+                listingId : parentId, //new UUID(parentId), 
+                start : start, //new Date(dates[j]),
+                end : end, //new Date(dates[j]),
+                seats : reservedSeats[j] // rooms minus persons TODO !!!!!!!!!!!
+              };
           
-              
-          }
+              console.log(createParams);
+
+              // TODO trebuie sa vad cand rezerv... sa am rooms available minim cate persoane
+
+              var exception1 = findException(exceptions, dates[j]);
+
+              if (exception1) {
+                sdk.availabilityExceptions.delete({
+                  id: exception1.availabilityException.id // new UUID(exception1.id)
+                  }, 
+                  { expand: false})
+                  .then(res => {
+                    
+                      sdk.availabilityExceptions
+                      .create(createParams, {
+                        expand: true
+                      })
+                      .then(response => {
+                        console.log(response);
+                      });
+    
+                });
+              }
+              else 
+              {
+                sdk.availabilityExceptions
+                      .create(createParams, {
+                        expand: true
+                      })
+                      .then(response => {
+                        console.log(response);
+                      });
+              }
+            
+                
+            }
 
         });
 

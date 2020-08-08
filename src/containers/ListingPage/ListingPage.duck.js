@@ -189,8 +189,10 @@ export const fetchReviews = listingId => (dispatch, getState, sdk) => {
 };
 
 const timeSlotsRequest = params => (dispatch, getState, sdk) => {
+  
+  console.log(params)
   return sdk.timeslots.query(params).then(response => {
-    //console.log(response);
+    console.log(response);
     return denormalisedResponseEntities(response);
   });
 };
@@ -224,7 +226,7 @@ export const fetchTimeSlots = listingId => (dispatch, getState, sdk) => {
     .then(timeSlots => {
       const secondRequest = bookingRange > maxTimeSlots;
 
-      //console.log(timeSlots);
+      //console.log(params);
 
       if (secondRequest) {
         const secondRange = Math.min(maxTimeSlots, bookingRange - maxTimeSlots);

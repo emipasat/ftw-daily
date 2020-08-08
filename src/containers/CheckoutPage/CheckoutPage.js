@@ -258,6 +258,20 @@ export class CheckoutPageComponent extends Component {
     // Step 1: initiate order by requesting payment from Marketplace API
     const fnRequestPayment = fnParams => {
       // fnParams should be { listingId, bookingStart, bookingEnd }
+
+      fnParams.seats =  pageData.bookingData.seats ? parseInt(pageData.bookingData.seats) : 1 // fixed fixed
+      //TODO la fixed fixed nu stiu dc e ok sa vina aici, poate de mai sus
+      // oricum, sdk i'l cere
+
+      //parseInt(pageData.bookingData.seats);
+
+      console.log(pageData)
+
+      console.log('ffffffffffffffffffff')
+
+      console.log(fnParams)
+
+
       const hasPaymentIntents =
         storedTx.attributes.protectedData && storedTx.attributes.protectedData.stripePaymentIntents;
 
@@ -333,8 +347,11 @@ export class CheckoutPageComponent extends Component {
       fnParams.bookingDates = pageData.bookingDates; // bookingStart, bookingEnd
       fnParams.persons = bookingData.persons;
 
+      //fnParams.seats =  bookingData.seats ? parseInt(bookingData.seats) : 1
+      //TODO cazul cu fixed fixed, care nu are seats
+
       //console.log(pageData);
-      //console.log(fnParams); // avem se poate sterge
+      console.log(fnParams); // avem se poate sterge
       
       return onConfirmPayment(fnParams);
     };

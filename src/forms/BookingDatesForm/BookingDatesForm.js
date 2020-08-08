@@ -220,10 +220,14 @@ export class BookingDatesFormComponent extends Component {
 
           var timeSlots1 = timeSlots;
 
+          console.log(values.persons);
+
           (categoryPersons === "variable" && values.persons > 0) ? 
                   timeSlots1 = timeSlots.filter(t=> t.attributes.seats >= values.persons)
                   :
                   timeSlots1 = timeSlots
+
+          console.log(timeSlots)
 
           
           // si uite asa resetez! e cam aiurea, fara onchange si cu var pe bookingInfo sa'l pot face null dar works

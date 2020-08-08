@@ -115,6 +115,8 @@ export class ListingPageComponent extends Component {
 
     const unitCount = nightsBetween(bookingDates.startDate, bookingDates.endDate)
 
+    console.log(bookingData)
+
     bookingData.seats = bookingData.persons;
     bookingData.units = unitCount;
 
