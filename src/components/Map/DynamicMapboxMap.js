@@ -150,7 +150,7 @@ class DynamicMapboxMap extends Component {
 
     
 
-    console.log(config.maps.mapboxAccessToken)
+    //console.log(config.maps.mapboxAccessToken)
 
     window.setFormValue('latitude', this._lngLat.lat)
     window.setFormValue('longitude', this._lngLat.lng)

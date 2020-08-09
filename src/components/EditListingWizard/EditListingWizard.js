@@ -317,7 +317,7 @@ class EditListingWizard extends Component {
     const currentListing = ensureListing(listing);
     const tabsStatus = tabsActive(isNewListingFlow, currentListing);
 
-    console.log(tabsStatus)
+    //console.log(tabsStatus)
 
     // If selectedTab is not active, redirect to the beginning of wizard
     if (!tabsStatus[selectedTab]) {

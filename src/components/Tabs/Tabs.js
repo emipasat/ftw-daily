@@ -54,7 +54,7 @@ const Tabs = props => {
   const childArray = React.Children.toArray(children);
   const selectedTabPanel = childArray.find(c => c.props.selected);
 
-  console.log(childArray)
+  //console.log(childArray)
 
   //if (!selectedTabPanel)
   //{
