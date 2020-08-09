@@ -367,7 +367,7 @@ ManageListingCardComponent.defaultProps = {
   rootClassName: null,
   actionsInProgressListingId: null,
   renderSizes: null,
-  availabilityEnabled: config.enableAvailability,
+  availabilityEnabled: true, //config.enableAvailability,
 };
 
 const { bool, func, shape, string } = PropTypes;

@@ -8,17 +8,23 @@ import MultiTouch from 'mapbox-gl-multitouch';
 import uniqueId from 'lodash/uniqueId';
 import { circlePolyline } from '../../util/maps';
 import config from '../../config';
+import Geocoder, { GeocoderAttribution, CURRENT_LOCATION_ID } from '../LocationAutocompleteInput/GeocoderMapbox';
 
 const mapMarker = mapsConfig => {
-  const { enabled, url, width, height } = mapsConfig.customMarker;
+  const { enabled, url, width, height, draggable } = mapsConfig.customMarker;
   if (enabled) {
     const element = document.createElement('div');
     element.style.backgroundImage = `url(${url})`;
     element.style.width = `${width}px`;
     element.style.height = `${height}px`;
+    
     return new window.mapboxgl.Marker({ element });
   } else {
-    return new window.mapboxgl.Marker();
+
+    //element.draggable = true;
+    //TODO here pass it trhough constructor or someting, or crete new component
+
+    return new window.mapboxgl.Marker({draggable: draggable});
   }
 };
 
@@ -58,6 +64,7 @@ class DynamicMapboxMap extends Component {
     this.fuzzyLayerId = generateFuzzyLayerId();
 
     this.updateFuzzyCirclelayer = this.updateFuzzyCirclelayer.bind(this);
+    
   }
   componentDidMount() {
     const { center, zoom, mapsConfig } = this.props;
@@ -80,6 +87,11 @@ class DynamicMapboxMap extends Component {
     } else {
       this.centerMarker = mapMarker(mapsConfig);
       this.centerMarker.setLngLat(position).addTo(this.map);
+
+
+      console.log('asdfasdfas bbbbb')
+
+      this.centerMarker.on('dragend', this.onDragEnd); //.on('dragend', onDragEnd);
     }
   }
   componentWillUnmount() {
@@ -88,6 +100,7 @@ class DynamicMapboxMap extends Component {
       this.map.remove();
       this.map = null;
     }
+    
   }
   componentDidUpdate(prevProps) {
     if (!this.map) {
@@ -122,6 +135,54 @@ class DynamicMapboxMap extends Component {
 
     // NOTE: mapsConfig changes are not handled
   }
+
+  
+
+  onDragEnd()
+  {
+
+    //console.log(e)
+    this.map ? console.log(this.map) : console.log(this._lngLat)
+
+    //console.log(this.state)
+    window.$lat = this._lngLat.lat;
+    window.$lng = this._lngLat.lng
+
+    
+
+    console.log(config.maps.mapboxAccessToken)
+
+    window.setFormValue('latitude', this._lngLat.lat)
+    window.setFormValue('longitude', this._lngLat.lng)
+
+    fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + this._lngLat.lng + "," + this._lngLat.lat + 
+      ".json?types=poi,address&access_token=" + config.maps.mapboxAccessToken)
+      .then(response => response.json())
+      .then((jsonData) => {
+        // jsonData is parsed json object received from url
+        console.log(jsonData.features[0].place_name)
+
+        window.setFormValue('address', jsonData.features[0].place_name)
+        //window.setFormValue('location', jsonData.features[0].place_name)
+      })
+      .catch((error) => {
+        // handle your errors here
+        console.error(error)
+      })
+
+
+    //window.setFormValue('address', 'adsfa ddd')
+
+
+    //console.log(window.$lat)
+
+    //var lngLat = this.centerMarker.getLngLat();
+
+    //console.log(lngLat);
+    //coordinates.style.display = 'block';
+    //coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+  }
+
   updateFuzzyCirclelayer() {
     if (!this.map) {
       // map already removed

@@ -8,6 +8,9 @@ import { ListingLink } from '../../components';
 import { EditListingLocationForm } from '../../forms';
 
 import css from './EditListingLocationPanel.css';
+import { decodeLatLng } from '../../util/urlHelpers';
+import { types as sdkTypes } from '../../util/sdkLoader';
+const { LatLng } = sdkTypes;
 
 class EditListingLocationPanel extends Component {
   constructor(props) {
@@ -32,14 +35,19 @@ class EditListingLocationPanel extends Component {
     const location = publicData && publicData.location ? publicData.location : {};
     const { address, building } = location;
 
+    console.log(geolocation)
+
     return {
       building,
-      location: locationFieldsPresent
-        ? {
-            search: address,
-            selectedPlace: { address, origin: geolocation },
-          }
-        : null,
+      // location: locationFieldsPresent
+      //   ? {
+      //       search: address,
+      //       selectedPlace: { address, origin: geolocation },
+      //     }
+      //   : null,
+      address: address,
+      latitude : geolocation.lat,
+      longitude : geolocation.lng
     };
   }
 
@@ -61,6 +69,8 @@ class EditListingLocationPanel extends Component {
     const classes = classNames(rootClassName || css.root, className);
     const currentListing = ensureOwnListing(listing);
 
+    console.log(currentListing) // attributes geolocation is latlng type sdk, publicData location is {address, building}
+
     const isPublished =
       currentListing.id && currentListing.attributes.state !== LISTING_STATE_DRAFT;
     const panelTitle = isPublished ? (
@@ -79,20 +89,33 @@ class EditListingLocationPanel extends Component {
           className={css.form}
           initialValues={this.state.initialValues}
           onSubmit={values => {
-            const { building = '', location } = values;
-            const {
-              selectedPlace: { address, origin },
-            } = location;
+            // const { building = '',  location } = values;
+            // const {
+            //   selectedPlace: { address, origin },
+            // } = location;
+            // const updateValues = {
+            //   geolocation: origin,
+            //   publicData: {
+            //     location: { address, building },
+            //   },
+            // };
+
+            const { building = '',  address, latitude, longitude } = values;
+
             const updateValues = {
-              geolocation: origin,
+              geolocation: new LatLng(latitude, longitude),
               publicData: {
                 location: { address, building },
               },
             };
+
             this.setState({
               initialValues: {
                 building,
-                location: { search: address, selectedPlace: { address, origin } },
+                //location: { search: address, selectedPlace: { address, origin } },
+                address : address,
+                latitude : latitude,
+                longitude : longitude
               },
             });
             onSubmit(updateValues);

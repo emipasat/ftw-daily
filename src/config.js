@@ -161,6 +161,8 @@ const maps = {
   customMarker: {
     enabled: false,
 
+    draggable: false,
+
     // Publicly accessible URL for the custom marker image.
     //
     // The easiest place is /public/static/icons/ folder, but then the

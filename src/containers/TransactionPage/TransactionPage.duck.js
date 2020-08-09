@@ -344,7 +344,7 @@ export const fetchTransaction = (id, txRole) => (dispatch, getState, sdk) => {
       // Fetch time slots for transactions that are in enquired state
       const canFetchTimeslots =
         txRole === 'customer' &&
-        config.enableAvailability &&
+        true && //config.enableAvailability &&
         transaction &&
         txIsEnquired(transaction);
 
@@ -512,7 +512,7 @@ export const acceptSale = id => (dispatch, getState, sdk) => {
                 seats = fixedNumberOfPersons;
                 console.log('is fixed setteed!!!!!')
 
-                
+
 
               } 
               else 
