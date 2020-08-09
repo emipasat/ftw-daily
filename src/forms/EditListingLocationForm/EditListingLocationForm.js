@@ -22,8 +22,8 @@ const identity = v => v;
 
 const { LatLng } = sdkTypes;
 
-window.$lat = '' //global variable
-window.$lng = ''
+//window.$lat = '' //global variable
+//window.$lng = ''
 
 
 class WithMarker extends React.Component  {

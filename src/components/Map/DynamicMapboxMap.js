@@ -89,9 +89,7 @@ class DynamicMapboxMap extends Component {
       this.centerMarker.setLngLat(position).addTo(this.map);
 
 
-      console.log('asdfasdfas bbbbb')
-
-      //this.centerMarker.on('dragend', this.onDragEnd); 
+      this.centerMarker.on('dragend', this.onDragEnd); 
     }
   }
   componentWillUnmount() {
@@ -138,36 +136,36 @@ class DynamicMapboxMap extends Component {
 
   
 
-  // onDragEnd()
-  // {
+  onDragEnd()
+  {
 
-  //   //console.log(e)
-  //   this.map ? console.log(this.map) : console.log(this._lngLat)
+    //console.log(e)
+    this.map ? console.log(this.map) : console.log(this._lngLat)
 
-  //   //console.log(this.state)
-  //   window.$lat = this._lngLat.lat;
-  //   window.$lng = this._lngLat.lng
+    //console.log(this.state)
+    //window.$lat = this._lngLat.lat;
+    //window.$lng = this._lngLat.lng
 
 
-  //   window.setFormValue('latitude', this._lngLat.lat)
-  //   window.setFormValue('longitude', this._lngLat.lng)
+    window.setFormValue('latitude', this._lngLat.lat)
+    window.setFormValue('longitude', this._lngLat.lng)
 
-  //   fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + this._lngLat.lng + "," + this._lngLat.lat + 
-  //     ".json?types=poi,address&access_token=" + config.maps.mapboxAccessToken)
-  //     .then(response => response.json())
-  //     .then((jsonData) => {
-  //       // jsonData is parsed json object received from url
-  //       console.log(jsonData.features[0].place_name)
+    fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + this._lngLat.lng + "," + this._lngLat.lat + 
+      ".json?types=poi,address&access_token=" + config.maps.mapboxAccessToken)
+      .then(response => response.json())
+      .then((jsonData) => {
+        // jsonData is parsed json object received from url
+        console.log(jsonData.features[0].place_name)
 
-  //       window.setFormValue('address', jsonData.features[0].place_name)
-  //       //window.setFormValue('location', jsonData.features[0].place_name)
-  //     })
-  //     .catch((error) => {
-  //       // handle your errors here
-  //       console.error(error)
-  //     })
+        window.setFormValue('address', jsonData.features[0].place_name)
+        //window.setFormValue('location', jsonData.features[0].place_name)
+      })
+      .catch((error) => {
+        // handle your errors here
+        console.error(error)
+      })
 
-  // }
+  }
 
   updateFuzzyCirclelayer() {
     if (!this.map) {
