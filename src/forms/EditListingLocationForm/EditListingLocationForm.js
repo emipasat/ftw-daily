@@ -114,7 +114,7 @@ export const EditListingLocationFormComponent = props => (
       
 
       // put the reference on a window variable of your choice here
-      //if (!window.setFormValue) window.setFormValue = form.mutators.setValue
+      if (!window.setFormValue) window.setFormValue = form.mutators.setValue
 
      
 
