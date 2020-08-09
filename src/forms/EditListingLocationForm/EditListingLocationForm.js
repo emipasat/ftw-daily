@@ -11,7 +11,7 @@ import {
   autocompletePlaceSelected,
   composeValidators,
 } from '../../util/validators';
-import { Form, LocationAutocompleteInputField, Button, FieldTextInput, MyMapboxMap, Map } from '../../components';
+import { Form, LocationAutocompleteInputField, Button, FieldTextInput, Map } from '../../components';
 
 import css from './EditListingLocationForm.css';
 
