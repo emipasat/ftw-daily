@@ -61,41 +61,11 @@ class WithMarker extends React.Component  {
         },
       },
     }
-
-    // var marker = new mapboxgl.Marker({
-    //   draggable: true
-    //   })
-    //   .setLngLat([0, 0])
-    //   .addTo(map);
-
-    
-       
-      // function onDragEnd() {
-      //   var lngLat = marker.getLngLat();
-      //   coordinates.style.display = 'block';
-      //   coordinates.innerHTML =
-      //   'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
-      // }
-       
-      // marker.on('dragend', onDragEnd);
-
-     
-
   }
 
   render()
   {
 
-    // const createMarker = (data, markerContainer) =>
-    //     new window.mapboxgl.Marker(markerContainer, { anchor: 'bottom' })
-    //       .setLngLat(['44', '42'])
-    //       .addTo(this.map);
-
-    // const markerContainer = document.createElement('div');
-    // markerContainer.setAttribute('id', '12345');
-    
-    // this.map ? createMarker({lat: '44', lng: '42'}, markerContainer) : console.log(3)
-    //console.log(props)
     return (<div style={{ height: 400 }}>
             
            <Map {...this.props1} />
@@ -144,7 +114,7 @@ export const EditListingLocationFormComponent = props => (
       
 
       // put the reference on a window variable of your choice here
-      if (!window.setFormValue) window.setFormValue = form.mutators.setValue
+      //if (!window.setFormValue) window.setFormValue = form.mutators.setValue
 
      
 
@@ -190,21 +160,6 @@ export const EditListingLocationFormComponent = props => (
       const submitDisabled = invalid || disabled || submitInProgress;
 
 
-      // componentDidMount()
-      // {
-        
-      //   // let newTime = Date.now() - this.props.date;
-      //     setInterval(() => { 
-      //         //this.setState({
-      //       //     clock: newTime;
-      //         //})
-      //         console.log(window.$lat)
-      //     }, 1000);
-        
-      // }
-
-
-      //sleep(3000)
 
       return (
         <Form className={classes} onSubmit={handleSubmit} >
@@ -275,11 +230,7 @@ export const EditListingLocationFormComponent = props => (
             
           />
 
-          {/* <MyMapboxMap /> */}
-
-         
-
-
+          
 
           <WithMarker />
 

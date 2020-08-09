@@ -8,7 +8,7 @@ import MultiTouch from 'mapbox-gl-multitouch';
 import uniqueId from 'lodash/uniqueId';
 import { circlePolyline } from '../../util/maps';
 import config from '../../config';
-import Geocoder, { GeocoderAttribution, CURRENT_LOCATION_ID } from '../LocationAutocompleteInput/GeocoderMapbox';
+//import Geocoder, { GeocoderAttribution, CURRENT_LOCATION_ID } from '../LocationAutocompleteInput/GeocoderMapbox';
 
 const mapMarker = mapsConfig => {
   const { enabled, url, width, height, draggable } = mapsConfig.customMarker;
