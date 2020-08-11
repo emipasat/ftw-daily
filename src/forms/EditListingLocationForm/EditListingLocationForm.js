@@ -24,7 +24,9 @@ const { LatLng } = sdkTypes;
 
 //window.$lat = '' //global variable
 //window.$lng = ''
-
+// KNOWHOW never use window, build will broke on heroku
+// https://medium.com/@erikras/final-form-arrays-and-mutators-13159cb7d285
+// asa am folosit mutators si a mers
 
 class WithMarker extends React.Component  {
   // component: props => (

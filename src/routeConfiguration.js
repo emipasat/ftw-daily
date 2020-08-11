@@ -27,7 +27,8 @@ import {
   TransactionPage,
   ThemeArtsAndCraftsPage,
   ThemeEnergyAndAdrenalinePage,
-  ThemeNatureWondersPage
+  ThemeNatureWondersPage,
+  WildlifePage
 } from './containers';
 
 // routeConfiguration needs to initialize containers first
@@ -79,6 +80,11 @@ const routeConfiguration = () => {
       path: '/natureWonders',
       name: 'ThemeNatureWondersPage',
       component: ThemeNatureWondersPage,
+    },
+    {
+      path: '/wildlife',
+      name: 'WildlifePage',
+      component: WildlifePage,
     },
     {
       path: '/energyAndAdrenaline',

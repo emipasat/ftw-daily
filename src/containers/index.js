@@ -28,3 +28,4 @@ export { default as TransactionPage } from './TransactionPage/TransactionPage';
 export { default as ThemeArtsAndCraftsPage } from './ThemeArtsAndCraftsPage/ThemeArtsAndCraftsPage';
 export { default as ThemeEnergyAndAdrenalinePage } from './ThemeEnergyAndAdrenalinePage/ThemeEnergyAndAdrenalinePage';
 export { default as ThemeNatureWondersPage } from './ThemeNatureWondersPage/ThemeNatureWondersPage';
+export { default as WildlifePage } from './WildlifePage/WildlifePage';

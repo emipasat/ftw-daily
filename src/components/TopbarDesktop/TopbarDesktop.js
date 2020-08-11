@@ -16,6 +16,11 @@ import {
 } from '../../components';
 import { TopbarSearchForm } from '../../forms';
 
+import Button from '@material-ui/core/Button';
+import {default as MenuMaterial} from '@material-ui/core/Menu';
+import {default as MenuItemMaterial} from '@material-ui/core/MenuItem';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+
 import css from './TopbarDesktop.css';
 
 const TopbarDesktop = props => {
@@ -32,6 +37,21 @@ const TopbarDesktop = props => {
     onSearchSubmit,
     initialSearchFormValues,
   } = props;
+
+  // material menu
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  // end material menu
+
+
+
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -151,7 +171,40 @@ const TopbarDesktop = props => {
         />
       </NamedLink>
       {search}
-      <NamedLink className={css.createPropertyLink} name="NewPropertyPage">
+      
+      {/* <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+          
+      </Button> */}
+      <a href="#" className={css.createPropertyLink} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+        <span className={css.createProperty}>
+          Become an Epic Partner <ArrowDropDownIcon style={{ color: "#FF0000" }} />
+        </span>
+      </a>
+      <MenuMaterial
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItemMaterial onClick={handleClose}>
+          <NamedLink className={css.createPropertyLink} name="NewPropertyPage">
+            <span className={css.createProperty}>
+              <FormattedMessage id="TopbarDesktop.createProperty" />
+            </span>
+          </NamedLink>
+        </MenuItemMaterial>
+        <MenuItemMaterial onClick={handleClose}>
+          <NamedLink className={css.createListingLink} name="NewListingPage">
+            <span className={css.createListing}>
+              <FormattedMessage id="TopbarDesktop.createListing" />
+            </span>
+          </NamedLink>
+        </MenuItemMaterial>
+        
+      </MenuMaterial>
+
+      {/* <NamedLink className={css.createPropertyLink} name="NewPropertyPage">
         <span className={css.createProperty}>
           <FormattedMessage id="TopbarDesktop.createProperty" />
         </span>
@@ -160,7 +213,7 @@ const TopbarDesktop = props => {
         <span className={css.createListing}>
           <FormattedMessage id="TopbarDesktop.createListing" />
         </span>
-      </NamedLink>
+      </NamedLink> */}
       {inboxLink}
       {profileMenu}
       {signupLink}

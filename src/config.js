@@ -95,7 +95,7 @@ const siteTwitterHandle = '@epicvisits';
 const siteInstagramPage = null;
 
 // Facebook page is used in SEO schema (http://schema.org/Organization)
-const siteFacebookPage = 'https://www.facebook.com/Epicvisits/';
+const siteFacebookPage = 'https://www.facebook.com/Epic-Visits-100389395026046/';
 
 // Facebook counts shares with app or page associated by this id
 // Currently it is unset, but you can read more about fb:app_id from

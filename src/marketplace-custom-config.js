@@ -180,6 +180,22 @@ export const filters = [
           key: 'pet_friendly',
           label: 'Pet friendly',
         },
+        {
+          key: 'private_pathroom',
+          label: 'Private Bathroom',
+        },
+        {
+          key: 'wifi',
+          label: 'WiFi',
+        },
+        {
+          key: 'free_parking',
+          label: 'Free Parking',
+        },
+        {
+          key: 'breakfast',
+          label: 'Breakfast',
+        },
       ],
     },
   },
@@ -204,12 +220,16 @@ export const filters = [
           label: 'Nature Wonders',
         },
         {
+          key: 'wildlife',
+          label: 'Wildlife',
+        },
+        {
           key: 'living_traditions',
           label: 'Living Traditions',
         },
         {
-          key: 'fun_with_the_kids',
-          label: 'Fun with the Kids',
+          key: 'fun_and_learning_for_kids',
+          label: 'Fun & Learning for Kids',
         },
         {
           key: 'tasty_treasures',
@@ -224,21 +244,22 @@ export const filters = [
           label: 'Romantic Escapes',
         },
         {
-          key: 'energy_and_adrenaline',
-          label: 'Energy and Adrenaline',
+          key: 'simply_chill',
+          label: 'Simply Chill',
         },
         {
           key: 'spiritual_journey',
           label: 'Spiritual Journey',
         },
         {
-          key: 'health_and_wellness',
-          label: 'Health and Wellness',
-        },
+          key: 'energy_and_adrenaline',
+          label: 'Energy and Adrenaline',
+        },        
         {
-          key: 'simply_chill',
-          label: 'Simply Chill',
+          key: 'wellness_and_well-being',
+          label: 'Wellness and Well-Being',
         },
+        
       ],
     },
   },

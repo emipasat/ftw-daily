@@ -150,6 +150,8 @@ class DynamicMapboxMap extends Component {
     window.setFormValue('latitude', this._lngLat.lat)
     window.setFormValue('longitude', this._lngLat.lng)
 
+    //TODO google geocodinig for address
+
     fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + this._lngLat.lng + "," + this._lngLat.lat + 
       ".json?types=poi,address&access_token=" + config.maps.mapboxAccessToken)
       .then(response => response.json())
