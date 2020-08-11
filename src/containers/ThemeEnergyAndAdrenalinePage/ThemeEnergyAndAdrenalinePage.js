@@ -12,7 +12,7 @@ import {
 } from '../../components';
 
 import css from './ThemeEnergyAndAdrenalinePage.css';
-//import image from './about-us-1056.jpg';
+import image from './energy_adrenaline.jpg';
 
 const ThemeEnergyAndAdrenalinePage = () => {
   const { siteTwitterHandle, siteFacebookPage } = config;
@@ -36,29 +36,24 @@ const ThemeEnergyAndAdrenalinePage = () => {
 
         <LayoutWrapperMain className={css.staticPageWrapper}>
           <h1 className={css.pageTitle}>Energy and Adrenaline.</h1>
-          {/* <img className={css.coverImage} src={image} alt="My first ice cream." /> */}
+          <img className={css.coverImage} src={image} alt=" " />
 
           <div className={css.contentWrapper}>
             <div className={css.contentSide}>
-              <p>Did you know that Finland has 3.2 million saunas - almost one sauna per person!</p>
+              <p> </p>
             </div>
 
             <div className={css.contentMain}>
               <h2>
-                Most of the Finnish saunas are located at the homes of individuals - indeed, most
-                people in Finland live in an apartment with sauna in it. In addition, lots of people
-                have lakeside summer cottages, which also typically come with a separate sauna
-                building near the waterfront.
+                Energy and adrenaline
               </h2>
 
               <p>
-                To truly experience a Finnish sauna, you need to look beyond the public saunas, and
-                instead visit a real home or cottage sauna. Saunatime makes this possible for
-                everyone. All our saunas are owned by individuals willing to let tourists and other
-                curious visitors to enter their sacred spaces.
+              We think that it is important to live fast and have memorable stays, that’s why this category is for the ones who love to feel the adrenaline rush. No matter if it is paragliding or downhill, at the end of the day you need a unique place to spend the night and recover after the adventure. Make your adventures epic and go beyond the comfort, live the story of your experience to the maximum. Choose a memorable stay and experience all wrapped up in a thematic travel package.
+
               </p>
 
-              <h3 className={css.subtitle}>Are you a sauna owner?</h3>
+              {/* <h3 className={css.subtitle}>Are you a sauna owner?</h3>
 
               <p>
                 Saunatime offers you a good way to earn some extra cash! If you're not using your
@@ -82,7 +77,7 @@ const ThemeEnergyAndAdrenalinePage = () => {
                 You can also checkout our{' '}
                 <ExternalLink href={siteFacebookPage}>Facebook</ExternalLink> and{' '}
                 <ExternalLink href={siteTwitterPage}>Twitter</ExternalLink>.
-              </p>
+              </p> */}
             </div>
           </div>
         </LayoutWrapperMain>
