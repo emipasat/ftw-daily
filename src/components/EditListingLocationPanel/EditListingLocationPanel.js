@@ -26,7 +26,7 @@ class EditListingLocationPanel extends Component {
   getInitialValues() {
     const { listing } = this.props;
     const currentListing = ensureOwnListing(listing);
-    const { geolocation, publicData } = currentListing.attributes;
+    var { geolocation, publicData } = currentListing.attributes;
 
     // Only render current search if full place object is available in the URL params
     // TODO bounds are missing - those need to be queried directly from Google Places
@@ -36,6 +36,14 @@ class EditListingLocationPanel extends Component {
     const { address, building } = location;
 
     console.log(geolocation)
+
+    if (geolocation)
+    {
+
+    }
+    else {
+      geolocation = new LatLng(44.4377401,25.954554) // TODO null sometimes when creating (not when editing?)
+    }
 
     return {
       building,
