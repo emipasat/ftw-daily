@@ -36,8 +36,8 @@
   font-style: italic;
 
   @media (--viewportMedium) {
-    width: 193px;
-    margin-right: 103px;
+    width: 293px;
+    margin-right: 30px;
     margin-top: 8px;
   }
 }
