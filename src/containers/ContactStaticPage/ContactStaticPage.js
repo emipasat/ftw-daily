@@ -49,8 +49,10 @@ const ContactStaticPage = () => {
               </h2>
 
               <p>
-              Alex, Bogdan, Raluca and Mihai are here for you 7 days a week. Let’s get in touch at: team@epicvisits.com or +4 0771 226 054.
-Epic Visits SRL is registered in Brasov, Sat Ucea de Jos, Comuna Ucea, nr. 125A, J8/814/2020, Unique Registration Code: 42509647, IBAN: RO64INGB0000999908785450 (ING Bank).</p> 
+              Alex, Bogdan, Raluca and Mihai are here for you 7 days a week. <br/><br/>
+              Let’s get in touch at: <a href="mailto:team@epicvisits.com">team@epicvisits.com</a> or +4 0771 226 054. <br/><br/>
+Epic Visits SRL is registered in Brasov, Sat Ucea de Jos, Comuna Ucea, nr. 125A, J8/814/2020, Unique Registration Code: 42509647
+<br/>IBAN: RO64INGB0000999908785450 (ING Bank).</p> 
 
               {/* <h3 className={css.subtitle}>Are you a sauna owner?</h3>
 

@@ -8,20 +8,20 @@ const { LatLng, LatLngBounds } = sdkTypes;
 // Each item in the array should be an object with a unique `id` (String) and a
 // `predictionPlace` (util.types.place) properties.
 export default [
-  // {
-  //   id: 'default-helsinki',
-  //   predictionPlace: {
-  //     address: 'Helsinki, Finland',
-  //     bounds: new LatLngBounds(new LatLng(60.29783, 25.25448), new LatLng(59.92248, 24.78287)),
-  //   },
-  // },
-  // {
-  //   id: 'default-turku',
-  //   predictionPlace: {
-  //     address: 'Turku, Finland',
-  //     bounds: new LatLngBounds(new LatLng(60.53045, 22.38197), new LatLng(60.33361, 22.06644)),
-  //   },
-  // },
+  {
+    id: 'default-bucuresti',
+    predictionPlace: {
+      address: 'Bucuresti, Romania',
+      bounds: new LatLngBounds(new LatLng(44.62120304, 26.26243385), new LatLng(44.29837997, 25.87474964)),
+    },
+  },
+  {
+    id: 'default-brasov',
+    predictionPlace: {
+      address: 'Brasov, Romania',
+      bounds: new LatLngBounds(new LatLng(45.86764652, 26.0121672), new LatLng(45.17197544, 25.16111457)),
+    },
+  },
   // {
   //   id: 'default-tampere',
   //   predictionPlace: {
