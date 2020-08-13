@@ -29,3 +29,9 @@ export { default as ThemeArtsAndCraftsPage } from './ThemeArtsAndCraftsPage/Them
 export { default as ThemeEnergyAndAdrenalinePage } from './ThemeEnergyAndAdrenalinePage/ThemeEnergyAndAdrenalinePage';
 export { default as ThemeNatureWondersPage } from './ThemeNatureWondersPage/ThemeNatureWondersPage';
 export { default as WildlifePage } from './WildlifePage/WildlifePage';
+export { default as ThemeRomanticEscapesPage } from './ThemeRomanticEscapesPage/ThemeRomanticEscapesPage';
+export { default as ThemeSimplyChillPage } from './ThemeSimplyChillPage/ThemeSimplyChillPage';
+export { default as ThemeTastyTreasuresPage } from './ThemeTastyTreasuresPage/ThemeTastyTreasuresPage';
+export { default as ThemeUrbanDiscoveriesPage } from './ThemeUrbanDiscoveriesPage/ThemeUrbanDiscoveriesPage';
+export { default as ThemeLivingTraditionsPage } from './ThemeLivingTraditionsPage/ThemeLivingTraditionsPage';
+export { default as ContactStaticPage } from './ContactStaticPage/ContactStaticPage';

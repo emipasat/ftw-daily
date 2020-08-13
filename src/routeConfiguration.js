@@ -28,7 +28,13 @@ import {
   ThemeArtsAndCraftsPage,
   ThemeEnergyAndAdrenalinePage,
   ThemeNatureWondersPage,
-  WildlifePage
+  WildlifePage,
+  ThemeRomanticEscapesPage,
+  ThemeSimplyChillPage,
+  ThemeTastyTreasuresPage,
+  ThemeUrbanDiscoveriesPage,
+  ThemeLivingTraditionsPage,
+  ContactStaticPage,
 } from './containers';
 
 // routeConfiguration needs to initialize containers first
@@ -95,6 +101,36 @@ const routeConfiguration = () => {
       path: '/artsAndCrafts',
       name: 'ThemeArtsAndCraftsPage',
       component: ThemeArtsAndCraftsPage,
+    },
+    {
+      path: '/romanticEscapes',
+      name: 'ThemeRomanticEscapesPage',
+      component: ThemeRomanticEscapesPage,
+    },
+    {
+      path: '/simplyChill',
+      name: 'ThemeSimplyChillPage',
+      component: ThemeSimplyChillPage,
+    },
+    {
+      path: '/tastyTreasures',
+      name: 'ThemeTastyTreasuresPage',
+      component: ThemeTastyTreasuresPage,
+    },
+    {
+      path: '/urbanDiscoveries',
+      name: 'ThemeUrbanDiscoveriesPage',
+      component: ThemeUrbanDiscoveriesPage,
+    },
+    {
+      path: '/livingTraditions',
+      name: 'ThemeLivingTraditionsPage',
+      component: ThemeLivingTraditionsPage,
+    },
+    {
+      path: '/contact',
+      name: 'ContactStaticPage',
+      component: ContactStaticPage,
     },
     {
       path: '/s/filters',

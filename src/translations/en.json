@@ -219,6 +219,8 @@
 
   "EditListingThemesPanel.title": "Edit the themes of {listingTitle}",
 
+  "EditListingThemesPanel.createListingTitle": "Edit the themes",
+
   "EditListingParentPanel.title": "Parent property of {listingTitle}",
   "EditListingParentPanel.createListingTitle": "What is your experience parent property?",
   "EditListingLocationForm.address": "Address",
@@ -279,6 +281,9 @@
 
   "EditListingWizard.saveEditParent": "Save parent",
   "EditListingWizard.saveEditThemes": "Save themes",
+  "EditListingWizard.saveNewThemes": "Save themes",
+
+  "EditListingWizard.saveNewParent": "Save parent",
 
 
   "EditListingWizard.saveEditAvailability": "Save availability",
@@ -1027,7 +1032,7 @@
   "StripeConnectAccountStatusBox.verificationNeededText": "In order for you to receive payments you need to add few more details to your Stripe account to verify your account.",
   "StripeConnectAccountStatusBox.verificationNeededTitle": "Stripe needs more information",
   "StripeConnectAccountStatusBox.verificationSuccessTitle": "Your Stripe account is up to date!",
-  "TermsOfServicePage.heading": "Terms of Service",
+  "TermsOfServicePage.heading": "Epic Visits terms of use",
   "TermsOfServicePage.privacyTabTitle": "Privacy Policy",
   "TermsOfServicePage.schemaTitle": "Terms of Service | {siteTitle}",
   "TermsOfServicePage.tosTabTitle": "Terms of Service",
