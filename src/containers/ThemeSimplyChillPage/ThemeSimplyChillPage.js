@@ -35,7 +35,7 @@ const ThemeSimplyChillPage = () => {
         </LayoutWrapperTopbar>
 
         <LayoutWrapperMain className={css.staticPageWrapper}>
-          <h1 className={css.pageTitle}>Nature Wonders</h1>
+          <h1 className={css.pageTitle}>Simply Chill</h1>
           <img className={css.coverImage} src={image} alt="Simply Chill" />
 
           <div className={css.contentWrapper}>
