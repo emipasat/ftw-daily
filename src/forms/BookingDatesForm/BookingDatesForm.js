@@ -11,8 +11,11 @@ import { propTypes } from '../../util/types';
 import config from '../../config';
 import { Form, PrimaryButton, FieldDateRangeInput, FieldTextInput } from '../../components';
 import EstimatedBreakdownMaybe from './EstimatedBreakdownMaybe';
+import { dateFromLocalToAPI, nightsBetween, daysBetween } from '../../util/dates';
 
 import css from './BookingDatesForm.css';
+
+
 
 const identity = v => v;
 
@@ -31,6 +34,11 @@ export class BookingDatesFormComponent extends Component {
   // focused input changes.
   onFocusedInputChange(focusedInput) {
     this.setState({ focusedInput });
+
+    console.log(this.props.fixedNumberOfNights)
+
+    //const daysToAdd = this.props.categoryDuration === "fixed" ? this.props.fixedNumberOfNights : 1; 
+
   }
 
   // In case start or end date for the booking is missing
@@ -256,8 +264,30 @@ export class BookingDatesFormComponent extends Component {
             values.persons = null;
           }
            */  
+
+          
+          if (values.bookingDates && values.bookingDates.endDate && values.bookingDates.startDate 
+            && nightsBetween(values.bookingDates.startDate, values.bookingDates.endDate) != this.state.fixedNumberOfNights
+            && categoryDuration === "fixed")
+          {
+
+            console.log(fixedNumberOfNights)
+
+            const tomorrow = moment(values.bookingDates.startDate)
+              .startOf('day')
+              //.add(1, 'days')
+              .add(daysToAdd, 'days')
+              .toDate();
+
+            values.bookingDates.endDate = tomorrow;
+
+            console.log(this.state.fixedNumberOfNights)
+            console.log(tomorrow)//this.state)
+            
+          }
           
 
+          
 
 
           return (

@@ -108,7 +108,9 @@ const BookingPanel = props => {
   const isFixedDuration = listing.attributes.publicData && listing.attributes.publicData.category_duration === "fixed"
 
 
-  console.log(listing.attributes.publicData)
+  //console.log(listing.attributes.publicData)
+
+  console.log(timeSlots)
 
   // var test 1
 
