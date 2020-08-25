@@ -23,8 +23,8 @@ import { TopbarContainer } from '../../containers';
 
 
 
-import facebookImage from '../../assets/saunatimeFacebook-1200x630.jpg';
-import twitterImage from '../../assets/saunatimeTwitter-600x314.jpg';
+import facebookImage from '../../assets/epicvisitsFacebook-1200x630.jpg';
+import twitterImage from '../../assets/epicvisitsTwitter-600x314.jpg';
 import css from './LandingPage.css';
 
 export const LandingPageComponent = props => {
