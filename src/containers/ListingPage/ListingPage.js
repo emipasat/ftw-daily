@@ -128,8 +128,8 @@ export class ListingPageComponent extends Component {
     bookingData.seats = bookingData.persons;
     bookingData.units = unitCount;
 
-    console.log(bookingData);
-    return;
+    //console.log(bookingData);
+    //return;
 
     const initialValues = {
       listing,
