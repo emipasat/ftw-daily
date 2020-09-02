@@ -21,7 +21,7 @@ const LineItemBasePriceMaybe = props => {
 
   var translationKey1 = "";
   
-console.log(categoryDuration);
+console.log(transaction);
 
   categoryDuration === "fixed" && categoryPersons === "variable" ?
       translationKey1 = "BookingBreakdown.baseUnitPersonPerNight" 
@@ -38,9 +38,9 @@ console.log(categoryDuration);
     item => item.code === unitType && !item.reversal
   );
 
-  
+  console.log(unitPurchase)
 
-  const quantity = unitPurchase ? unitPurchase.quantity.toString() : null;
+  var quantity = unitPurchase ? unitPurchase.quantity.toString() : null;
   const unitPrice = unitPurchase ? formatMoney(intl, unitPurchase.unitPrice) : null;
   const total = unitPurchase ? formatMoney(intl, unitPurchase.lineTotal) : null;
 
@@ -54,6 +54,17 @@ console.log(categoryDuration);
 
 
 console.log(translationKey1);
+console.log(quantity)
+
+categoryDuration === "fixed" && categoryPersons === "fixed" ? quantity = 1 : console.log(1)
+categoryDuration === "fixed" && categoryPersons === "fixed" ? persons = 1 : console.log(1)
+
+categoryDuration === "fixed" && categoryPersons === "variable" ?
+      translationKey1 = "BookingBreakdown.baseUnitDurationFixedPersonsVariable" : console.log(1) 
+      //TODO o suprascrie mai sus units seats
+
+      categoryDuration === "variable" && categoryPersons === "fixed" ?
+        translationKey1 = "BookingBreakdown.baseUnitNight" : console.log(1) 
 
   return quantity && total ? (
     <div className={css.lineItem}>

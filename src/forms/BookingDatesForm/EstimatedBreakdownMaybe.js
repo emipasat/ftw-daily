@@ -74,9 +74,16 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
   
   var unitCountFixedVariable = categoryPersons === "variable" && categoryDuration === "fixed" 
                                         ? unitCount * quantity : unitCountFixedFixed;
-  console.log(unitCountFixedVariable);
 
-  const totalPrice = estimatedTotalPrice(unitPrice, unitCountFixedVariable);
+
+  var unitCountVariableVariable = categoryPersons === "variable" && categoryDuration === "variable" 
+                                        ? unitCount * quantity : unitCountFixedVariable;                                      
+
+
+  console.log(unitCountVariableVariable);
+  console.log(quantity)
+
+  const totalPrice = estimatedTotalPrice(unitPrice, unitCountVariableVariable);//unitCountFixedVariable);
 
   
   // bookingStart: "Fri Mar 30 2018 12:00:00 GMT-1100 (SST)" aka "Fri Mar 30 2018 23:00:00 GMT+0000 (UTC)"
@@ -91,6 +98,7 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
   );
   const serverDayEnd = dateFromLocalToAPI(
     moment(bookingEnd)
+      //.add(1, 'days') // TODO workaround
       .startOf('day')
       .toDate()
   );
@@ -112,7 +120,7 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
           unitPrice: unitPrice,
           units: unitCountFixedFixed,
           seats: quantity,
-          quantity: new Decimal(unitCountFixedVariable), //new Decimal(unitCount), // 1 pt fixed, 2 e pt pers var
+          quantity: new Decimal(unitCountVariableVariable), //new Decimal(unitCount), // 1 pt fixed, 2 e pt pers var
           lineTotal: totalPrice,
           reversal: false,
         },
@@ -150,9 +158,13 @@ const EstimatedBreakdownMaybe = props => {
     return null;
   }
   
+  console.log(quantity)
+
   var quantity1 = categoryDuration ==="fixed" && categoryPersons == "fixed" 
       ? quantity1 = 1 
       : 
+      //categoryDuration ==="variable" && categoryPersons == "variable" ?
+      //quantity1 = quantity * persons :
       quantity1 = quantity // this is number of persons, seats. 
 
   const tx = estimatedTransaction(unitType, startDate, endDate, unitPrice, quantity1, categoryDuration, categoryPersons);
@@ -160,6 +172,7 @@ const EstimatedBreakdownMaybe = props => {
   // in estimatedTx ignor unittype si folosesc totusi nr de nopti (ca si cum ar fi nightly)
   // so far so good
 
+  console.log(tx)
   
   return (
     <BookingBreakdown
@@ -172,7 +185,7 @@ const EstimatedBreakdownMaybe = props => {
 
       //this are just to resolve base line item "naming": nights, package, person per night
       persons={persons}
-      quantity={quantity} // asta e nights or persons
+      quantity={quantity1} // asta e nights or persons
       categoryDuration={categoryDuration}
       categoryPersons={categoryPersons}
 

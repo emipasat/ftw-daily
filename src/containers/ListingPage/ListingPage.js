@@ -111,17 +111,25 @@ export class ListingPageComponent extends Component {
     // here put persons, parentId ca sa pot adauga exceptii in checkout
     // datele le am... si apoi look in exceptiile / datele parintelui si adauga
 
-    
+    console.log(listing.attributes.publicData)
 
-    const unitCount = nightsBetween(bookingDates.startDate, bookingDates.endDate)
+    const unitCount = 
+                listing.attributes.publicData.category_duration === "fixed" && 
+                listing.attributes.publicData.category_persons === "fixed" ? 
+                1 : 
+                listing.attributes.publicData.category_duration === "variable" && 
+                listing.attributes.publicData.category_persons === "variable" ? 
+                bookingData.persons * nightsBetween(bookingDates.startDate, bookingDates.endDate) 
+                :
+                nightsBetween(bookingDates.startDate, bookingDates.endDate)
 
     console.log(bookingData)
 
     bookingData.seats = bookingData.persons;
     bookingData.units = unitCount;
 
-    //console.log(bookingData);
-    //return;
+    console.log(bookingData);
+    return;
 
     const initialValues = {
       listing,

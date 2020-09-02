@@ -208,8 +208,10 @@ export class CheckoutPageComponent extends Component {
         listingId,
         bookingStart: bookingStartForAPI,
         bookingEnd: bookingEndForAPI,
-        seats: seats1, //parseInt(pageData.bookingData.seats),
-        units : pageData.bookingData.units
+        seats: pageData.listing.attributes.category_duration === "fixed" && 
+              pageData.listing.attributes.category_persons === "fixed" ? 1 : seats1, //parseInt(pageData.bookingData.seats),
+        units : pageData.listing.attributes.category_duration === "fixed" && 
+                pageData.listing.attributes.category_persons === "fixed" ? 1 : pageData.bookingData.units
       });
     }
 
@@ -632,6 +634,8 @@ export class CheckoutPageComponent extends Component {
 
     console.log(tx)
 
+    //console.log(this.state.pageData.listing.attributes.publicData)
+
     const breakdown =
       tx.id && txBooking.id ? (
         <BookingBreakdown
@@ -643,8 +647,9 @@ export class CheckoutPageComponent extends Component {
           units={this.state.pageData.bookingData.units}
           seats={this.state.pageData.bookingData.seats}
 
+          categoryDuration={this.state.pageData.listing.attributes.publicData.category_duration}
+          categoryPersons={this.state.pageData.listing.attributes.publicData.category_persons}
           
-
           booking={txBooking}
           dateType={DATE_TYPE_DATE}
         />

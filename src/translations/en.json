@@ -46,6 +46,9 @@
   
   "BookingBreakdown.baseUnitPersonPerNight": "{unitPrice} * {numberOfNights, number} {numberOfNights, plural, one {night} other {nights}} * {persons, number} {persons, plural, one {person} other {persons}} ",
   
+  "BookingBreakdown.baseUnitDurationFixedPersonsVariable": "{unitPrice} * {persons, number} {persons, plural, one {person} other {persons}} ",
+  
+
   "BookingBreakdown.baseUnitPackage": "{unitPrice} * {quantity, number} {quantity, plural, one {package} other {packages}}",
   
   

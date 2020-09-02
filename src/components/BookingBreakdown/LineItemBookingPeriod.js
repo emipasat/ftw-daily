@@ -68,7 +68,9 @@ const LineItemBookingPeriod = props => {
   const localEndDateRaw = dateFromAPIToLocalNoon(displayEnd || end);
 
   const isNightly = unitType === LINE_ITEM_NIGHT;
-  const endDay = isNightly ? localEndDateRaw : moment(localEndDateRaw).subtract(1, 'days');
+  const endDay = localEndDateRaw //isNightly ? localEndDateRaw : moment(localEndDateRaw).subtract(1, 'days');
+  // DC NU ESTE NIGHTLY, I.E. E UNIT, EI BAGA O ZI
+  // MAI BINE LASAM FARA SA BAGAM O ZI
 
   return (
     <>

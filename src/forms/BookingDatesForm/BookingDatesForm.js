@@ -172,7 +172,7 @@ export class BookingDatesFormComponent extends Component {
                 }
               : null;
 
-          //console.log(bookingData);
+          console.log(bookingData);
           var bookingInfo = bookingData ? (
             <div className={css.priceBreakdownContainer}>
               <h3 className={css.priceBreakdownTitle}>
@@ -236,6 +236,8 @@ export class BookingDatesFormComponent extends Component {
                   timeSlots1 = timeSlots
 
           console.log(timeSlots)
+
+          console.log(values)
 
           
           // si uite asa resetez! e cam aiurea, fara onchange si cu var pe bookingInfo sa'l pot face null dar works

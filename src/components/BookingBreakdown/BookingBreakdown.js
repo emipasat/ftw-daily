@@ -46,7 +46,6 @@ export const BookingBreakdownComponent = props => {
     categoryPersons
   } = props;
 
-
   const isCustomer = userRole === 'customer';
   const isProvider = userRole === 'provider';
 
@@ -102,7 +101,10 @@ export const BookingBreakdownComponent = props => {
 
       {/* this is only for unit, ce inseamna unit, etc dar noi nu avem unit, avem night */}
 
-      <LineItemUnitsMaybe transaction={transaction} unitType={unitType} />
+      <LineItemUnitsMaybe transaction={transaction} unitType={unitType} 
+        categoryDuration={categoryDuration}
+        categoryPersons={categoryPersons}
+        />
 
       {/* this is pretul * 5 nights */}
       <LineItemBasePriceMaybe transaction={transaction} 

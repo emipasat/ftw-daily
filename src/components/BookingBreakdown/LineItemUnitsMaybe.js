@@ -5,7 +5,7 @@ import { LINE_ITEM_UNITS, propTypes } from '../../util/types';
 import css from './BookingBreakdown.css';
 
 const LineItemUnitsMaybe = props => {
-  const { transaction, unitType } = props;
+  const { transaction, unitType, categoryDuration, categoryPersons } = props;
 
   if (unitType !== LINE_ITEM_UNITS) {
     return null;
@@ -35,7 +35,15 @@ const LineItemUnitsMaybe = props => {
 
   console.log(unitPurchase);
   
-  const quantity = unitPurchase.quantity;
+  var quantity = unitPurchase.quantity;
+
+  categoryDuration === "fixed" && categoryPersons === "fixed" ? 
+  
+    quantity = 1 : 
+    
+    //categoryDuration === "variable" && categoryPersons === "variable" ?
+    //quantity = 
+    console.log(1)
 
   return (
     <div className={css.lineItem}>
