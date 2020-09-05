@@ -201,6 +201,35 @@ export class CheckoutPageComponent extends Component {
       const bookingStartForAPI = dateFromLocalToAPI(bookingStart);
       const bookingEndForAPI = dateFromLocalToAPI(bookingEnd);
 
+      var seats=1
+      var units=1
+      var quantity=1
+
+      if (pageData.listing.attributes.publicData.category_duration === "fixed" && 
+            pageData.listing.attributes.publicData.category_persons === "fixed" ) 
+            {
+              seats = 1
+              units = 1
+
+            }
+        else 
+        {
+          seats = seats1
+          units = pageData.bookingData.units
+        }
+
+//console.log(pageData.listing.attributes.publicData)
+
+    if (pageData.listing.attributes.publicData.category_duration === "variable" && 
+        pageData.listing.attributes.publicData.category_persons === "variable" ) 
+        {
+          seats = 1
+          units = pageData.bookingData.units
+console.log(seats)
+console.log('xxxxx')
+        }
+    
+
       // Fetch speculated transaction for showing price in booking breakdown
       // NOTE: if unit type is line-item/units, quantity needs to be added.
       // The way to pass it to checkout page is through pageData.bookingData
@@ -208,10 +237,10 @@ export class CheckoutPageComponent extends Component {
         listingId,
         bookingStart: bookingStartForAPI,
         bookingEnd: bookingEndForAPI,
-        seats: pageData.listing.attributes.category_duration === "fixed" && 
-              pageData.listing.attributes.category_persons === "fixed" ? 1 : seats1, //parseInt(pageData.bookingData.seats),
-        units : pageData.listing.attributes.category_duration === "fixed" && 
-                pageData.listing.attributes.category_persons === "fixed" ? 1 : pageData.bookingData.units
+        seats: seats,  //pageData.listing.attributes.category_duration === "fixed" && 
+              //pageData.listing.attributes.category_persons === "fixed" ? 1 : seats1, //parseInt(pageData.bookingData.seats),
+        units : units, //pageData.listing.attributes.category_duration === "fixed" && 
+                //pageData.listing.attributes.category_persons === "fixed" ? 1 : pageData.bookingData.units
       });
     }
 

@@ -77,7 +77,8 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
 
 
   var unitCountVariableVariable = categoryPersons === "variable" && categoryDuration === "variable" 
-                                        ? unitCount * quantity : unitCountFixedVariable;                                      
+                                        ? unitCount * quantity // e bine, e in listing aici
+                                        : unitCountFixedVariable;                                      
 
 
   console.log(unitCountVariableVariable);

@@ -44,7 +44,13 @@ console.log(transaction);
   const unitPrice = unitPurchase ? formatMoney(intl, unitPurchase.unitPrice) : null;
   const total = unitPurchase ? formatMoney(intl, unitPurchase.lineTotal) : null;
 
-  var numberOfNights = parseInt(quantity/persons);
+  var numberOfNights = parseInt(quantity/persons ? 1 : seats); // nu avem persons la var var dar avem seats
+
+  console.log(numberOfNights)
+  console.log(units) // asta e egal quantity la var var
+  console.log(seats)
+  console.log(quantity)
+  console.log(persons)
 
 
     // cazul din checkout, nu din listing estimation
@@ -66,10 +72,23 @@ categoryDuration === "fixed" && categoryPersons === "variable" ?
       categoryDuration === "variable" && categoryPersons === "fixed" ?
         translationKey1 = "BookingBreakdown.baseUnitNight" : console.log(1) 
 
+categoryDuration === "variable" && categoryPersons === "variable" ? persons = seats : console.log(1)
+categoryDuration === "variable" && categoryPersons === "variable" ? quantity = numberOfNights : console.log(1)
+categoryDuration === "variable" && categoryPersons === "variable" ? numberOfNights = parseInt(quantity/ seats) : console.log(1)
+
+console.log(quantity)
+console.log(numberOfNights)
+
   return quantity && total ? (
     <div className={css.lineItem}>
       <span className={css.itemLabel}>
-        <FormattedMessage id={translationKey1} values={{ unitPrice, quantity, numberOfNights, persons }} />
+        
+
+         <FormattedMessage id={translationKey1} values={{ unitPrice, quantity, numberOfNights, persons }} />
+         
+         
+
+        
       </span>
       <span className={css.itemValue}>{total}</span>
     </div>
