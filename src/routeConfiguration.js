@@ -22,6 +22,7 @@ import {
   ProfileSettingsPage,
   MyPropertiesPage,
   SearchPage,
+  ThemeTestPage,
   StyleguidePage,
   TermsOfServicePage,
   TransactionPage,
@@ -81,6 +82,12 @@ const routeConfiguration = () => {
       name: 'SearchPage',
       component: props => <SearchPage {...props} />,
       loadData: SearchPage.loadData,
+    },
+    {
+      path: '/th/:pub_themes',
+      name: 'ThemeTestPage',
+      component: props => <ThemeTestPage {...props} />,
+      loadData: ThemeTestPage.loadData,
     },
     {
       path: '/natureWonders',

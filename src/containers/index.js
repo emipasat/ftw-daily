@@ -20,6 +20,7 @@ export { default as PrivacyPolicyPage } from './PrivacyPolicyPage/PrivacyPolicyP
 export { default as ProfilePage } from './ProfilePage/ProfilePage';
 export { default as ProfileSettingsPage } from './ProfileSettingsPage/ProfileSettingsPage';
 export { default as SearchPage } from './SearchPage/SearchPage';
+export { default as ThemeTestPage } from './ThemeTestPage/ThemeTestPage';
 export { default as StaticPage } from './StaticPage/StaticPage';
 export { default as StyleguidePage } from './StyleguidePage/StyleguidePage';
 export { default as TermsOfServicePage } from './TermsOfServicePage/TermsOfServicePage';

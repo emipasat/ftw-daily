@@ -64,7 +64,7 @@ const locationLink = (name, image, searchQuery) => {
 const natureWondersLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="ThemeNatureWondersPage" className={css.location}>
+    <a href="/th/nature_wonders" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -76,14 +76,14 @@ const natureWondersLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 
 const artsAndCraftsLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="ThemeArtsAndCraftsPage" className={css.location}>
+    <a href="th/arts_and_craft" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -95,14 +95,14 @@ const artsAndCraftsLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 
 const energyAndAdrenalineLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="ThemeEnergyAndAdrenalinePage" className={css.location}>
+    <a href="th/energy_and_adrenaline" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -114,14 +114,14 @@ const energyAndAdrenalineLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 
 const wildlifeLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="WildlifePage" className={css.location}>
+    <a href="th/wildlife" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -133,14 +133,14 @@ const wildlifeLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 
 const tastyTreasuresLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="ThemeTastyTreasuresPage" className={css.location}>
+    <a href="th/tasty_treasures" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -152,14 +152,14 @@ const tastyTreasuresLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 
 const romanticEscapesLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="ThemeRomanticEscapesPage" className={css.location}>
+    <a href="th/romantic_escapes" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -171,14 +171,14 @@ const romanticEscapesLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 
 const urbanDiscoveriesLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="ThemeUrbanDiscoveriesPage" className={css.location}>
+    <a href="th/urban_discoveries" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -190,14 +190,14 @@ const urbanDiscoveriesLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 
 const simplyChillLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="ThemeSimplyChillPage" className={css.location}>
+    <a href="th/simply_chill" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -209,14 +209,14 @@ const simplyChillLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 
 const livingTraditionsLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <NamedLink name="ThemeLivingTraditionsPage" className={css.location}>
+    <a href="th/living_traditions" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -228,7 +228,7 @@ const livingTraditionsLink = (name, image) => {
           values={{ location: nameText }}
         />
       </div>
-    </NamedLink>
+    </a>
   );
 };
 

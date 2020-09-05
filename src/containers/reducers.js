@@ -18,6 +18,7 @@ import MyPropertiesPage from './MyPropertiesPage/MyPropertiesPage.duck';
 import ProfilePage from './ProfilePage/ProfilePage.duck';
 import ProfileSettingsPage from './ProfileSettingsPage/ProfileSettingsPage.duck';
 import SearchPage from './SearchPage/SearchPage.duck';
+import ThemeTestPage from './ThemeTestPage/ThemeTestPage.duck';
 import StripePayoutPage from './StripePayoutPage/StripePayoutPage.duck';
 import TransactionPage from './TransactionPage/TransactionPage.duck';
 
@@ -38,4 +39,5 @@ export {
   SearchPage,
   StripePayoutPage,
   TransactionPage,
+  ThemeTestPage,
 };
