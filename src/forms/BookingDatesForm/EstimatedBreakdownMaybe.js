@@ -68,13 +68,16 @@ const estimatedTransaction = (unitType, bookingStart, bookingEnd, unitPrice, qua
 
     // de fapt, eu fac un unit reinventat. ar trebui investigat cu seats si units mai corect
 
+  console.log(unitCount) // nr of nights din form
+  console.log(quantity) // ce e in field persons
+
   var unitCountFixedFixed = categoryDuration === "fixed" && categoryPersons === "fixed" ? 1 : unitCount;
   // iar night devine "package" SAU inlocuiesc cu totul line item?
 
   
   var unitCountFixedVariable = categoryPersons === "variable" && categoryDuration === "fixed" 
-                                        ? unitCount * quantity : unitCountFixedFixed;
-
+                                        //? unitCount * quantity : unitCountFixedFixed;
+                                        ? quantity : unitCountFixedFixed; // doar quantity! 
 
   var unitCountVariableVariable = categoryPersons === "variable" && categoryDuration === "variable" 
                                         ? unitCount * quantity // e bine, e in listing aici
@@ -174,6 +177,10 @@ const EstimatedBreakdownMaybe = props => {
   // so far so good
 
   console.log(tx)
+
+  console.log(persons)
+  console.log(quantity1)
+  // sunt egale, persons adica. niciuna nu e nights
   
   return (
     <BookingBreakdown

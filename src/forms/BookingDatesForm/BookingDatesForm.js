@@ -209,7 +209,9 @@ export class BookingDatesFormComponent extends Component {
           };
 
 
-          const daysToAdd = categoryDuration === "fixed" ? fixedNumberOfNights : 1; 
+          const daysToAdd = categoryDuration === "fixed" ? parseInt(fixedNumberOfNights)   : 1; 
+
+          console.log(daysToAdd)
 
           const now = moment();
           const today = now.startOf('day').toDate();
@@ -218,6 +220,9 @@ export class BookingDatesFormComponent extends Component {
             //.add(1, 'days')
             .add(daysToAdd, 'days')
             .toDate();
+
+          console.log(tomorrow)
+
           const startDatePlaceholderText =
             startDatePlaceholder || intl.formatDate(today, dateFormatOptions);
           const endDatePlaceholderText =

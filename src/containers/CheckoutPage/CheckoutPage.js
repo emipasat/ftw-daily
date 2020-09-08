@@ -228,6 +228,15 @@ export class CheckoutPageComponent extends Component {
 console.log(seats)
 console.log('xxxxx')
         }
+
+        if (pageData.listing.attributes.publicData.category_duration === "fixed" && 
+          pageData.listing.attributes.publicData.category_persons === "variable" ) 
+        {
+          seats = seats1
+          units = 1 //pageData.bookingData.units
+console.log(seats)
+console.log('yyyyy')
+        }
     
 
       // Fetch speculated transaction for showing price in booking breakdown
