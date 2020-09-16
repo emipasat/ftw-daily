@@ -44,7 +44,7 @@ export const openGraphMetaProps = data => {
     { property: 'og:description', content: description },
     { property: 'og:title', content: title },
     { property: 'og:type', content: contentType },
-    { property: 'og:url', content: url },
+    { property: 'og:url', content: "https://www.epicvisits.com" },//url },
     { property: 'og:locale', content: ensureOpenGraphLocale(locale) },
   ];
 
