@@ -4,7 +4,7 @@ import { FormattedMessage, intlShape, injectIntl } from '../../util/reactIntl';
 import classNames from 'classnames';
 import { lazyLoadWithDimensions } from '../../util/contextHelpers';
 import { LINE_ITEM_DAY, LINE_ITEM_NIGHT, propTypes } from '../../util/types';
-import { formatMoney } from '../../util/currency';
+import { getPriceRepresentation, formatMoney } from '../../util/currency';
 import { ensureListing, ensureUser } from '../../util/data';
 import { richText } from '../../util/richText';
 import { createSlug } from '../../util/urlHelpers';
@@ -14,6 +14,27 @@ import { NamedLink, ResponsiveImage } from '../../components';
 import css from './ListingCard.css';
 
 const MIN_LENGTH_FOR_LONG_WORDS = 10;
+
+// const getPriceRepresentation = (category_duration, category_persons) => {
+//     var whatMeansPrice = "per unit";
+//     if (category_duration == "fixed" && category_persons == "fixed")
+//     {
+//       whatMeansPrice = "per package";
+//     }
+//     if (category_duration == "fixed" && category_persons == "variable")
+//     {
+//       whatMeansPrice = "per person";
+//     }
+//     if (category_duration == "variable" && category_persons == "fixed")
+//     {
+//       whatMeansPrice = "per package per night";
+//     }
+//     if (category_duration == "variable" && category_persons == "variable")
+//     {
+//       whatMeansPrice = "per person per night";
+//     }
+//     return whatMeansPrice;
+// }
 
 const priceData = (price, intl) => {
   if (price && price.currency === config.currency) {
@@ -65,6 +86,30 @@ export const ListingCardComponent = props => {
     ? 'ListingCard.perDay'
     : 'ListingCard.perUnit';
 
+    console.log(currentListing)
+
+    // var whatMeansPrice = "per unit";
+    // if (currentListing.attributes.publicData.category_duration == "fixed" && 
+    //     currentListing.attributes.publicData.category_persons == "fixed")
+    // {
+    //   whatMeansPrice = "per package";
+    // }
+    // if (currentListing.attributes.publicData.category_duration == "fixed" && 
+    //     currentListing.attributes.publicData.category_persons == "variable")
+    // {
+    //   whatMeansPrice = "per person";
+    // }
+    // if (currentListing.attributes.publicData.category_duration == "variable" && 
+    //     currentListing.attributes.publicData.category_persons == "fixed")
+    // {
+    //   whatMeansPrice = "per package per night";
+    // }
+    // if (currentListing.attributes.publicData.category_duration == "variable" && 
+    //     currentListing.attributes.publicData.category_persons == "variable")
+    // {
+    //   whatMeansPrice = "per person per night";
+    // }
+
   return (
     <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
       <div
@@ -88,7 +133,8 @@ export const ListingCardComponent = props => {
             {formattedPrice}
           </div>
           <div className={css.perUnit}>
-            <FormattedMessage id={unitTranslationKey} />
+            {/* <FormattedMessage id={unitTranslationKey} /> */}
+            {getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)}
           </div>
         </div>
         <div className={css.mainInfo}>

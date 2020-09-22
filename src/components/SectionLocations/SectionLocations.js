@@ -15,13 +15,14 @@ import rukaImage from './images/location_ruka.jpg';
 
 import natureWondersImage from './images/nature_wonders.jpg';
 import energyAdrenalineImage from './images/energy_adrenaline.jpg';
-import funAndLearningForKidsImage from './images/fun_and_learning_for_kids.jpg';
+//import funAndLearningForKidsImage from './images/fun_and_learning_for_kids.jpg';
 import wildlifeImage from './images/wildlife.jpg';
 import urbanDiscoveriesImage from './images/urban_discoveries.jpg';
 import tastyTreasuresImage from './images/tasty_treasures.jpg';
 import romanticEscapesImage from './images/romantic_escapes.jpg';
 import simplyChillImage from './images/simply_chill.jpg';
 import livingTraditionsImage from './images/living_traditions.jpg';
+import funAndLearningForKidsImage from './images/fun_and_learning_for_kids.jpg';
 
 import CarouselSlide from './CarouselSlide';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -122,6 +123,25 @@ const wildlifeLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
     <a href="th/wildlife" className={css.location}>
+      <div className={css.imageWrapper}>
+        <div className={css.aspectWrapper}>
+          <LazyImage src={image} alt={name} className={css.locationImage} />
+        </div>
+      </div>
+      <div className={css.linkText}>
+        <FormattedMessage
+          id="SectionLocations.listingsInLocation"
+          values={{ location: nameText }}
+        />
+      </div>
+    </a>
+  );
+};
+
+const funAndLearningForKidsLink = (name, image) => {
+  const nameText = <span className={css.locationName}>{name}</span>;
+  return (
+    <a href="th/fun_and_learning_for_kids" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -379,6 +399,15 @@ const SectionLocations = props => {
            livingTraditionsImage,
            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
          )}
+          </Card>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Card >
+          {funAndLearningForKidsLink(
+            'Fun and learning for kids',
+            funAndLearningForKidsImage,
+            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
+          )}
           </Card>
         </Grid>
       </Grid>

@@ -12,6 +12,8 @@ import config from '../../config';
 import { propTypes } from '../../util/types';
 import { ensurePaymentMethodCard } from '../../util/data';
 
+//import ReactGA from 'react-ga';
+
 import {
   Form,
   PrimaryButton,
@@ -477,11 +479,24 @@ class StripePaymentForm extends Component {
             <span className={css.errorMessage}>{paymentErrorMessage}</span>
           ) : null}
           <p className={css.paymentInfo}>{paymentInfo}</p>
+
+          {/* onClick={
+              ()=> ReactGA.event({
+                  category: 'users_payment',
+                  action: 'users_click',
+                  label: 'users_checkout_form'})
+            } */}
+
           <PrimaryButton
             className={css.submitButton}
             type="submit"
             inProgress={submitInProgress}
             disabled={submitDisabled}
+
+            
+            
+            
+            
           >
             {billingDetailsNeeded ? (
               <FormattedMessage id="StripePaymentForm.submitPaymentInfo" />

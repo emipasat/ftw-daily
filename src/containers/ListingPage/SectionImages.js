@@ -3,6 +3,11 @@ import { FormattedMessage } from '../../util/reactIntl';
 import { ResponsiveImage, Modal, ImageCarousel } from '../../components';
 import ActionBarMaybe from './ActionBarMaybe';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon, faWifi, faBath, faCar } from '@fortawesome/free-solid-svg-icons'
+
+import Grid from '@material-ui/core/Grid';
+
 import css from './ListingPage.css';
 
 const SectionImages = props => {
@@ -42,6 +47,26 @@ const SectionImages = props => {
       <div className={css.threeToTwoWrapper}>
         <div className={css.aspectWrapper} onClick={handleViewPhotosClick}>
           {actionBar}
+
+          {/* <Grid container spacing={3} style={{ position: 'absolute', top: 50, left: 50 }}>
+            
+            <Grid item xs={6} sm={3}>
+              <FontAwesomeIcon icon={faMoon} inverse />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <FontAwesomeIcon icon={faWifi} inverse  />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <FontAwesomeIcon icon={faBath} inverse />
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <FontAwesomeIcon icon={faCar} inverse style={{textAlign: 'center'}} />
+            </Grid>
+
+          </Grid> */}
+          
+          {/* style={{ position: 'absolute', top: 160, left: 100 }} */}
+
           <ResponsiveImage
             rootClassName={css.rootForImage}
             alt={title}

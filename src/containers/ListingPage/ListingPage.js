@@ -11,6 +11,7 @@ import { findOptionsForSelectFilter } from '../../util/search';
 import { LISTING_STATE_PENDING_APPROVAL, LISTING_STATE_CLOSED, propTypes } from '../../util/types';
 import { types as sdkTypes } from '../../util/sdkLoader';
 import { dateFromLocalToAPI, nightsBetween, daysBetween } from '../../util/dates';
+
 import {
   LISTING_PAGE_DRAFT_VARIANT,
   LISTING_PAGE_PENDING_APPROVAL_VARIANT,
@@ -436,6 +437,8 @@ export class ListingPageComponent extends Component {
           <LayoutWrapperTopbar>{topbar}</LayoutWrapperTopbar>
           <LayoutWrapperMain>
             <div>
+            
+              
               <SectionImages
                 title={title}
                 listing={currentListing}
@@ -460,6 +463,7 @@ export class ListingPageComponent extends Component {
                     richTitle={richTitle}
                     category={category}
                     hostLink={hostLink}
+                    currentListing={currentListing}
                     showContactUser={showContactUser}
                     onContactUser={this.onContactUser}
                   />

@@ -4,6 +4,8 @@ import { FormattedMessage, intlShape } from '../../util/reactIntl';
 import classNames from 'classnames';
 import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration';
 import { propTypes } from '../../util/types';
+//import ReactGA from 'react-ga';
+
 import {
   Avatar,
   InlineTextButton,
@@ -145,16 +147,35 @@ const TopbarDesktop = props => {
     </Menu>
   ) : null;
 
+
+  // onClick={
+  //   ReactGA.event({
+  //       category: 'users_signup',
+  //       action: 'users_click',
+  //       label: 'users_signup_top_link'})
+  // }
+
   const signupLink = isAuthenticatedOrJustHydrated ? null : (
-    <NamedLink name="SignupPage" className={css.signupLink}>
+    <NamedLink name="SignupPage" className={css.signupLink}
+      
+    >
       <span className={css.signup}>
         <FormattedMessage id="TopbarDesktop.signup" />
       </span>
     </NamedLink>
   );
 
+  // onClick={
+  //   ReactGA.event({
+  //       category: 'users_login',
+  //       action: 'users_click',
+  //       label: 'users_login_top_link'})
+  // }
+  
   const loginLink = isAuthenticatedOrJustHydrated ? null : (
-    <NamedLink name="LoginPage" className={css.loginLink}>
+    <NamedLink name="LoginPage" className={css.loginLink}
+      
+    >
       <span className={css.login}>
         <FormattedMessage id="TopbarDesktop.login" />
       </span>

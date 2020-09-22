@@ -287,3 +287,25 @@ export const formatCurrencyMajorUnit = (intl, currency, valueWithoutSubunits) =>
 
   return intl.formatNumber(valueAsNumber, numberFormatOptions);
 };
+
+export const getPriceRepresentation = (category_duration, category_persons) => {
+  var whatMeansPrice = "per unit";
+  if (category_duration == "fixed" && category_persons == "fixed")
+  {
+    whatMeansPrice = "per package";
+  }
+  if (category_duration == "fixed" && category_persons == "variable")
+  {
+    whatMeansPrice = "per person";
+  }
+  if (category_duration == "variable" && category_persons == "fixed")
+  {
+    whatMeansPrice = "per package per night";
+  }
+  if (category_duration == "variable" && category_persons == "variable")
+  {
+    whatMeansPrice = "per person per night";
+  }
+  return whatMeansPrice;
+}
+

@@ -6,6 +6,7 @@ import { Form as FinalForm } from 'react-final-form';
 import classNames from 'classnames';
 import * as validators from '../../util/validators';
 import { Form, PrimaryButton, FieldTextInput } from '../../components';
+//import ReactGA from 'react-ga';
 
 import css from './SignupForm.css';
 
@@ -184,7 +185,20 @@ const SignupFormComponent = props => (
                 />
               </span>
             </p>
-            <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}>
+
+
+            {/* onClick={
+                 ReactGA.event({
+                    category: 'users_signup',
+                    action: 'users_click',
+                    label: 'users_signup_form'})
+              } */}
+
+            <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}
+              
+
+              
+              >
               <FormattedMessage id="SignupForm.signUp" />
             </PrimaryButton>
           </div>

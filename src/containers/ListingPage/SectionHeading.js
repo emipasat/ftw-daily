@@ -3,6 +3,8 @@ import { FormattedMessage } from '../../util/reactIntl';
 import { InlineTextButton } from '../../components';
 import { LINE_ITEM_NIGHT, LINE_ITEM_DAY } from '../../util/types';
 import config from '../../config';
+import { getPriceRepresentation, formatMoney } from '../../util/currency';
+
 
 import css from './ListingPage.css';
 
@@ -15,6 +17,7 @@ const SectionHeading = props => {
     hostLink,
     showContactUser,
     onContactUser,
+    currentListing
   } = props;
 
   const unitType = config.bookingUnitType;
@@ -34,7 +37,8 @@ const SectionHeading = props => {
           {formattedPrice}
         </div>
         <div className={css.desktopPerUnit}>
-          <FormattedMessage id={unitTranslationKey} />
+          {/* <FormattedMessage id={unitTranslationKey} /> */}
+          {getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)}
         </div>
       </div>
       <div className={css.heading}>

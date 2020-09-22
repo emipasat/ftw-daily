@@ -17,6 +17,7 @@ import { manageDisableScrolling, isScrollingDisabled } from '../../ducks/UI.duck
 import { ModalInMobile, Page } from '../../components';
 import { TopbarContainer } from '../../containers';
 
+
 //var parse = require('html-react-parser');
 
 //import image from "./Simply Chill".replace(" ", "_").toLowerCase() + ".jpg"
@@ -49,7 +50,7 @@ const images = [
   { id: 'wildlife', src: './wildlife.jpg', title: 'Wildlife', description: 'A truly epic travel experience includes interactions with wildlife in their natural habitats. Luckily, Romania has a huge virtually-untouched area of mountains and is the home to some of Europe\'s most exciting species, including Brown Bears and Wolves. With that in mind, here you can explore the stunning wildlife of Romania, and find the best stays and experiences, all wrapped up in thematic travel packages. Enjoy!' },
   { id: 'living_traditions', src: './living_traditions.jpg', title: 'Living Traditions', description: 'Where are your roots? What makes you think about childhood? If the answer lies in tradition, then this is the place to start searching for your next vacation. Our roots are in fact living traditions, where communities come together and build unique places left for us to be discovered. Start your epic journey by rediscovering the magic of old stories, folk music, traditional houses, and become a part of the community that keeps the tradition alive. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
   
-  //{ id: 'fun_and_learning_for_kids', src: './fun_and_learning_for_kids.jpg', title: 'Fun & Learning for Kids', description: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
+  { id: 'fun_and_learning_for_kids', src: './fun_and_learning_for_kids.jpg', title: 'Fun & Learning for Kids', description: 'It’s the perfect moment to spend some quality time with your family. Although family time gives great fulfillment and is a great opportunity to reconnect, it’s sometimes quite a challenge to please every member of the family. Not to worry. Here you can find epic visits designed for you. Where you can explore, learn and most important, have fun together. Team up and get ready for some family adventure! Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
   
   { id: 'tasty_treasures', src: './tasty_treasures.jpg', title: 'Tasty Treasures', description: 'If you are an epicure, gourmet, gourmand, gastronome, or foodie, then you are in the right category. No matter how they call us, we all have in common the love for good, healthy and tasty food wherever and whenever we travel. Here you can discover the treasures of perfect balanced tastes and unique housing experiences. There is a saying that the love for travel goes through the stomach, and it is very true especially when it comes to epic travellers. Your journey is unique and why don’t you also make your food experience to be the same? Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
   { id: 'urban_discoveries', src: './urban_discoveries.jpg', title: 'Urban Discoveries', description: 'Living legends, hidden gems, a city’s best secrets are now being revealed. Take a break from Lonely Planet and start to discover a wholesome city experience where you learn and live like an urban Indiana Jones...for a couple of days at least. Explore the thrills of discovery. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
@@ -69,6 +70,8 @@ const images = [
 const pathToThemeImages = require.context('./', true);
 
 const getCats = () => images.map(name => `<img src='${pathToThemeImages(name.src, true)}' alt='${name.title}' />`);
+
+//const element = <FontAwesomeIcon icon={faCoffee} style={{ position: 'absolute', top: 30, left: 10 }} />
 
 // Pagination page size might need to be dynamic on responsive page layouts
 // Current design has max 3 columns 12 is divisible by 2 and 3
@@ -205,6 +208,7 @@ export class ThemeTestPageComponent extends Component {
       >
 
 
+      
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>
           <TopbarContainer
@@ -220,7 +224,9 @@ export class ThemeTestPageComponent extends Component {
 
           {/* {parse(getCats()[0])} */}
 
-          {/* {getCats()[0]} */}
+          {/* style={{ position: 'absolute', top: 30, left: 10 }} */}
+
+          
 
           <div dangerouslySetInnerHTML={{__html: getCats()[position]}} />
 
