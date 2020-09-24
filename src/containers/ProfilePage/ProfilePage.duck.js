@@ -130,11 +130,21 @@ export const queryUserListings = userId => (dispatch, getState, sdk) => {
       'fields.image': ['variants.landscape-crop', 'variants.landscape-crop2x'],
     })
     .then(response => {
+
+
+      var response1 = response;//.data.data.filter(x=>x.attributes.price.amount > 0);
+
+      response1.data.data = response.data.data.filter(x=>x.attributes.price.amount > 0);
+      response1.data.meta.totalItems = response.data.data.length;
+
+      console.log(response1);
+
+
       // Pick only the id and type properties from the response listings
-      const listingRefs = response.data.data.map(({ id, type }) => ({ id, type }));
-      dispatch(addMarketplaceEntities(response));
+      const listingRefs = response1.data.data.map(({ id, type }) => ({ id, type }));
+      dispatch(addMarketplaceEntities(response1));
       dispatch(queryListingsSuccess(listingRefs));
-      return response;
+      return response1;
     })
     .catch(e => dispatch(queryListingsError(storableError(e))));
 };
