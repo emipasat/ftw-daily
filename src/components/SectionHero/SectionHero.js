@@ -4,7 +4,13 @@ import { FormattedMessage } from '../../util/reactIntl';
 import classNames from 'classnames';
 import { NamedLink } from '../../components';
 
+//import {gaEvent, initGA} from '../../components/Tracking';
+import ReactGA from 'react-ga';
+
 import css from './SectionHero.css';
+
+const trackingId = "UA-174276239-1"; 
+ReactGA.initialize(trackingId);
 
 const SectionHero = props => {
   const { rootClassName, className } = props;
@@ -27,6 +33,11 @@ const SectionHero = props => {
               'address=Romania&bounds=50.06959932%2C29.79693177%2C42.06277332%2C20.13861532',
           }}
           className={css.heroButton}
+          onClick={ () => ReactGA.event({
+            category: 'user',
+            action: 'click_browse',
+            label: 'homepage'
+          }) }
         >
           <FormattedMessage id="SectionHero.browseButton" />
         </NamedLink>

@@ -16,4 +16,10 @@ export class GoogleAnalyticsHandler {
     this.ga('set', 'page', url);
     this.ga('send', 'pageview');
   }
+
+  trackEvent(event, category, label)
+  {
+    this.ga('send', event, category, label);
+    console.log('event sent to analytics!');
+  }
 }
