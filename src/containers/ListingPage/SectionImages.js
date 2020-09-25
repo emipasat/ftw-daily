@@ -25,6 +25,8 @@ const SectionImages = props => {
   const hasImages = listing.images && listing.images.length > 0;
   const firstImage = hasImages ? listing.images[0] : null;
 
+  
+
   // Action bar is wrapped with a div that prevents the click events
   // to the parent that would otherwise open the image carousel
   const actionBar = listing.id ? (

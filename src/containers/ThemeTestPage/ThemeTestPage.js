@@ -18,6 +18,19 @@ import { ModalInMobile, Page } from '../../components';
 import { TopbarContainer } from '../../containers';
 
 
+
+
+
+// ReactDOM.render(
+//   <ResponsiveImage
+//     src="https://lorempixel.com/1200/800/"
+//     width={ 1200 }
+//     height={ 800 } />,
+//   document.getElementById( 'app' )
+// );
+
+
+
 //var parse = require('html-react-parser');
 
 //import image from "./Simply Chill".replace(" ", "_").toLowerCase() + ".jpg"
@@ -67,9 +80,16 @@ const images = [
   
 ];
 
+
 const pathToThemeImages = require.context('./', true);
 
-const getCats = () => images.map(name => `<img src='${pathToThemeImages(name.src, true)}' alt='${name.title}' />`);
+const getCats = () => images.map(name => `<img src='${pathToThemeImages(name.src, true)}' srcSet="${pathToThemeImages(name.src.replace('.jpg', '_300.jpg'), true)} 300w, ${pathToThemeImages(name.src.replace('.jpg', '_768.jpg'), true)} 768w, ${pathToThemeImages(name.src.replace('.jpg', '_1280.jpg'), true)} 1280w" alt='${name.title}' />`);
+
+const getCats1 = () => images.map(name => pathToThemeImages(name.src, true));
+
+// const ResponsiveImage = () => (
+//   <img src={small} srcSet={`${small} 300w, ${medium} 768w, ${large} 1280w`} />
+// );
 
 //const element = <FontAwesomeIcon icon={faCoffee} style={{ position: 'absolute', top: 30, left: 10 }} />
 
@@ -78,6 +98,7 @@ const getCats = () => images.map(name => `<img src='${pathToThemeImages(name.src
 // So, there's enough cards to fill all columns on full pagination pages
 const RESULT_PAGE_SIZE = 24;
 const MODAL_BREAKPOINT = 768; // Search is in modal on mobile layout
+
 
 export class ThemeTestPageComponent extends Component {
   constructor(props) {
@@ -186,6 +207,12 @@ export class ThemeTestPageComponent extends Component {
     const schema = {};
 
 
+    const firstImage = getCats1()[position];
+    const title1 = images[position].title;
+
+    console.log(firstImage)
+
+
     //const image1 = images.filter(x=>x.title === "Simply Chill")[0].src
     
     //import(image1).then(image => {this.setState({url: image})})
@@ -229,6 +256,9 @@ export class ThemeTestPageComponent extends Component {
           
 
           <div dangerouslySetInnerHTML={{__html: getCats()[position]}} />
+
+
+
 
           <div className={css1.contentWrapper}>
             <div className={css1.contentSide}>

@@ -66,6 +66,7 @@ const ResponsiveImage = props => {
 
   const imageVariants = image.attributes.variants;
 
+
   const srcSet = variants
     .map(variantName => {
       const variant = imageVariants[variantName];

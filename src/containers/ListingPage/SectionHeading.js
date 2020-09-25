@@ -30,6 +30,8 @@ const SectionHeading = props => {
     ? 'ListingPage.perDay'
     : 'ListingPage.perUnit';
 
+  currentListing.attributes.publicData ? console.log("null") : console.log("ok")
+
   return (
     <div className={css.sectionHeading}>
       <div className={css.desktopPriceContainer}>
@@ -38,7 +40,9 @@ const SectionHeading = props => {
         </div>
         <div className={css.desktopPerUnit}>
           {/* <FormattedMessage id={unitTranslationKey} /> */}
-          {getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)}
+          {currentListing.attributes.publicData ? 
+            getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)
+          : console.log('null')}
         </div>
       </div>
       <div className={css.heading}>
