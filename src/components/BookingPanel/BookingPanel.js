@@ -6,7 +6,7 @@ import { arrayOf, bool, func, node, oneOfType, shape, string } from 'prop-types'
 import classNames from 'classnames';
 import omit from 'lodash/omit';
 import { propTypes, LISTING_STATE_CLOSED, LINE_ITEM_NIGHT, LINE_ITEM_DAY } from '../../util/types';
-import { formatMoney } from '../../util/currency';
+import { formatMoney, getPriceRepresentation } from '../../util/currency';
 import { parse, stringify } from '../../util/urlHelpers';
 import config from '../../config';
 import { ModalInMobile, Button } from '../../components';
@@ -184,7 +184,9 @@ const BookingPanel = props => {
             {formattedPrice}
           </div>
           <div className={css.perUnit}>
-            <FormattedMessage id={unitTranslationKey} />
+            {/* <FormattedMessage id={unitTranslationKey} /> */}            
+            {listing.attributes.publicData ? getPriceRepresentation(listing.attributes.publicData.category_duration, listing.attributes.publicData.category_persons)
+            : console.log(null)}
           </div>
         </div>
 

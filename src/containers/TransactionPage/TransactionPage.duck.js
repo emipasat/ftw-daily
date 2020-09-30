@@ -15,6 +15,7 @@ import {
   txIsInFirstReviewBy,
   TRANSITION_ACCEPT,
   TRANSITION_DECLINE,
+  TRANSITION_CANCEL
 } from '../../util/transaction';
 import * as log from '../../util/log';
 import {
@@ -54,6 +55,11 @@ export const DECLINE_SALE_REQUEST = 'app/TransactionPage/DECLINE_SALE_REQUEST';
 export const DECLINE_SALE_SUCCESS = 'app/TransactionPage/DECLINE_SALE_SUCCESS';
 export const DECLINE_SALE_ERROR = 'app/TransactionPage/DECLINE_SALE_ERROR';
 
+
+export const CANCEL_SALE_REQUEST = 'app/TransactionPage/CANCEL_SALE_REQUEST';
+export const CANCEL_SALE_SUCCESS = 'app/TransactionPage/CANCEL_SALE_SUCCESS';
+export const CANCEL_SALE_ERROR = 'app/TransactionPage/CANCEL_SALE_ERROR';
+
 export const FETCH_MESSAGES_REQUEST = 'app/TransactionPage/FETCH_MESSAGES_REQUEST';
 export const FETCH_MESSAGES_SUCCESS = 'app/TransactionPage/FETCH_MESSAGES_SUCCESS';
 export const FETCH_MESSAGES_ERROR = 'app/TransactionPage/FETCH_MESSAGES_ERROR';
@@ -79,7 +85,9 @@ const initialState = {
   acceptInProgress: false,
   acceptSaleError: null,
   declineInProgress: false,
+  cancelInProgress: false,
   declineSaleError: null,
+  cancelSaleError: null,
   fetchMessagesInProgress: false,
   fetchMessagesError: null,
   totalMessages: 0,
@@ -215,6 +223,10 @@ export const acceptOrDeclineInProgress = state => {
   return state.TransactionPage.acceptInProgress || state.TransactionPage.declineInProgress;
 };
 
+export const cancelInProgress = state => {
+  return state.TransactionPage.cancelInProgress;
+};
+
 // ================ Action creators ================ //
 export const setInitialValues = initialValues => ({
   type: SET_INITAL_VALUES,
@@ -242,6 +254,10 @@ const acceptSaleError = e => ({ type: ACCEPT_SALE_ERROR, error: true, payload: e
 const declineSaleRequest = () => ({ type: DECLINE_SALE_REQUEST });
 const declineSaleSuccess = () => ({ type: DECLINE_SALE_SUCCESS });
 const declineSaleError = e => ({ type: DECLINE_SALE_ERROR, error: true, payload: e });
+
+const cancelSaleRequest = () => ({ type: CANCEL_SALE_REQUEST });
+const cancelSaleSuccess = () => ({ type: CANCEL_SALE_SUCCESS });
+const cancelSaleError = e => ({ type: CANCEL_SALE_ERROR, error: true, payload: e });
 
 const fetchMessagesRequest = () => ({ type: FETCH_MESSAGES_REQUEST });
 const fetchMessagesSuccess = (messages, pagination) => ({
@@ -643,6 +659,31 @@ export const declineSale = id => (dispatch, getState, sdk) => {
       log.error(e, 'reject-sale-failed', {
         txId: id,
         transition: TRANSITION_DECLINE,
+      });
+      throw e;
+    });
+};
+
+
+export const cancelSale = id => (dispatch, getState, sdk) => {
+  if (cancelInProgress(getState())) {
+    return Promise.reject(new Error('Cancel already in progress'));
+  }
+  dispatch(cancelSaleRequest());
+
+  return sdk.transactions
+    .transition({ id, transition: TRANSITION_CANCEL, params: {} }, { expand: true })
+    .then(response => {
+      dispatch(addMarketplaceEntities(response));
+      dispatch(cancelSaleSuccess());
+      dispatch(fetchCurrentUserNotifications());
+      return response;
+    })
+    .catch(e => {
+      dispatch(cancelSaleError(storableError(e)));
+      log.error(e, 'cancel-sale-failed', {
+        txId: id,
+        transition: TRANSITION_CANCEL,
       });
       throw e;
     });

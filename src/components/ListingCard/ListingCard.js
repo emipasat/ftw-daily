@@ -134,7 +134,9 @@ export const ListingCardComponent = props => {
           </div>
           <div className={css.perUnit}>
             {/* <FormattedMessage id={unitTranslationKey} /> */}
-            {getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)}
+            {currentListing.attributes.publicData ? 
+              getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)
+              : console.log("null")}
           </div>
         </div>
         <div className={css.mainInfo}>

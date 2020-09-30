@@ -39,6 +39,7 @@ import DetailCardHeadingsMaybe from './DetailCardHeadingsMaybe';
 import DetailCardImage from './DetailCardImage';
 import FeedSection from './FeedSection';
 import SaleActionButtonsMaybe from './SaleActionButtonsMaybe';
+import { Form, FieldTextInput, SecondaryButton } from '../../components';
 import PanelHeading, {
   HEADING_ENQUIRED,
   HEADING_PAYMENT_PENDING,
@@ -183,10 +184,13 @@ export class TransactionPanelComponent extends Component {
       intl,
       onAcceptSale,
       onDeclineSale,
+      onCancelSale,
       acceptInProgress,
       declineInProgress,
+      cancelInProgress,
       acceptSaleError,
       declineSaleError,
+      cancelSaleError,
       onSubmitBookingRequest,
       timeSlots,
       fetchTimeSlotsError,
@@ -393,6 +397,17 @@ export class TransactionPanelComponent extends Component {
               onShowMoreMessages={() => onShowMoreMessages(currentTransaction.id)}
               totalMessagePages={totalMessagePages}
             />
+
+            {/* <div className={css.submitContainer}>
+              <SecondaryButton
+                  rootClassName={css.submitButton}
+                  onClick={() => onCancelSale(currentTransaction.id)} 
+                >
+                  
+                  Cancel
+                </SecondaryButton>
+            </div> */}
+
             {showSendMessageForm ? (
               <SendMessageForm
                 formId={this.sendMessageFormName}
@@ -480,6 +495,7 @@ TransactionPanelComponent.defaultProps = {
   currentUser: null,
   acceptSaleError: null,
   declineSaleError: null,
+  cancelSaleError: null,
   fetchMessagesError: null,
   initialMessageFailed: false,
   savePaymentMethodFailed: false,
@@ -519,10 +535,13 @@ TransactionPanelComponent.propTypes = {
   // Sale related props
   onAcceptSale: func.isRequired,
   onDeclineSale: func.isRequired,
+  onCancelSale: func.isRequired,
   acceptInProgress: bool.isRequired,
   declineInProgress: bool.isRequired,
+  cancelInProgress: bool.isRequired,
   acceptSaleError: propTypes.error,
   declineSaleError: propTypes.error,
+  cancelSaleError: propTypes.error,
 
   // from injectIntl
   intl: intlShape,
