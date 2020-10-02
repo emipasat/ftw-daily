@@ -15,7 +15,8 @@ import {
   txIsInFirstReviewBy,
   TRANSITION_ACCEPT,
   TRANSITION_DECLINE,
-  TRANSITION_CANCEL
+  TRANSITION_CANCEL,
+  TRANSITION_CANCEL_BY_CUSTOMER
 } from '../../util/transaction';
 import * as log from '../../util/log';
 import {
@@ -672,7 +673,7 @@ export const cancelSale = id => (dispatch, getState, sdk) => {
   dispatch(cancelSaleRequest());
 
   return sdk.transactions
-    .transition({ id, transition: TRANSITION_CANCEL, params: {} }, { expand: true })
+    .transition({ id, transition: TRANSITION_CANCEL_BY_CUSTOMER, params: {} }, { expand: true })
     .then(response => {
       dispatch(addMarketplaceEntities(response));
       dispatch(cancelSaleSuccess());
@@ -683,7 +684,7 @@ export const cancelSale = id => (dispatch, getState, sdk) => {
       dispatch(cancelSaleError(storableError(e)));
       log.error(e, 'cancel-sale-failed', {
         txId: id,
-        transition: TRANSITION_CANCEL,
+        transition: TRANSITION_CANCEL_BY_CUSTOMER,
       });
       throw e;
     });
