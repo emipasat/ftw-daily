@@ -398,7 +398,7 @@ export class TransactionPanelComponent extends Component {
               totalMessagePages={totalMessagePages}
             />
 
-            <div className={css.submitContainer}>
+            {/* <div className={css.submitContainer}>
               <SecondaryButton
                   rootClassName={css.submitButton}
                   onClick={() => onCancelSale(currentTransaction.id)} 
@@ -406,7 +406,7 @@ export class TransactionPanelComponent extends Component {
                   
                   Cancel
                 </SecondaryButton>
-            </div>
+            </div> */}
 
             {showSendMessageForm ? (
               <SendMessageForm

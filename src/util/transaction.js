@@ -40,7 +40,7 @@ export const TRANSITION_EXPIRE = 'transition/expire';
 // Admin can also cancel the transition.
 export const TRANSITION_CANCEL = 'transition/cancel';
 
-// Admin can also cancel the transition.
+// Customer can also cancel the transition.
 export const TRANSITION_CANCEL_BY_CUSTOMER = 'transition/cancel_by_customer';
 
 // The backend will mark the transaction completed.
