@@ -337,6 +337,8 @@ export class TransactionPanelComponent extends Component {
 
     const classes = classNames(rootClassName || css.root, className);
 
+    //console.log(currentTransaction.attributes.lastTransition);
+
     return (
       <div className={classes}>
         <div className={css.container}>
@@ -398,15 +400,21 @@ export class TransactionPanelComponent extends Component {
               totalMessagePages={totalMessagePages}
             />
 
-            {/* <div className={css.submitContainer}>
-              <SecondaryButton
-                  rootClassName={css.submitButton}
-                  onClick={() => onCancelSale(currentTransaction.id)} 
-                >
+              
+
+            {!isProvider && currentTransaction.attributes.lastTransition == "transition/accept" ? (
+              <div className={css.submitContainer} style={{ margin: 30 }}>
+                <SecondaryButton
                   
-                  Cancel
-                </SecondaryButton>
-            </div> */}
+                    rootClassName={css.submitButton}
+                    onClick={() => onCancelSale(currentTransaction.id)} 
+                  >
+                    
+                    Cancel reservation
+                  </SecondaryButton>
+              </div>)
+            :null}
+            
 
             {showSendMessageForm ? (
               <SendMessageForm

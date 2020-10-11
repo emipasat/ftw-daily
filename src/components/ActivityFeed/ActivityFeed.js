@@ -9,6 +9,7 @@ import { ensureTransaction, ensureUser, ensureListing } from '../../util/data';
 import {
   TRANSITION_ACCEPT,
   TRANSITION_CANCEL,
+  TRANSITION_CANCEL_BY_CUSTOMER,
   TRANSITION_COMPLETE,
   TRANSITION_DECLINE,
   TRANSITION_EXPIRE,
@@ -145,6 +146,8 @@ const resolveTransitionMessage = (
       );
     case TRANSITION_CANCEL:
       return <FormattedMessage id="ActivityFeed.transitionCancel" />;
+    case TRANSITION_CANCEL_BY_CUSTOMER:
+        return <FormattedMessage id="ActivityFeed.transitionCancel" />;
     case TRANSITION_COMPLETE:
       // Show the leave a review link if the state is delivered and if the current user is the first to leave a review
       const reviewPeriodJustStarted = txIsDelivered(transaction);
