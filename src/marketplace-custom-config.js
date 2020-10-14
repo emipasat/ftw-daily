@@ -244,8 +244,8 @@ export const filters = [
           label: 'Wellness and Well-Being',
         },
         {
-          key: 'living_traditions',
-          label: 'Living Traditions',
+          key: 'home_alone',
+          label: 'Home Alone',
         },
       ],
     },

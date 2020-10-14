@@ -23,6 +23,7 @@ import romanticEscapesImage from './images/romantic_escapes.jpg';
 import simplyChillImage from './images/simply_chill.jpg';
 import livingTraditionsImage from './images/living_traditions.jpg';
 import funAndLearningForKidsImage from './images/fun_and_learning_for_kids.jpg';
+import homeAloneImage from './images/home_alone.jpg';
 
 import CarouselSlide from './CarouselSlide';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -252,6 +253,25 @@ const livingTraditionsLink = (name, image) => {
   );
 };
 
+const homeAloneLink = (name, image) => {
+  const nameText = <span className={css.locationName}>{name}</span>;
+  return (
+    <a href="th/home_alone" className={css.location}>
+      <div className={css.imageWrapper}>
+        <div className={css.aspectWrapper}>
+          <LazyImage src={image} alt={name} className={css.locationImage} />
+        </div>
+      </div>
+      <div className={css.linkText}>
+        <FormattedMessage
+          id="SectionLocations.listingsInLocation"
+          values={{ location: nameText }}
+        />
+      </div>
+    </a>
+  );
+};
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -393,12 +413,12 @@ const SectionLocations = props => {
           </Card>
         </Grid>
         <Grid item xs={6} sm={3}>
-        <Card >
-        {livingTraditionsLink(
-           'Living Traditions',
-           livingTraditionsImage,
-           //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
-         )}
+          <Card >
+          {livingTraditionsLink(
+            'Living Traditions',
+            livingTraditionsImage,
+            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
+            )}
           </Card>
         </Grid>
         <Grid item xs={6} sm={3}>
@@ -406,6 +426,15 @@ const SectionLocations = props => {
           {funAndLearningForKidsLink(
             'Fun and learning for kids',
             funAndLearningForKidsImage,
+            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
+          )}
+          </Card>
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          <Card >
+          {homeAloneLink(
+            'Home Alone',
+            homeAloneImage,
             //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
           )}
           </Card>

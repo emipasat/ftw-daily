@@ -77,6 +77,7 @@ const images = [
   //{ id: 'wellness_and_well-being', src: './wellness_and_well-being.jpg', title: 'Wellness and Well-Being', description: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
   
   { id: 'living_traditions', src: './living_traditions.jpg', title: 'Living Traditions', description: 'Where are your roots? What makes you think about childhood? If the answer lies in tradition, then this is the place to start searching for your next vacation. Our roots are in fact living traditions, where communities come together and build unique places left for us to be discovered. Start your epic journey by rediscovering the magic of old stories, folk music, traditional houses, and become a part of the community that keeps the tradition alive. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
+  { id: 'home_alone', src: './home_alone.jpg', title: 'Home Alone', description: 'Looking for that perfect place to celebrate anniversaries, holidays or team buildings with your family, friends or colleagues ? Check out these stays especially designed for small or large groups that will transform each gathering into an epic experience.' },
   
 ];
 
