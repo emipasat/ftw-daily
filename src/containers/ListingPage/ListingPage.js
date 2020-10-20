@@ -58,18 +58,25 @@ import css from './ListingPage.css';
 
 
 const setLanguageFromUrl111 = () => {
-  var first = window.location.href;
-  var first1 = first.split('/');
-  console.log(first1)
 
-  if (first1[3] == 'ro')
+  const isServer = typeof window === 'undefined';
+
+  if (!isServer)
   {
-    config.locale = 'ro';
+    var first = window.location.href;
+    var first1 = first.split('/');
+    console.log(first1)
+  
+    if (first1[3] == 'ro')
+    {
+      config.locale = 'ro';
+    }
+    else 
+    {
+      config.locale = 'en';
+    }
   }
-  else 
-  {
-    config.locale = 'en';
-  }
+  
 };
 
 setLanguageFromUrl111();
