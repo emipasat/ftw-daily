@@ -172,7 +172,7 @@ export class BookingDatesFormComponent extends Component {
                 }
               : null;
 
-          console.log(bookingData);
+          //console.log(bookingData);
           var bookingInfo = bookingData ? (
             <div className={css.priceBreakdownContainer}>
               <h3 className={css.priceBreakdownTitle}>
@@ -190,7 +190,7 @@ export class BookingDatesFormComponent extends Component {
               name="persons"
               className={css.title}
               type="text"
-              label="Number of persons"
+              label={intl.formatMessage({ id: 'BookingDatesForm.numberOfPersons' })}
               placeholder="1"
               autoFocus
               //onChange={() => { 
@@ -301,12 +301,6 @@ export class BookingDatesFormComponent extends Component {
             <Form onSubmit={handleSubmit} className={classes} id="myDatesForm">
               {timeSlotsError}
 
-              {/* {
-                (categoryPersons === "variable" && values.persons > 0) ? 
-                  timeSlots1 = timeSlots.filter(t=> t.attributes.seats >= values.persons) 
-                  :
-                  timeSlots1 = timeSlots
-              } */}
 
               <FieldDateRangeInput
                 className={css.bookingDates}

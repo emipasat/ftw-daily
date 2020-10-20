@@ -27,6 +27,40 @@ import facebookImage from '../../assets/epicvisitsFacebook-1200x630.jpg';
 import twitterImage from '../../assets/epicvisitsTwitter-600x314.jpg';
 import css from './LandingPage.css';
 
+
+
+const setLanguageFromUrl111 = () => {
+  var first = window.location.href;
+  var first1 = first.split('/');
+  console.log(first1)
+
+  if (first1[3] == 'ro')
+  {
+    config.locale = 'ro';
+  }
+  else 
+  {
+    config.locale = 'en';
+  }
+};
+
+setLanguageFromUrl111();
+
+
+// var first = window.location.href;
+// var first1 = first.split('/');
+// console.log(first1)
+
+
+// if (first1[3] == 'ro')
+// {
+//   config.locale = 'ro';
+// }
+// else 
+// {
+//   config.locale = 'en';
+// }
+
 export const LandingPageComponent = props => {
   const { history, intl, location, scrollingDisabled } = props;
 
@@ -40,7 +74,7 @@ export const LandingPageComponent = props => {
 
 
 
-  
+
 
 
   return (

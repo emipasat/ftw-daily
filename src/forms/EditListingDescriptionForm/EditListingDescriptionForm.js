@@ -34,6 +34,9 @@ const EditListingDescriptionFormComponent = props => (
         values
       } = formRenderProps;
 
+      console.log(categoryDurations);
+
+
       const titleMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.title' });
       const titlePlaceholderMessage = intl.formatMessage({
         id: 'EditListingDescriptionForm.titlePlaceholder',
@@ -92,6 +95,45 @@ const EditListingDescriptionFormComponent = props => (
       });
       const fixedNumberOfNightsRequiredMessage = intl.formatMessage({
         id: 'EditListingDescriptionForm.fixedNumberOfNightsRequired',
+      });
+
+
+      const roTitleMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.roTitle' });
+      const roTitlePlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.roTitlePlaceholder',
+      });
+      const roTitleRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.roTitleRequired',
+      });
+
+
+      const roDescriptionMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.roDescription' });
+      const roDescriptionPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.roDescriptionPlaceholder',
+      });
+      const roDescriptionRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.roDescriptionRequired',
+      });
+
+
+
+
+
+
+      const marketingPriceMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.marketingPrice' });
+      const marketingPricePlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.marketingPricePlaceholder',
+      });
+      const marketingPriceRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.marketingPriceRequired',
+      });
+
+      const marketingPriceRepresentationMessage = intl.formatMessage({ id: 'EditListingDescriptionForm.marketingPriceRepresentation' });
+      const marketingPriceRepresentationPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.marketingPriceRepresentationPlaceholder',
+      });
+      const marketingPriceRepresentationRequiredMessage = intl.formatMessage({
+        id: 'EditListingDescriptionForm.marketingPriceRepresentationRequired',
       });
 
 
@@ -160,12 +202,58 @@ const EditListingDescriptionFormComponent = props => (
             validate={composeValidators(required(descriptionRequiredMessage))}
           />
 
-      {/* <Field component="input" type="hidden" name="listingOrProperty" /> */}
-      
+    
 
-      { (props.propertyListing === 'listing') ?  [ 
+      { (props.propertyListing === 'listing') ? <FieldTextInput
+                  id="ro_title"
+                  name="ro_title"
+                  className={css.title}
+                  type="text"
+                  label={roTitleMessage}
+                  placeholder={roTitlePlaceholderMessage}
+                  maxLength={TITLE_MAX_LENGTH}
+                  autoFocus
+                /> : null}
+
+
+      { (props.propertyListing === 'listing') ? <FieldTextInput
+                  id="ro_description"
+                  name="ro_description"
+                  className={css.description}
+                  type="textarea"
+                  label={roDescriptionMessage}
+                  placeholder={roDescriptionPlaceholderMessage}
+                /> : null}
+
+
+
+     { (props.propertyListing === 'listing') ? <FieldTextInput
+                  id="marketingPrice"
+                  name="marketingPrice"
+                  className={css.title}
+                  type="text"
+                  label={marketingPriceMessage}
+                  placeholder={marketingPricePlaceholderMessage}
+                  maxLength={TITLE_MAX_LENGTH}
+                  autoFocus
+                /> : null}
+
+    {(props.propertyListing === 'listing') ?
+      <FieldTextInput
+                  id="marketingPriceRepresentation"
+                  name="marketingPriceRepresentation"
+                  className={css.title}
+                  type="text"
+                  label={marketingPriceRepresentationMessage}
+                  placeholder={marketingPriceRepresentationPlaceholderMessage}
+                  maxLength={TITLE_MAX_LENGTH}
+                  autoFocus
+                /> : null}
+        
+       
 
         
+      { (props.propertyListing === 'listing') ?  [ 
             <CustomCategorySelectFieldMaybe
                         id="category_duration"
                         name="category_duration"

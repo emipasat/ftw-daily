@@ -1,4 +1,8 @@
 {
+
+  "BookingDatesForm.numberOfPersons": "Number of persons",
+
+
   "ActivityFeed.deletedListing": "deleted listing",
   "ActivityFeed.deletedReviewContent": "This review is deleted.",
   "ActivityFeed.leaveAReview": "Leave a review for { displayName }.",
@@ -40,7 +44,18 @@
   "Avatar.deletedUserDisplayName": "Deleted user",
   "BookingBreakdown.baseUnitDay": "{unitPrice} * {quantity, number} {quantity, plural, one {day} other {days}}",
   
-  
+  "EditListingDescriptionForm.roTitle" : "Romanian title",
+  "EditListingDescriptionForm.roDescription" : "Romanian description",
+  "EditListingDescriptionForm.roTitlePlaceholder" : "Romanian title",
+  "EditListingDescriptionForm.roDescriptionPlaceholder" : "Romanian description",
+  "EditListingDescriptionForm.roTitleRequired" : "Romanian title required",
+  "EditListingDescriptionForm.roDescriptionRequired" : "Romanian description required",
+  "EditListingDescriptionForm.marketingPrice" : "Marketing price",
+  "EditListingDescriptionForm.marketingPriceRepresentation" : "Marketing price description",
+  "EditListingDescriptionForm.marketingPricePlaceholder" : "Marketing price",
+  "EditListingDescriptionForm.marketingPriceRepresentationPlaceholder" : "Marketing price description",
+  "EditListingDescriptionForm.marketingPriceRequired" : "Marketing price necesar",
+  "EditListingDescriptionForm.marketingPriceRepresentationRequired" : "Marketing price description necesar",
   
   "BookingBreakdown.baseUnitNight": "{unitPrice} * {quantity, number} {quantity, plural, one {night} other {nights}}",
   

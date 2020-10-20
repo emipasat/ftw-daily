@@ -56,6 +56,26 @@ import SectionRulesMaybe from './SectionRulesMaybe';
 import SectionMapMaybe from './SectionMapMaybe';
 import css from './ListingPage.css';
 
+
+const setLanguageFromUrl111 = () => {
+  var first = window.location.href;
+  var first1 = first.split('/');
+  console.log(first1)
+
+  if (first1[3] == 'ro')
+  {
+    config.locale = 'ro';
+  }
+  else 
+  {
+    config.locale = 'en';
+  }
+};
+
+setLanguageFromUrl111();
+
+
+
 const MIN_LENGTH_FOR_LONG_WORDS_IN_TITLE = 16;
 
 const { UUID } = sdkTypes;
@@ -258,13 +278,20 @@ export class ListingPageComponent extends Component {
       return <NamedRedirect name="ListingPage" params={params} search={location.search} />;
     }
 
-    const {
+    var {
       description = '',
       geolocation = null,
       price = null,
       title = '',
       publicData,
     } = currentListing.attributes;
+
+
+    if (config.locale == 'ro')
+    {
+      title = currentListing.attributes.publicData.ro_title;
+      description = currentListing.attributes.publicData.ro_description;
+    }
 
 
     const richTitle = (
@@ -350,7 +377,7 @@ export class ListingPageComponent extends Component {
     const currentAuthor = authorAvailable ? currentListing.author : null;
     const ensuredAuthor = ensureUser(currentAuthor);
 
-    console.log(currentListing)
+    console.log(currentListing.attributes.publicData)
 
     
     // When user is banned or deleted the listing is also deleted.
@@ -437,8 +464,6 @@ export class ListingPageComponent extends Component {
           <LayoutWrapperTopbar>{topbar}</LayoutWrapperTopbar>
           <LayoutWrapperMain>
             <div>
-            
-              
               <SectionImages
                 title={title}
                 listing={currentListing}
@@ -448,6 +473,7 @@ export class ListingPageComponent extends Component {
                   slug: listingSlug,
                   type: listingType,
                   tab: listingTab,
+                  whatever: "listing"
                 }}
                 imageCarouselOpen={this.state.imageCarouselOpen}
                 onImageCarouselClose={() => this.setState({ imageCarouselOpen: false })}

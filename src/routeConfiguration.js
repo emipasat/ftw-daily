@@ -56,6 +56,7 @@ const draftId = '00000000-0000-0000-0000-000000000000';
 const draftSlug = 'draft';
 
 const RedirectToLandingPage = () => <NamedRedirect name="LandingPage" />;
+const RedirectToLandingPageRo = () => <NamedRedirect name="LandingPageRo" />;
 
 // NOTE: Most server-side endpoints are prefixed with /api. Requests to those
 // endpoints are indended to be handled in the server instead of the browser and
@@ -69,6 +70,11 @@ const routeConfiguration = () => {
   return [
     {
       path: '/',
+      name: 'LandingPage',
+      component: props => <LandingPage {...props} />,
+    },
+    {
+      path: '/ro',
       name: 'LandingPage',
       component: props => <LandingPage {...props} />,
     },
@@ -183,6 +189,38 @@ const routeConfiguration = () => {
       component: props => <ListingPage {...props} />,
       loadData: ListingPage.loadData,
     },
+
+
+    {
+      path: '/ro/l',
+      name: 'ListingBasePageRo',
+      component: RedirectToLandingPageRo,
+    },
+    {
+      path: '/ro/l/:slug/:id',
+      name: 'ListingPageRo',
+      component: props => <ListingPage {...props} />,
+      loadData: ListingPage.loadData,
+    },
+    {
+      path: '/ro/l/:slug/:id/checkout',
+      name: 'CheckoutPage',
+      auth: true,
+      component: props => <CheckoutPage {...props} />,
+      setInitialValues: CheckoutPage.setInitialValues,
+    },
+    {
+      path: '/ro/l/:slug/:id/:variant',
+      name: 'ListingPageVariant',
+      auth: true,
+      authPage: 'LoginPage',
+      component: props => <ListingPage {...props} />,
+      loadData: ListingPage.loadData,
+    },
+
+
+
+
     {
       path: '/l/new',
       name: 'NewListingPage',

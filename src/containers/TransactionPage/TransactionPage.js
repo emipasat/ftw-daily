@@ -39,8 +39,13 @@ import {
 } from './TransactionPage.duck';
 import css from './TransactionPage.css';
 
+
+
 const PROVIDER = 'provider';
 const CUSTOMER = 'customer';
+
+//import config from '../../config';
+//config.locale = 'ro'; // de test TODO remove it after
 
 // TransactionPage handles data loading for Sale and Order views to transaction pages in Inbox.
 export const TransactionPageComponent = props => {

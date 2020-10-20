@@ -198,7 +198,7 @@ const TopbarDesktop = props => {
       </Button> */}
       <a href="#" className={css.createPropertyLink} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         <span className={css.createProperty}>
-          Become an Epic Partner <ArrowDropDownIcon style={{ color: "#FF0000" }} />
+        <FormattedMessage id="Footer.toNewListingPage" /> <ArrowDropDownIcon style={{ color: "#FF0000" }} />
         </span>
       </a>
       <MenuMaterial

@@ -27,9 +27,7 @@ const EditListingDescriptionPanel = props => {
     whatever
   } = props;
 
-  console.log('xxxxx');
-  console.log(whatever);
-
+  
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureOwnListing(listing);
   const { description, title, publicData, privateData } = currentListing.attributes;
@@ -58,26 +56,34 @@ const EditListingDescriptionPanel = props => {
       <EditListingDescriptionForm
         className={css.form}
         initialValues={{ title, description, 
+                          ro_title: publicData.ro_title, 
+                          ro_description: publicData.ro_description,
                           category_duration: publicData.category_duration, 
                           category_persons: publicData.category_persons,
                           maxNumberOfNights : publicData.maxNumberOfNights,
                           maxNumberOfPersons : publicData.maxNumberOfPersons,
                           fixedNumberOfNights : publicData.fixedNumberOfNights,
                           fixedNumberOfPersons : publicData.fixedNumberOfPersons,
+                          marketingPrice: publicData.marketingPrice,
+                          marketingPriceRepresentation: publicData.marketingPriceRepresentation,
                           rooms : publicData.rooms,
                           epicVisitsType: privateData && privateData.epicVisitsType ? privateData.epicVisitsType : whatever
                          }}
         saveActionMsg={submitButtonText}
         onSubmit={values => {
-          const { title, description, category_duration, category_persons, 
+          const { title, description, ro_title, ro_description, 
+            category_duration, category_persons, 
             maxNumberOfNights, maxNumberOfPersons, 
             fixedNumberOfNights, fixedNumberOfPersons, 
+            marketingPrice, marketingPriceRepresentation,
             rooms, epicVisitsType } = values;
           const updateValues = {
             title: title.trim(),
             description,
-            publicData: { category_duration, category_persons, 
-              maxNumberOfNights, maxNumberOfPersons, fixedNumberOfPersons, fixedNumberOfNights, rooms },
+            publicData: { ro_title, ro_description, category_duration, category_persons, 
+              maxNumberOfNights, maxNumberOfPersons, fixedNumberOfPersons, fixedNumberOfNights, 
+              marketingPrice, marketingPriceRepresentation,
+              rooms },
             privateData: { epicVisitsType }
           };
 

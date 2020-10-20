@@ -24,7 +24,7 @@ const CustomCategorySelectFieldMaybe = props => {
   //  window.confirm(value)
   //};
 
-
+  
   return categories ? (
     <FieldSelect
       className={css.category}

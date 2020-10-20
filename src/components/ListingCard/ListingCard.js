@@ -86,30 +86,8 @@ export const ListingCardComponent = props => {
     ? 'ListingCard.perDay'
     : 'ListingCard.perUnit';
 
-    console.log(currentListing)
-
-    // var whatMeansPrice = "per unit";
-    // if (currentListing.attributes.publicData.category_duration == "fixed" && 
-    //     currentListing.attributes.publicData.category_persons == "fixed")
-    // {
-    //   whatMeansPrice = "per package";
-    // }
-    // if (currentListing.attributes.publicData.category_duration == "fixed" && 
-    //     currentListing.attributes.publicData.category_persons == "variable")
-    // {
-    //   whatMeansPrice = "per person";
-    // }
-    // if (currentListing.attributes.publicData.category_duration == "variable" && 
-    //     currentListing.attributes.publicData.category_persons == "fixed")
-    // {
-    //   whatMeansPrice = "per package per night";
-    // }
-    // if (currentListing.attributes.publicData.category_duration == "variable" && 
-    //     currentListing.attributes.publicData.category_persons == "variable")
-    // {
-    //   whatMeansPrice = "per person per night";
-    // }
-
+    const whatever = "";
+    
   return (
     <NamedLink className={classes} name="ListingPage" params={{ id, slug }}>
       <div

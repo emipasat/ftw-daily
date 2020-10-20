@@ -36,13 +36,13 @@ const SectionHeading = props => {
     <div className={css.sectionHeading}>
       <div className={css.desktopPriceContainer}>
         <div className={css.desktopPriceValue} title={priceTitle}>
-          {formattedPrice}
+            {currentListing.attributes.publicData && currentListing.attributes.publicData.marketingPrice != undefined ? 
+                currentListing.attributes.publicData.marketingPrice : formattedPrice}
         </div>
         <div className={css.desktopPerUnit}>
           {/* <FormattedMessage id={unitTranslationKey} /> */}
-          {currentListing.attributes.publicData ? 
-            getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)
-          : console.log('null')}
+          {currentListing.attributes.publicData && currentListing.attributes.publicData.marketingPriceRepresentation == undefined ? getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)
+            : currentListing.attributes.publicData.marketingPriceRepresentation}
         </div>
       </div>
       <div className={css.heading}>

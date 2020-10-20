@@ -35,10 +35,11 @@ import defaultMessages from './translations/en.json';
 // If you are using a non-english locale with moment library,
 // you should also import time specific formatting rules for that locale
 // e.g. for French: import 'moment/locale/fr';
+import 'moment/locale/ro';
 
 // Step 3:
 // If you are using a non-english locale, point `messagesInLocale` to correct .json file
-import messagesInLocale from './translations/fr.json';
+import messagesInLocale from './translations/ro.json';
 
 // If translation key is missing from `messagesInLocale` (e.g. fr.json),
 // corresponding key will be added to messages from `defaultMessages` (en.json)

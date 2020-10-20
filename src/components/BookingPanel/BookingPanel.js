@@ -108,7 +108,7 @@ const BookingPanel = props => {
   const isFixedDuration = listing.attributes.publicData && listing.attributes.publicData.category_duration === "fixed"
 
 
-  //console.log(listing.attributes.publicData)
+  console.log(listing.attributes.publicData)
 
   console.log(timeSlots)
 
@@ -181,12 +181,13 @@ const BookingPanel = props => {
       <div className={css.openBookingForm}>
         <div className={css.priceContainer}>
           <div className={css.priceValue} title={priceTitle}>
-            {formattedPrice}
+            {listing.attributes.publicData && listing.attributes.publicData.marketingPrice != undefined ? 
+                listing.attributes.publicData.marketingPrice : formattedPrice}
           </div>
           <div className={css.perUnit}>
             {/* <FormattedMessage id={unitTranslationKey} /> */}            
-            {listing.attributes.publicData ? getPriceRepresentation(listing.attributes.publicData.category_duration, listing.attributes.publicData.category_persons)
-            : console.log(null)}
+            {listing.attributes.publicData && listing.attributes.publicData.marketingPriceRepresentation == undefined ? getPriceRepresentation(listing.attributes.publicData.category_duration, listing.attributes.publicData.category_persons)
+            : listing.attributes.publicData.marketingPriceRepresentation}
           </div>
         </div>
 

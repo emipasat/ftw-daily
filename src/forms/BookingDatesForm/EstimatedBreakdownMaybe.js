@@ -162,7 +162,7 @@ const EstimatedBreakdownMaybe = props => {
     return null;
   }
   
-  console.log(quantity)
+  //console.log(quantity)
 
   var quantity1 = categoryDuration ==="fixed" && categoryPersons == "fixed" 
       ? quantity1 = 1 
@@ -176,10 +176,10 @@ const EstimatedBreakdownMaybe = props => {
   // in estimatedTx ignor unittype si folosesc totusi nr de nopti (ca si cum ar fi nightly)
   // so far so good
 
-  console.log(tx)
+  //console.log(tx)
 
-  console.log(persons)
-  console.log(quantity1)
+  //console.log(persons)
+  //console.log(quantity1)
   // sunt egale, persons adica. niciuna nu e nights
   
   return (

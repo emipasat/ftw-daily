@@ -34,7 +34,25 @@ class PageComponent extends Component {
     this.scrollPosition = 0;
     this.contentDiv = null;
     this.scrollingDisabledChanged = this.scrollingDisabledChanged.bind(this);
+
+    //this.setLanguageFromUrl();
+    // nu merge de aici TODO de ce? trebuie doar deasupra
   }
+
+  setLanguageFromUrl() {
+    var first = window.location.href;
+    var first1 = first.split('/');
+    console.log(first1)
+  
+    if (first1[3] == 'ro')
+    {
+      config.locale = 'ro';
+    }
+    else 
+    {
+      config.locale = 'en';
+    }
+  };
 
   componentDidMount() {
     // By default a dropped file is loaded in the browser window as a
