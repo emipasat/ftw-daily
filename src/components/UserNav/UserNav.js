@@ -42,6 +42,14 @@ const UserNav = props => {
         name: 'ContactDetailsPage',
       },
     },
+    // {
+    //   text: <FormattedMessage id="ManageListingsPage.languageSettings" />,
+    //   selected: selectedPageName === 'LandingPage',
+    //   disabled: false,
+    //   linkProps: {
+    //     name: 'LandingPage',
+    //   },
+    // },
   ];
 
   return (

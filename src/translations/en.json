@@ -1,5 +1,22 @@
 {
 
+  "Amenities" : "Amenities",
+
+  "Amenities.Snacks": "Snacks",
+  "Amenities.Food": "Food",
+  "Amenities.Drinks" : "Drinks",
+  "Amenities.English Spoken": "English Spoken",
+  "Amenities.Wheelchair accessible" : "Wheelchair accessible",
+  "Amenities.Children friendly" : "Children friendly",
+  "Amenities.Pet friendly" : "Pet friendly",
+  "Amenities.Private Bathroom" : "Private Bathroom",
+  "Amenities.WiFi" : "WiFi",
+  "Amenities.Free Parking" : "Free Parking",
+  "Amenities.Breakfast" : "Breakfast",
+
+
+
+
   "BookingDatesForm.numberOfPersons": "Number of persons",
 
 

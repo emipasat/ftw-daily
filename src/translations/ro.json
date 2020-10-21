@@ -1,4 +1,20 @@
 {
+
+  
+  "Amenities" : "Facilități",
+
+  "Amenities.Snacks": "Snacks-uri",
+  "Amenities.Food": "Mâncare",
+  "Amenities.Drinks" : "Băuturi",
+  "Amenities.English Spoken": "Vorbim Limba Engleză",
+  "Amenities.Wheelchair accessible" : "Accesibil persoanelor cu dizabilități",
+  "Amenities.Children friendly" : "Potrivit pentru copii",
+  "Amenities.Pet friendly" : "Potrivit pentru animale",
+  "Amenities.Private Bathroom" : "Baie privată",
+  "Amenities.WiFi" : "WiFi",
+  "Amenities.Free Parking" : "Parcare gratuită",
+  "Amenities.Breakfast" : "Mic Dejun",
+
   "EditListingDescriptionForm.roTitle" : "Titlu romana",
   "EditListingDescriptionForm.roDescription" : "Descriere romana",
   "EditListingDescriptionForm.roTitlePlaceholder" : "Romanian title",

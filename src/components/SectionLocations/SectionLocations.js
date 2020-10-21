@@ -256,7 +256,7 @@ const livingTraditionsLink = (name, image) => {
 const homeAloneLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/home_alone" className={css.location}>
+    <a href="th/entire_places" className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -433,7 +433,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
           <Card >
           {homeAloneLink(
-            'Home Alone',
+            'Entire Places',
             homeAloneImage,
             //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
           )}

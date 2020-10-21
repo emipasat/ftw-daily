@@ -4,6 +4,7 @@ import { FormattedMessage, intlShape } from '../../util/reactIntl';
 import classNames from 'classnames';
 import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration';
 import { propTypes } from '../../util/types';
+import config from '../../config';
 //import ReactGA from 'react-ga';
 
 import {
@@ -24,6 +25,21 @@ import {default as MenuItemMaterial} from '@material-ui/core/MenuItem';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 import css from './TopbarDesktop.css';
+
+function refreshPage(){ 
+  const isServer = typeof window === 'undefined';
+  if (!isServer)
+  {
+    setTimeout(
+      function() {
+          window.location.reload(); 
+      }
+      .bind(this),
+      1000
+    );
+    //window.location.reload(); 
+  }
+}
 
 const TopbarDesktop = props => {
   const {
@@ -182,6 +198,41 @@ const TopbarDesktop = props => {
     </NamedLink>
   );
 
+
+  // var languageLink = config.locale === 'en' ? 
+  //   (<NamedLink name="LandingPageRo" className={css.loginLink} onClick={ config.locale = 'ro' }>
+  //     <span className={css.login}>
+  //       <FormattedMessage id="TopbarDesktop.romanian" />
+  //     </span>
+  //   </NamedLink>
+  //   ) : (
+  //   <NamedLink name="LandingPage" className={css.loginLink} onClick={ config.locale = 'en' }>
+  //     <span className={css.login}>
+  //       <FormattedMessage id="TopbarDesktop.english" />
+  //     </span>
+  //   </NamedLink>
+  // );
+
+
+
+  {/* show only one TODO */}
+  var languageLinkRo = 
+    (<NamedLink name="LandingPageRo" className={css.loginLink} >
+      <span className={css.login} onClick={ refreshPage }>
+        RO
+      </span>
+    </NamedLink>
+    );
+
+    var languageLinkEn = 
+    (<NamedLink name="LandingPage" className={css.loginLink} >
+      <span className={css.login} onClick={ refreshPage }>
+        EN
+      </span>
+    </NamedLink>
+    );
+
+
   return (
     <nav className={classes}>
       <NamedLink className={css.logoLink} name="LandingPage">
@@ -239,6 +290,8 @@ const TopbarDesktop = props => {
       {profileMenu}
       {signupLink}
       {loginLink}
+      {languageLinkRo}
+      {languageLinkEn}
     </nav>
   );
 };

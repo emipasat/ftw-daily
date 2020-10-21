@@ -13,6 +13,22 @@ import { AvatarLarge, InlineTextButton, NamedLink, NotificationBadge } from '../
 
 import css from './TopbarMobileMenu.css';
 
+// TODO duplicated code
+function refreshPage(){ 
+  const isServer = typeof window === 'undefined';
+  if (!isServer)
+  {
+    setTimeout(
+      function() {
+          window.location.reload(); 
+      }
+      .bind(this),
+      1000
+    );
+    //window.location.reload(); 
+  }
+}
+
 const TopbarMobileMenu = props => {
   const {
     isAuthenticated,
@@ -119,6 +135,22 @@ const TopbarMobileMenu = props => {
         >
           <FormattedMessage id="TopbarMobileMenu.accountSettingsLink" />
         </NamedLink>
+
+{/* show only one TODO */}
+        <NamedLink
+          className={classNames(css.navigationLink, currentPageClass('LandingPageRo'))}
+          name="LandingPageRo"
+        >
+          <span onClick={ refreshPage }>RO</span>
+        </NamedLink>
+        <NamedLink
+          className={classNames(css.navigationLink, currentPageClass('LandingPage'))}
+          name="LandingPage"
+        >
+          <span onClick={ refreshPage }>EN</span>
+        </NamedLink>
+
+
       </div>
       <div className={css.footer}>
         <NamedLink className={css.createNewListingLink} name="NewListingPage">

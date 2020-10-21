@@ -475,6 +475,7 @@ export class ListingPageComponent extends Component {
                 title={title}
                 listing={currentListing}
                 isOwnListing={isOwnListing}
+                publicData={publicData}
                 editParams={{
                   id: listingId.uuid,
                   slug: listingSlug,
@@ -501,7 +502,7 @@ export class ListingPageComponent extends Component {
                     onContactUser={this.onContactUser}
                   />
                   <SectionDescriptionMaybe description={description} />
-                  <SectionFeaturesMaybe options={amenityOptions} publicData={publicData} />
+                  <SectionFeaturesMaybe options={amenityOptions} publicData={publicData} intl={intl} />
                   <SectionRulesMaybe publicData={publicData} />
                   <SectionMapMaybe
                     geolocation={geolocation}

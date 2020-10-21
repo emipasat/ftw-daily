@@ -75,7 +75,7 @@ const routeConfiguration = () => {
     },
     {
       path: '/ro',
-      name: 'LandingPage',
+      name: 'LandingPageRo',
       component: props => <LandingPage {...props} />,
     },
     {

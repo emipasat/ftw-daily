@@ -33,6 +33,8 @@
  *         (i.e. pub_<key> or meta_<key>).
  */
 
+import { FormattedMessage, intlShape, injectIntl } from './util/reactIntl';
+
 export const filters = [
   {
     id: 'dates',
@@ -244,8 +246,12 @@ export const filters = [
           label: 'Wellness and Well-Being',
         },
         {
-          key: 'home_alone',
-          label: 'Home Alone',
+          key: 'home_alone', // remove after migrating all
+          label: 'Entire Places',
+        },
+        {
+          key: 'entire_places',
+          label: 'Entire Places',
         },
       ],
     },
