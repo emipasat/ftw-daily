@@ -108,13 +108,17 @@ export const ListingCardComponent = props => {
       <div className={css.info}>
         <div className={css.price}>
           <div className={css.priceValue} title={priceTitle}>
-            {formattedPrice}
+            {/* {formattedPrice} */}
+            {currentListing.attributes.publicData && currentListing.attributes.publicData.marketingPrice != undefined ? 
+                currentListing.attributes.publicData.marketingPrice : formattedPrice}
           </div>
           <div className={css.perUnit}>
             {/* <FormattedMessage id={unitTranslationKey} /> */}
-            {currentListing.attributes.publicData ? 
+            {/* {currentListing.attributes.publicData ? 
               getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)
-              : console.log("null")}
+              : console.log("null")} */}
+              {currentListing.attributes.publicData && currentListing.attributes.publicData.marketingPriceRepresentation == undefined ? getPriceRepresentation(currentListing.attributes.publicData.category_duration, currentListing.attributes.publicData.category_persons)
+            : currentListing.attributes.publicData.marketingPriceRepresentation}
           </div>
         </div>
         <div className={css.mainInfo}>
