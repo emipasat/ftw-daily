@@ -41,6 +41,13 @@ const TopbarMobileMenu = props => {
 
   const user = ensureCurrentUser(currentUser);
 
+  const displayName = user.attributes.profile.firstName;
+  const currentPageClass = page => {
+    const isAccountSettingsPage =
+      page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage);
+    return currentPage === page || isAccountSettingsPage ? css.currentPage : null;
+  };
+
   if (!isAuthenticated) {
     const signup = (
       <NamedLink name="SignupPage" className={css.signupLink}>
@@ -67,6 +74,26 @@ const TopbarMobileMenu = props => {
               id="TopbarMobileMenu.unauthorizedGreeting"
               values={{ lineBreak: <br />, signupOrLogin }}
             />
+
+
+            {/* show only one TODO */}
+            <br/>
+            <br/>
+        <NamedLink
+          className={classNames(css.navigationLink, currentPageClass('LandingPageRo'))}
+          name="LandingPageRo"
+        >
+          <span onClick={ refreshPage }>RO</span>
+        </NamedLink>
+        <br/>
+            <br/>
+        <NamedLink
+          className={classNames(css.navigationLink, currentPageClass('LandingPage'))}
+          name="LandingPage"
+        >
+          <span onClick={ refreshPage }>EN</span>
+        </NamedLink>
+
           </div>
         </div>
         <div className={css.footer}>
@@ -86,12 +113,7 @@ const TopbarMobileMenu = props => {
       <NotificationBadge className={css.notificationBadge} count={notificationCount} />
     ) : null;
 
-  const displayName = user.attributes.profile.firstName;
-  const currentPageClass = page => {
-    const isAccountSettingsPage =
-      page === 'AccountSettingsPage' && ACCOUNT_SETTINGS_PAGES.includes(currentPage);
-    return currentPage === page || isAccountSettingsPage ? css.currentPage : null;
-  };
+  
 
   return (
     <div className={css.root}>
