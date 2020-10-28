@@ -36,14 +36,6 @@ import Grid from '@material-ui/core/Grid';
 import config from '../../config';
 
 
-class LocationImage extends Component {
-  render() {
-    const { alt, ...rest } = this.props;
-    return <img alt={alt} {...rest} />;
-  }
-}
-const LazyImage = lazyLoadWithDimensions(LocationImage);
-
 const setLanguageFromUrl111 = () => {
 
   const isServer = typeof window === 'undefined';
@@ -68,12 +60,30 @@ const setLanguageFromUrl111 = () => {
 
 setLanguageFromUrl111();
 
+console.log('vvvvvvvvvvvvvvvvvv')
+console.log(config.locale)
+console.log('vvvvvvvvvvvvvvvvvv')
+
+
+class LocationImage extends Component {
+  render() {
+    const { alt, ...rest } = this.props;
+    return <img alt={alt} {...rest} />;
+  }
+}
+const LazyImage = lazyLoadWithDimensions(LocationImage);
+
+
+
 var prefix = '';
 if (config.locale === 'ro')
 {
   prefix = '/ro'
 }
 
+console.log('ssssssssssssssssssssssss')
+console.log(prefix);
+console.log('ssssssssssssssssssssssss')
 
 const locationLink = (name, image, searchQuery) => {
   const nameText = <span className={css.locationName}>{name}</span>;
