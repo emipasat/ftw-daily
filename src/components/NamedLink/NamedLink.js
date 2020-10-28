@@ -75,38 +75,10 @@ export const NamedLinkComponent = props => {
     title,
   };
 
-  //console.log(pathname)
   
-  const pathname1 = '/ro/about'//pathname + '/abc';
-  //console.log(pathname1)
-  // var first1 = pathname.split('/');
-  // if (first1[1] !== 'ro')
-  // {
-  //   if (config.locale === 'ro')
-  //   {
-  //     pathname1 = '/ro' + pathname;
-  //   }
-  // }
-
-  // if (pathname === '/ro')
-  // {
-  //   pathname1 = pathname;
-  // }
-  // else 
-  // {
-  //   if (config.locale === 'ro' && pathname.indexOf('/ro')<0)
-  //   {
-  //     pathname1 = ('/ro/' + pathname).replace('//', '');
-  //   }
-  //   else 
-  //   {
-  //     pathname1 = pathname;
-  //   }
-  // }
-  
-
   return (
     <div>
+      {name1}&nbsp;
 {pathname}
     <Link to={{ pathname, ...to }} {...aElemProps}>
       {children}
