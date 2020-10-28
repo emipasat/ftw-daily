@@ -106,9 +106,13 @@ export const NamedLinkComponent = props => {
   
 
   return (
+    <div>
+{pathname}
     <Link to={{ pathname, ...to }} {...aElemProps}>
       {children}
     </Link>
+    </div>
+    
   );
 };
 
