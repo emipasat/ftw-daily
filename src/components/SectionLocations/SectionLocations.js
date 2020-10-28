@@ -33,6 +33,7 @@ import { Card } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import config from '../../config';
 
 
 class LocationImage extends Component {
@@ -42,6 +43,37 @@ class LocationImage extends Component {
   }
 }
 const LazyImage = lazyLoadWithDimensions(LocationImage);
+
+const setLanguageFromUrl111 = () => {
+
+  const isServer = typeof window === 'undefined';
+
+  if (!isServer)
+  {
+    var first = window.location.href;
+    var first1 = first.split('/');
+    console.log(first1)
+  
+    if (first1[3] == 'ro')
+    {
+      config.locale = 'ro';
+    }
+    else 
+    {
+      config.locale = 'en';
+    }
+  }
+};
+
+
+setLanguageFromUrl111();
+
+var prefix = '';
+if (config.locale === 'ro')
+{
+  prefix = '/ro'
+}
+
 
 const locationLink = (name, image, searchQuery) => {
   const nameText = <span className={css.locationName}>{name}</span>;
@@ -66,7 +98,7 @@ const locationLink = (name, image, searchQuery) => {
 const natureWondersLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="/th/nature_wonders" className={css.location}>
+    <a href={prefix + "/th/nature_wonders"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -85,7 +117,7 @@ const natureWondersLink = (name, image) => {
 const artsAndCraftsLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/arts_and_craft" className={css.location}>
+    <a href={prefix + "/th/arts_and_craft"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -104,7 +136,7 @@ const artsAndCraftsLink = (name, image) => {
 const energyAndAdrenalineLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/energy_and_adrenaline" className={css.location}>
+    <a href={prefix + "/th/energy_and_adrenaline"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -123,7 +155,7 @@ const energyAndAdrenalineLink = (name, image) => {
 const wildlifeLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/wildlife" className={css.location}>
+    <a href={prefix + "/th/wildlife"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -142,7 +174,7 @@ const wildlifeLink = (name, image) => {
 const funAndLearningForKidsLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/fun_and_learning_for_kids" className={css.location}>
+    <a href={prefix + "/th/fun_and_learning_for_kids"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -161,7 +193,7 @@ const funAndLearningForKidsLink = (name, image) => {
 const tastyTreasuresLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/tasty_treasures" className={css.location}>
+    <a href={prefix + "/th/tasty_treasures"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -180,7 +212,7 @@ const tastyTreasuresLink = (name, image) => {
 const romanticEscapesLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/romantic_escapes" className={css.location}>
+    <a href={prefix + "/th/romantic_escapes"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -199,7 +231,7 @@ const romanticEscapesLink = (name, image) => {
 const urbanDiscoveriesLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/urban_discoveries" className={css.location}>
+    <a href={prefix + "/th/urban_discoveries"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -218,7 +250,7 @@ const urbanDiscoveriesLink = (name, image) => {
 const simplyChillLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/simply_chill" className={css.location}>
+    <a href={prefix + "/th/simply_chill"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -237,7 +269,7 @@ const simplyChillLink = (name, image) => {
 const livingTraditionsLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/living_traditions" className={css.location}>
+    <a href={prefix + "/th/living_traditions"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -256,7 +288,7 @@ const livingTraditionsLink = (name, image) => {
 const homeAloneLink = (name, image) => {
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
-    <a href="th/entire_places" className={css.location}>
+    <a href={prefix + "/th/entire_places"} className={css.location}>
       <div className={css.imageWrapper}>
         <div className={css.aspectWrapper}>
           <LazyImage src={image} alt={name} className={css.locationImage} />
@@ -353,7 +385,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
           <Card >
           {natureWondersLink(
-           'Nature Wonders',
+           config.locale === 'en' ? 'Nature Wonders': 'Minuni ale Naturii',
            natureWondersImage,          //'?address=Helsinki%2C%20Finland&bounds=60.2978389%2C25.254484899999966%2C59.9224887%2C24.782875800000056&origin=60.16985569999999%2C24.93837910000002'
         )}
           </Card>
@@ -361,7 +393,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
         <Card >
          {energyAndAdrenalineLink(
-           'Energy and Adrenaline',
+           config.locale === 'en' ? 'Energy and Adrenaline' : 'Energie și Adrenalină',
            energyAdrenalineImage,
            //'?address=Rovaniemi%2C%20Finland&bounds=67.18452510000002%2C27.32667850000007%2C66.1553745%2C24.736871199999996&origin=66.50394779999999%2C25.729390599999988'
          )}
@@ -370,7 +402,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
         <Card >
         {wildlifeLink(
-           'Wildlife',
+           config.locale === 'en' ? 'Wildlife' : 'Natură Neîmblânzită',
            wildlifeImage,
            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
          )}
@@ -379,7 +411,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
         <Card >
         {tastyTreasuresLink(
-           'Tasty Treasures',
+           config.locale === 'en' ? 'Tasty Treasures' : 'Comori Gustoase',
            tastyTreasuresImage,
            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
          )}
@@ -388,7 +420,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
         <Card >
         {urbanDiscoveriesLink(
-           'Urban Discoveries',
+           config.locale === 'en' ? 'Urban Discoveries' : 'Descoperiri Urbane',
            urbanDiscoveriesImage,
            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
          )}
@@ -397,7 +429,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
         <Card >
         {romanticEscapesLink(
-           'Romantic Escapes',
+           config.locale === 'en' ? 'Romantic Escapes':'Escapade Romantice',
            romanticEscapesImage,
            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
          )}
@@ -406,7 +438,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
         <Card >
         {simplyChillLink(
-           'Simply Chill',
+           config.locale === 'en' ? 'Simply Chill':'Marea Relaxare',
            simplyChillImage,
            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
          )}
@@ -415,7 +447,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
           <Card >
           {livingTraditionsLink(
-            'Living Traditions',
+            config.locale === 'en' ? 'Living Traditions':'Tradiții Nemuritoare',
             livingTraditionsImage,
             //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
             )}
@@ -424,7 +456,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
           <Card >
           {funAndLearningForKidsLink(
-            'Fun and learning for kids',
+            config.locale === 'en' ? 'Fun and learning for kids':'Distracție și Învățare pentru Copii',
             funAndLearningForKidsImage,
             //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
           )}
@@ -433,7 +465,7 @@ const SectionLocations = props => {
         <Grid item xs={6} sm={3}>
           <Card >
           {homeAloneLink(
-            'Entire Places',
+            config.locale === 'en' ? 'Entire Places':'Case de Închiriat Integral',
             homeAloneImage,
             //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
           )}

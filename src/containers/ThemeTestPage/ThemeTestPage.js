@@ -58,27 +58,88 @@ import css1 from './ThemeSimplyChillPage.css';
 
 
 const images = [
-  { id: 'simply_chill', src: './simply_chill.jpg', title: 'Simply Chill', description: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
-  { id: 'nature_wonders', src: './nature_wonders.jpg', title: 'Nature Wonders', description: 'Nature...these are the times when you realize how much it means to you. Especially if you’re living in a noisy and polluted city. If you like to climb mountains, admire breathtaking natural sights, take a picnic on a hill surrounded by birds and beautiful flowers, you have come to the right place. Enjoy a unique accommodation specially curated for you, while you fulfil your need for exploring the natural wonders. Choose a memorable stay and experience all wrapped up in a thematic travel package. And remember, it is not only about the highest peak that you can climb, it is about the epic journey that lies ahead. ' },
-  { id: 'wildlife', src: './wildlife.jpg', title: 'Wildlife', description: 'A truly epic travel experience includes interactions with wildlife in their natural habitats. Luckily, Romania has a huge virtually-untouched area of mountains and is the home to some of Europe\'s most exciting species, including Brown Bears and Wolves. With that in mind, here you can explore the stunning wildlife of Romania, and find the best stays and experiences, all wrapped up in thematic travel packages. Enjoy!' },
-  { id: 'living_traditions', src: './living_traditions.jpg', title: 'Living Traditions', description: 'Where are your roots? What makes you think about childhood? If the answer lies in tradition, then this is the place to start searching for your next vacation. Our roots are in fact living traditions, where communities come together and build unique places left for us to be discovered. Start your epic journey by rediscovering the magic of old stories, folk music, traditional houses, and become a part of the community that keeps the tradition alive. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
+{ id: 'simply_chill', src: './simply_chill.jpg', 
+  title: 'Simply Chill', 
+  description: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+  title_ro: 'Marea Relaxare', 
+  description_ro: 'Te simți obosit, stresat, incapabil să te concentrezi? Te înțelegem, știm cum este. Ai nevoie de o scurtă vacanță în care să te deconectezi. Aici vei găsi cazări inedite din România pentru o vacanță de neuitat.  ' 
+},
+{ id: 'nature_wonders', src: './nature_wonders.jpg', 
+  title: 'Nature Wonders', 
+  description: 'Nature...these are the times when you realize how much it means to you. Especially if you’re living in a noisy and polluted city. If you like to climb mountains, admire breathtaking natural sights, take a picnic on a hill surrounded by birds and beautiful flowers, you have come to the right place. Enjoy a unique accommodation specially curated for you, while you fulfil your need for exploring the natural wonders. Choose a memorable stay and experience all wrapped up in a thematic travel package. And remember, it is not only about the highest peak that you can climb, it is about the epic journey that lies ahead. ' ,
+  title_ro: 'Minuni ale Naturii', 
+  description_ro: 'Natura...multe sunt momentele când realizezi cât de mult înseamnă pentru tine. În special dacă locuiești într-un oraș zgomotos și poluat. Dacă îți place să faci drumeții montane, să descoperi peisaje care îți taie respirația, sau să iei un picnic în natură, înconjurat de dealuri domoale și acompaniat de sunetul relaxant al păsărilor, atunci ai descoperit categoria perfectă pentru tine. Aici vei găsi cazări și experiențe inedite din România grupate în pachete de vacanță tematice în natură, pentru ca excursia ta să devină o poveste epică.' 
+},
+{ id: 'wildlife', src: './wildlife.jpg', 
+  title: 'Wildlife', 
+  description: 'A truly epic travel experience includes interactions with wildlife in their natural habitats. Luckily, Romania has a huge virtually-untouched area of mountains and is the home to some of Europe\'s most exciting species, including Brown Bears and Wolves. With that in mind, here you can explore the stunning wildlife of Romania, and find the best stays and experiences, all wrapped up in thematic travel packages. Enjoy!' ,
+  title_ro: 'Natură Neîmblânzită', 
+  description_ro: 'O experiență cu adevărat unică implică descoperirea naturii neîmblânzite în toată frumusețea ei. România se bucură de o varietate de spații unice, unde natura își urmează încă nestingherită cursul. Lupi, urși și râși, zimbri îți dau întâlnire în mediul lor natural. Explorează o Românie uimitoare. Aici vei găsi cazări și experiențe inedite din România grupate în pachete de vacanță tematice, pentru ca excursia ta să devină o poveste epică.' 
+},
+{ id: 'living_traditions', src: './living_traditions.jpg', 
+  title: 'Living Traditions', 
+  description: 'Where are your roots? What makes you think about childhood? If the answer lies in tradition, then this is the place to start searching for your next vacation. Our roots are in fact living traditions, where communities come together and build unique places left for us to be discovered. Start your epic journey by rediscovering the magic of old stories, folk music, traditional houses, and become a part of the community that keeps the tradition alive. Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+  title_ro: 'Tradiții Nemuritoare', 
+  description_ro: 'Cât de bine îți cunoști istoria? Unde îți sunt rădăcinile? Ce te face să te gândești la copilărie? Poți să începi călătoria ta epică prin redescoperirea poveștilor demult uitate, a obiceiurile populare, a muzicii tradiționale autentice, a caselor vechi unde tradiția este menținută vie. Aici vei găsi cazări și experiențe inedite din România grupate în pachete tematice pentru o vacanță de neuitat. ' 
+},
   
-  { id: 'fun_and_learning_for_kids', src: './fun_and_learning_for_kids.jpg', title: 'Fun & Learning for Kids', description: 'It’s the perfect moment to spend some quality time with your family. Although family time gives great fulfillment and is a great opportunity to reconnect, it’s sometimes quite a challenge to please every member of the family. Not to worry. Here you can find epic visits designed for you. Where you can explore, learn and most important, have fun together. Team up and get ready for some family adventure! Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
+{ id: 'fun_and_learning_for_kids', src: './fun_and_learning_for_kids.jpg', 
+  title: 'Fun & Learning for Kids', 
+  description: 'It’s the perfect moment to spend some quality time with your family. Although family time gives great fulfillment and is a great opportunity to reconnect, it’s sometimes quite a challenge to please every member of the family. Not to worry. Here you can find epic visits designed for you. Where you can explore, learn and most important, have fun together. Team up and get ready for some family adventure! Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+  title_ro: 'Distracție și Învățare pentru Copii', 
+  description_ro: 'Timpul petrecut în familie înseamnă distracție și bucurie împărtășită reciproc. Este cel mai prețios dar pe care îl avem. Chiar dacă viața de familie îți oferă sentimentul de împlinire, uneori este destul de dificil să găsești activități care să-i mulțumească pentru toți. Am pregătit câteva soluții. Aici vei găsi cazări și experiențe inedite din România grupate în pachete tematice de vacanță pentru întreaga familie care vor transforma orice excursie într-o poveste epică.' 
+},
   
-  { id: 'tasty_treasures', src: './tasty_treasures.jpg', title: 'Tasty Treasures', description: 'If you are an epicure, gourmet, gourmand, gastronome, or foodie, then you are in the right category. No matter how they call us, we all have in common the love for good, healthy and tasty food wherever and whenever we travel. Here you can discover the treasures of perfect balanced tastes and unique housing experiences. There is a saying that the love for travel goes through the stomach, and it is very true especially when it comes to epic travellers. Your journey is unique and why don’t you also make your food experience to be the same? Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
-  { id: 'urban_discoveries', src: './urban_discoveries.jpg', title: 'Urban Discoveries', description: 'Living legends, hidden gems, a city’s best secrets are now being revealed. Take a break from Lonely Planet and start to discover a wholesome city experience where you learn and live like an urban Indiana Jones...for a couple of days at least. Explore the thrills of discovery. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
-  { id: 'romantic_escapes', src: './romantic_escapes.jpg', title: 'Romantic Escapes', description: 'All we need is love, love, love, love. Yes, being in love is magical, but every relationship needs care and nurturing from both sides. Start celebrating your love and create memorable and unique moments. We’ll take care of the setup, you just focus on what is really important. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
-  { id: 'simply_chill', src: './simply_chill.jpg', title: 'Simply Chill', description: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
+{ id: 'tasty_treasures', src: './tasty_treasures.jpg', 
+  title: 'Tasty Treasures', 
+  description: 'If you are an epicure, gourmet, gourmand, gastronome, or foodie, then you are in the right category. No matter how they call us, we all have in common the love for good, healthy and tasty food wherever and whenever we travel. Here you can discover the treasures of perfect balanced tastes and unique housing experiences. There is a saying that the love for travel goes through the stomach, and it is very true especially when it comes to epic travellers. Your journey is unique and why don’t you also make your food experience to be the same? Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+  title_ro: 'Comori Gustoase', 
+  description_ro: 'Gurmanzi, pofticioși, oricum ni s-ar spune, un lucru e cert: știm să ne bucurăm de viață și vânăm creațiile culinare. Nu căutam doar mâncare bună, vrem să descoperim povești, senzații noi, combinații curajoase. Aici vei găsi cazări și experiențe inedite din România grupate în pachete de vacanță tematice, pentru ca excursia ta să devină o poveste epică.' 
+},
+{ id: 'urban_discoveries', src: './urban_discoveries.jpg', 
+  title: 'Urban Discoveries', 
+  description: 'Living legends, hidden gems, a city’s best secrets are now being revealed. Take a break from Lonely Planet and start to discover a wholesome city experience where you learn and live like an urban Indiana Jones...for a couple of days at least. Explore the thrills of discovery. Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+  title_ro: 'Descoperiri Urbane', 
+  description_ro: 'Legende urbane sau bijuterii arhitecturale ascunse în inima orașului așteaptă să fie descoperite la pas. Lasă-te cucerit de magia orașului, intră în pielea unui Indiana Jones urban, pierde-te pe străzi și descoperă povești nespuse...măcar pentru câteva zile. Aici vei găsi cazări și experiențe inedite din România grupate în pachete de vacanță tematice, pentru ca excursia ta să devină o poveste epică.' 
+},
+{ id: 'romantic_escapes', src: './romantic_escapes.jpg', 
+  title: 'Romantic Escapes', 
+  description: 'All we need is love, love, love, love. Yes, being in love is magical, but every relationship needs care and nurturing from both sides. Start celebrating your love and create memorable and unique moments. We’ll take care of the setup, you just focus on what is really important. Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+  title_ro: 'Escapade Romantice', 
+  description_ro: 'Un singur cuvânt ne poate izbăvi de tot greul și durerea vieții: cuvântul iubire (Sofocle). Să iubești este un sentiment magic, dar fiecare relație trebuie întreținută, precum o floare, cu atenție, respect și grijă din ambele părți. Găsește o cale inedită de a celebra dragostea: călătorind. Noi avem grijă de toate, tu trebuie doar să te concentrezi pe ceea ce contează cu adevărat. Aici vei găsi cazări și experiențe inedite din România grupate în pachete de vacanță tematice, pentru ca excursia ta să devină o poveste epică. ' 
+},
+// { id: 'simply_chill', src: './simply_chill.jpg', 
+//   title: 'Simply Chill', 
+//   description: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+//   title_ro: 'Simply Chill', 
+//   description_ro: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' 
+// },
   
   //{ id: 'spiritual_journey', src: './spiritual_journey.jpg', title: 'Spiritual Journey', description: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
   
-  { id: 'energy_and_adrenaline', src: './energy_and_adrenaline.jpg', title: 'Energy and Adrenaline', description: 'We think that it is important to live fast and have memorable stays, that’s why this category is for the ones who love to feel the adrenaline rush. No matter if it is paragliding or downhill, at the end of the day you need a unique place to spend the night and recover after the adventure. Make your adventures epic and go beyond the comfort, live the story of your experience to the maximum. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
+{ id: 'energy_and_adrenaline', src: './energy_and_adrenaline.jpg', 
+  title: 'Energy and Adrenaline', 
+  description: 'We think that it is important to live fast and have memorable stays, that’s why this category is for the ones who love to feel the adrenaline rush. No matter if it is paragliding or downhill, at the end of the day you need a unique place to spend the night and recover after the adventure. Make your adventures epic and go beyond the comfort, live the story of your experience to the maximum. Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+  title_ro: 'Energie și Adrenalină', 
+  description_ro: 'Îți place să te dai cu parapanta? Vrei să zbori cu un avion ultraușor? Iubești senzația oferită de o sesiune de downhill? Super, ai nevoie de o excursie epică, în care să simți intens fiecare bătaie a inimii. Aici vei găsi cazări și experiențe inedite din România grupate în pachete de vacanță tematice, pentru ca excursia ta să devină o poveste epică. ' 
+},
   
   //{ id: 'wellness_and_well-being', src: './wellness_and_well-being.jpg', title: 'Wellness and Well-Being', description: 'Tired, stressed, brainwashed? Ok, we know how that feels. You need a Great Do Nothing experience.  Where you can just relax and enjoy the little things in life that make you feel happy. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
   
-  { id: 'living_traditions', src: './living_traditions.jpg', title: 'Living Traditions', description: 'Where are your roots? What makes you think about childhood? If the answer lies in tradition, then this is the place to start searching for your next vacation. Our roots are in fact living traditions, where communities come together and build unique places left for us to be discovered. Start your epic journey by rediscovering the magic of old stories, folk music, traditional houses, and become a part of the community that keeps the tradition alive. Choose a memorable stay and experience all wrapped up in a thematic travel package.' },
-  { id: 'home_alone', src: './home_alone.jpg', title: 'Entire Places', description: 'Looking for that perfect place to celebrate anniversaries, holidays or team buildings with your family, friends or colleagues ? Check out these stays especially designed for small or large groups that will transform each gathering into an epic experience.' },
-  { id: 'entire_places', src: './home_alone.jpg', title: 'Entire Places', description: 'Looking for that perfect place to celebrate anniversaries, holidays or team buildings with your family, friends or colleagues ? Check out these stays especially designed for small or large groups that will transform each gathering into an epic experience.' },
+{ id: 'living_traditions', src: './living_traditions.jpg', 
+  title: 'Living Traditions', 
+  description: 'Where are your roots? What makes you think about childhood? If the answer lies in tradition, then this is the place to start searching for your next vacation. Our roots are in fact living traditions, where communities come together and build unique places left for us to be discovered. Start your epic journey by rediscovering the magic of old stories, folk music, traditional houses, and become a part of the community that keeps the tradition alive. Choose a memorable stay and experience all wrapped up in a thematic travel package.' 
+},
+{ id: 'home_alone', src: './home_alone.jpg', 
+  title: 'Entire Places', 
+  description: 'Looking for that perfect place to celebrate anniversaries, holidays or team buildings with your family, friends or colleagues ? Check out these stays especially designed for small or large groups that will transform each gathering into an epic experience.' 
+},
+{ id: 'entire_places', src: './home_alone.jpg', 
+  title: 'Entire Places', 
+  description: 'Looking for that perfect place to celebrate anniversaries, holidays or team buildings with your family, friends or colleagues ? Check out these stays especially designed for small or large groups that will transform each gathering into an epic experience.' ,
+  title_ro: 'Case de Închiriat Integral', 
+  description_ro: 'Te-ai gândit vreodată cum ar fi să ai un conac, o cabană sau chiar o casă în copac numai pentru tine și prietenii tăi? Imaginează-ți cât de epice ar putea fi petrecerile, cât de multă distracție ai putea avea cu familia. Team-building-urile organizate aici ar fi cele mai tari experiențe ale anului. Aici vei găsi cabane de inchiriat integral și alte cazări de vis pentru grupuri mici și mari care vor transforma orice excursie într-o poveste epică.' 
+},
   
 ];
 
@@ -248,7 +309,7 @@ export class ThemeTestPageComponent extends Component {
         </LayoutWrapperTopbar>
 
         <LayoutWrapperMain className={css1.staticPageWrapper}>
-          <h1 className={css1.pageTitle}>{detectedTheme.title}</h1>
+          <h1 className={css1.pageTitle}>{config.locale === 'en' ? detectedTheme.title : detectedTheme.title_ro }</h1>
           {/* <img className={css1.coverImage} src={getCats()[0]} alt="Simply Chill" /> */}
 
           {/* {parse(getCats()[0])} */}
@@ -296,12 +357,12 @@ export class ThemeTestPageComponent extends Component {
 
             <div className={css1.contentMain}>
               <h2>
-              {detectedTheme.title}
+              {config.locale === 'en' ? detectedTheme.title : detectedTheme.title_ro }
               </h2>
 
               <p>
               {/* {images.filter(x=>x.id === themeQuerystring)[0] ? images.filter(x=>x.id === themeQuerystring)[0].description : null} */}
-              {detectedTheme.description}
+              {config.locale === 'en' ? detectedTheme.description : detectedTheme.description_ro }
               </p> 
             </div>
           </div>

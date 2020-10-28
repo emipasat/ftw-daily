@@ -48,7 +48,6 @@ const setLanguageFromUrl111 = () => {
       config.locale = 'en';
     }
   }
-  
 };
 
 

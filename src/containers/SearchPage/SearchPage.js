@@ -16,6 +16,7 @@ import { getListingsById } from '../../ducks/marketplaceData.duck';
 import { manageDisableScrolling, isScrollingDisabled } from '../../ducks/UI.duck';
 import { SearchMap, ModalInMobile, Page } from '../../components';
 import { TopbarContainer } from '../../containers';
+//import config from '../../config';
 
 import { searchListings, searchMapListings, setActiveListing } from './SearchPage.duck';
 import {
@@ -26,6 +27,32 @@ import {
 } from './SearchPage.helpers';
 import MainPanel from './MainPanel';
 import css from './SearchPage.css';
+
+
+const setLanguageFromUrl111 = () => {
+
+  const isServer = typeof window === 'undefined';
+
+  if (!isServer)
+  {
+    var first = window.location.href;
+    var first1 = first.split('/');
+    console.log(first1)
+  
+    if (first1[3] == 'ro')
+    {
+      config.locale = 'ro';
+    }
+    else 
+    {
+      config.locale = 'en';
+    }
+  }
+};
+
+
+setLanguageFromUrl111();
+
 
 // Pagination page size might need to be dynamic on responsive page layouts
 // Current design has max 3 columns 12 is divisible by 2 and 3

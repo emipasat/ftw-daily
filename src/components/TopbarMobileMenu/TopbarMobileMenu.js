@@ -82,6 +82,7 @@ const TopbarMobileMenu = props => {
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('LandingPageRo'))}
           name="LandingPageRo"
+          title="RO"
         >
           <span onClick={ refreshPage }>RO</span>
         </NamedLink>
@@ -90,6 +91,7 @@ const TopbarMobileMenu = props => {
         <NamedLink
           className={classNames(css.navigationLink, currentPageClass('LandingPage'))}
           name="LandingPage"
+          title="EN"
         >
           <span onClick={ refreshPage }>EN</span>
         </NamedLink>

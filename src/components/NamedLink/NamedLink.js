@@ -23,13 +23,40 @@ import { Link, withRouter } from 'react-router-dom';
 import classNames from 'classnames';
 import routeConfiguration from '../../routeConfiguration';
 import { pathByRouteName } from '../../util/routes';
+import config from '../../config';
 
 export const NamedLinkComponent = props => {
   const { name, params, title } = props;
 
   // Link props
+
+  //console.log(config.locale)
+
+  var name1 = name;
+
+  if (config.locale === 'ro')
+  {
+    name1 = name + "Ro"
+    if (name.endsWith('Ro'))
+    {
+      name1 = name;
+    }
+    else 
+    {
+      if (title === 'EN')
+      {
+        name1 = name;
+      }
+      else 
+      {
+        name1 = name + "Ro"
+      }      
+    }
+  }
+  
+
   const { to, children } = props;
-  const pathname = pathByRouteName(name, routeConfiguration(), params);
+  const pathname = pathByRouteName(name1, routeConfiguration(), params);
   const { match } = props;
   const active = match.url && match.url === pathname;
 
@@ -40,6 +67,36 @@ export const NamedLinkComponent = props => {
     style,
     title,
   };
+
+  //console.log(pathname)
+  
+  const pathname1 = '/ro/about'//pathname + '/abc';
+  //console.log(pathname1)
+  // var first1 = pathname.split('/');
+  // if (first1[1] !== 'ro')
+  // {
+  //   if (config.locale === 'ro')
+  //   {
+  //     pathname1 = '/ro' + pathname;
+  //   }
+  // }
+
+  // if (pathname === '/ro')
+  // {
+  //   pathname1 = pathname;
+  // }
+  // else 
+  // {
+  //   if (config.locale === 'ro' && pathname.indexOf('/ro')<0)
+  //   {
+  //     pathname1 = ('/ro/' + pathname).replace('//', '');
+  //   }
+  //   else 
+  //   {
+  //     pathname1 = pathname;
+  //   }
+  // }
+  
 
   return (
     <Link to={{ pathname, ...to }} {...aElemProps}>

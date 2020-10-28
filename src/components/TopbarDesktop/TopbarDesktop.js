@@ -217,7 +217,7 @@ const TopbarDesktop = props => {
 
   {/* show only one TODO */}
   var languageLinkRo = 
-    (<NamedLink name="LandingPageRo" className={css.loginLink} >
+    (<NamedLink name="LandingPageRo" className={css.loginLink} title="RO">
       <span className={css.login} onClick={ refreshPage }>
         RO
       </span>
@@ -225,7 +225,7 @@ const TopbarDesktop = props => {
     );
 
     var languageLinkEn = 
-    (<NamedLink name="LandingPage" className={css.loginLink} >
+    (<NamedLink name="LandingPage" className={css.loginLink} title="EN" >
       <span className={css.login} onClick={ refreshPage }>
         EN
       </span>

@@ -10,8 +10,70 @@ import { propTypes } from './util/types';
 import * as log from './util/log';
 import { canonicalRoutePath } from './util/routes';
 import routeConfiguration from './routeConfiguration';
+import config from './config';
 
 const { arrayOf, bool, object, func, shape, string } = PropTypes;
+
+// const setLanguageFromUrl111 = () => {
+
+//   const isServer = typeof window === 'undefined';
+
+//   if (!isServer)
+//   {
+
+//     var referrer = document.referrer;
+//     var first2 = referrer.split('/');
+
+//     if (first2[3] == 'ro')
+//     {
+//       config.locale = 'ro';
+//     }
+//     else 
+//     {
+//       var first = window.location.href;
+//       var first1 = first.split('/');
+//       console.log(first1)
+    
+//       if (first1[3] == 'ro')
+//       {
+//         config.locale = 'ro';
+//       }
+//       else 
+//       {
+//         config.locale = 'en';
+//       }
+//     }
+
+    
+//   }
+  
+// };
+
+const setLanguageFromUrl111 = () => {
+
+  const isServer = typeof window === 'undefined';
+
+  if (!isServer)
+  {
+    var first = window.location.href;
+    var first1 = first.split('/');
+    console.log(first1)
+  
+    if (first1[3] == 'ro')
+    {
+      config.locale = 'ro';
+    }
+    else 
+    {
+      config.locale = 'en';
+    }
+  }
+  
+};
+
+
+setLanguageFromUrl111();
+
 
 const canShowComponent = props => {
   const { isAuthenticated, route } = props;
@@ -90,6 +152,11 @@ class RouteComponentRenderer extends Component {
     const { route, match, location, staticContext } = this.props;
     const { component: RouteComponent, authPage = 'SignupPage' } = route;
     const canShow = canShowComponent(this.props);
+
+    setLanguageFromUrl111();
+    const language = config.locale;
+    const prefix = language === 'ro' ? 'ro' : '';
+
     if (!canShow) {
       staticContext.unauthorized = true;
     }
