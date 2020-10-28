@@ -53,7 +53,9 @@ export const NamedLinkComponent = props => {
       }      
     }
   }
-  
+  console.log('xxxxxxxxxxxx')
+  console.log(name + " " + name1)
+  console.log('xxxxxxxxxxxx')
 
   const { to, children } = props;
   const pathname = pathByRouteName(name1, routeConfiguration(), params);

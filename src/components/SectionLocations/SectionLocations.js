@@ -100,14 +100,6 @@ const locationLink = (name, image, searchQuery) => {
 
 const natureWondersLink = (name, image) => {
 
-
-  var prefix = '';
-  if (config.locale === 'ro')
-  {
-    prefix = '/ro'
-  }
-
-
   const nameText = <span className={css.locationName}>{name}</span>;
   return (
     <a href={prefix + "/th/nature_wonders"} className={css.location}>
