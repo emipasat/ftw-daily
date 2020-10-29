@@ -77,14 +77,9 @@ export const NamedLinkComponent = props => {
 
   
   return (
-    <div>
-      {name1}&nbsp;
-{pathname}
     <Link to={{ pathname, ...to }} {...aElemProps}>
       {children}
     </Link>
-    </div>
-    
   );
 };
 
