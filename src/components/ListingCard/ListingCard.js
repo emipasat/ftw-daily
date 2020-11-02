@@ -69,7 +69,7 @@ export const ListingCardComponent = props => {
   const id = currentListing.id.uuid;
   var { title = '', price } = currentListing.attributes;
 
-  if (currentListing.attributes.publicData.ro_title !== undefined)
+  if (currentListing.attributes.publicData.ro_title !== undefined && config.locale === 'ro')
   {
     title = currentListing.attributes.publicData.ro_title;
   }
