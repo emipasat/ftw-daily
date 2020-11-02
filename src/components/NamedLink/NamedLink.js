@@ -53,16 +53,10 @@ export const NamedLinkComponent = props => {
       }      
     }
   }
-  console.log('xxxxxxxxxxxx')
-  console.log(name + " " + name1)
-  console.log('xxxxxxxxxxxx')
-
+ 
   const { to, children } = props;
   const pathname = pathByRouteName(name1, routeConfiguration(), params);
 
-  console.log('xxxxxxxxxxxx')
-  console.log(pathname)
-  console.log('xxxxxxxxxxxx')
 
   const { match } = props;
   const active = match.url && match.url === pathname;

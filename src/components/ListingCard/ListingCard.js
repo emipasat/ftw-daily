@@ -67,7 +67,13 @@ export const ListingCardComponent = props => {
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureListing(listing);
   const id = currentListing.id.uuid;
-  const { title = '', price } = currentListing.attributes;
+  var { title = '', price } = currentListing.attributes;
+
+  if (currentListing.attributes.publicData.ro_title !== undefined)
+  {
+    title = currentListing.attributes.publicData.ro_title;
+  }
+
   const slug = createSlug(title);
   const author = ensureUser(listing.author);
   const authorName = author.attributes.profile.displayName;
