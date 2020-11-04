@@ -141,6 +141,13 @@ const images = [
   description_ro: 'Te-ai gândit vreodată cum ar fi să ai un conac, o cabană sau chiar o casă în copac numai pentru tine și prietenii tăi? Imaginează-ți cât de epice ar putea fi petrecerile, cât de multă distracție ai putea avea cu familia. Team-building-urile organizate aici ar fi cele mai tari experiențe ale anului. Aici vei găsi cabane de inchiriat integral și alte cazări de vis pentru grupuri mici și mari care vor transforma orice excursie într-o poveste epică.' 
 },
   
+{ id: 'spiritual_journey', src: './spiritual_journey.jpg', 
+  title: 'Spiritual Journey', 
+  description: 'Can’t find your motivation for study or work anymore? Do you feel that something’s missing in your life, that you’ve lost contact with...yourself? Sometimes, you need to get lost to rediscover yourself. We’ve gathered some epic journeys that will bring food for your mind and soul. Choose a memorable stay and experience all wrapped up in a thematic travel package.' ,
+  title_ro: 'Călătorii Spirituale', 
+  description_ro: 'Ți-ai pierdut motivația de a studia sau de a munci? Simți un gol interior și ai senzația că te pierzi pe tine din ce în ce mai mult? Ia o pauză și dispari...într-o călătorie. Am pregătit niște vizite epice care îți vor hrăni mintea și sufletul. Alege cazări unice și experiențe memorabile grupate în pachete tematice!' 
+},
+
 ];
 
 

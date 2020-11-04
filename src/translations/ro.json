@@ -224,6 +224,8 @@
   "EditListingPhotosPanel.title": "Editeaza pozele pentru {listingTitle}",
   "EditListingPoliciesForm.rulesLabel": "Regulile experientei",
   "EditListingPoliciesForm.rulesPlaceholder": "Nu e permis",
+  "EditListingPoliciesForm.roRulesLabel": "Regulile experientei in Romana",
+  "EditListingPoliciesForm.roRulesPlaceholder": "Nu e permis in Romana",
   "EditListingPoliciesForm.showListingFailed": "Fetching listing data failed",
   "EditListingPoliciesForm.updateFailed": "Listarea nu a fost actualizata. Te rugam sa incerci din nou.",
   "EditListingPoliciesPanel.createListingTitle": "E timpul sa stabilim niste reguli pentru vizitatori.",

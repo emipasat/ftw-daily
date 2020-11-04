@@ -34,6 +34,13 @@ export const EditListingPoliciesFormComponent = props => (
         id: 'EditListingPoliciesForm.rulesPlaceholder',
       });
 
+      const roRulesLabelMessage = intl.formatMessage({
+        id: 'EditListingPoliciesForm.roRulesLabel',
+      });
+      const roRulesPlaceholderMessage = intl.formatMessage({
+        id: 'EditListingPoliciesForm.roRulesPlaceholder',
+      });
+
       const { updateListingError, showListingsError } = fetchErrors || {};
       const errorMessage = updateListingError ? (
         <p className={css.error}>
@@ -63,6 +70,15 @@ export const EditListingPoliciesFormComponent = props => (
             type="textarea"
             label={rulesLabelMessage}
             placeholder={rulesPlaceholderMessage}
+          />
+
+          <FieldTextInput
+            id="ro_rules"
+            name="ro_rules"
+            className={css.policy}
+            type="textarea"
+            label={roRulesLabelMessage}
+            placeholder={roRulesPlaceholderMessage}
           />
 
           <Button

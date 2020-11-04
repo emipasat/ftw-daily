@@ -24,6 +24,7 @@ import simplyChillImage from './images/simply_chill.jpg';
 import livingTraditionsImage from './images/living_traditions.jpg';
 import funAndLearningForKidsImage from './images/fun_and_learning_for_kids.jpg';
 import homeAloneImage from './images/home_alone.jpg';
+import spiritualJourneyImage from './images/spiritual_journey.jpg';
 
 import CarouselSlide from './CarouselSlide';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -308,6 +309,25 @@ const homeAloneLink = (name, image) => {
   );
 };
 
+const spiritualJourneyLink = (name, image) => {
+  const nameText = <span className={css.locationName}>{name}</span>;
+  return (
+    <a href={prefix + "/th/spiritual_journey"} className={css.location}>
+      <div className={css.imageWrapper}>
+        <div className={css.aspectWrapper}>
+          <LazyImage src={image} alt={name} className={css.locationImage} />
+        </div>
+      </div>
+      <div className={css.linkText}>
+        <FormattedMessage
+          id="SectionLocations.listingsInLocation"
+          values={{ location: nameText }}
+        />
+      </div>
+    </a>
+  );
+};
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -471,6 +491,16 @@ const SectionLocations = props => {
           {homeAloneLink(
             config.locale === 'en' ? 'Entire Places':'Case de Închiriat Integral',
             homeAloneImage,
+            //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
+          )}
+          </Card>
+        </Grid>
+
+        <Grid item xs={6} sm={3}>
+          <Card >
+          {spiritualJourneyLink(
+            config.locale === 'en' ? 'Spiritual Journey':'Călătorii Spirituale',
+            spiritualJourneyImage,
             //'?address=Ruka%2C%20Finland&bounds=66.1704578%2C29.14246849999995%2C66.1614402%2C29.110453699999994&origin=66.16594940000002%2C29.12646110000003'
           )}
           </Card>

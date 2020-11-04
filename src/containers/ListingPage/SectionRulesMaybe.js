@@ -2,6 +2,7 @@ import React from 'react';
 import { shape, string } from 'prop-types';
 import { FormattedMessage } from '../../util/reactIntl';
 import classNames from 'classnames';
+import config from '../../config';
 
 import css from './SectionRulesMaybe.css';
 
@@ -13,7 +14,7 @@ const SectionRulesMaybe = props => {
       <h2 className={css.title}>
         <FormattedMessage id="ListingPage.rulesTitle" />
       </h2>
-      <p className={css.rules}>{publicData.rules}</p>
+      <p className={css.rules}>{config.locale === 'ro' && publicData.ro_rules ? publicData.ro_rules : publicData.rules}</p>
     </div>
   ) : null;
 };

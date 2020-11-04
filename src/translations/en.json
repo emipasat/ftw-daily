@@ -287,6 +287,8 @@
   "EditListingPhotosPanel.title": "Edit the photos of {listingTitle}",
   "EditListingPoliciesForm.rulesLabel": "Experience rules",
   "EditListingPoliciesForm.rulesPlaceholder": "Describe the no-nos",
+  "EditListingPoliciesForm.roRulesLabel": "Experience rules in Romanian",
+  "EditListingPoliciesForm.roRulesPlaceholder": "Describe the no-nos in Romanian",
   "EditListingPoliciesForm.showListingFailed": "Fetching listing data failed",
   "EditListingPoliciesForm.updateFailed": "Failed to update listing. Please try again.",
   "EditListingPoliciesPanel.createListingTitle": "Time to set some ground rules for the visitors.",
