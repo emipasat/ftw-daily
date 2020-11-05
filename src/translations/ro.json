@@ -72,7 +72,7 @@
   "Avatar.bannedUserDisplayName": "Utilizator interzis",
   "Avatar.deletedUserDisplayName": "Utilizator sters",
   "BookingBreakdown.baseUnitDay": "{Pret unitate} * {cantitate, numar} {cantitate, plural, o {zi} alte {zile}",
-  "BookingBreakdown.baseUnitNight": "{Pret unitate} * {cantitate, numar} {cantitate, plural, o {noapte} alte {nopti}}",
+  "BookingBreakdown.baseUnitNight": "{unitPrice} * {quantity, number} {quantity, plural, one {noapte} other {nopti}}",
   "BookingBreakdown.baseUnitQuantity": "{unitPrice} * {quantity, number} {quantity, plural, one {person} other {persons}}",
   "BookingBreakdown.bookingEnd": "Data sfarsit",
   "BookingBreakdown.bookingStart": "Data incepere",
