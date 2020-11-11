@@ -41,7 +41,7 @@ export const TRANSITION_EXPIRE = 'transition/expire';
 export const TRANSITION_CANCEL = 'transition/cancel';
 
 // Customer can also cancel the transition.
-export const TRANSITION_CANCEL_BY_CUSTOMER = 'transition/cancel_by_customer';
+export const TRANSITION_CANCEL_BY_CUSTOMER = 'transition/cancel-by-customer';
 
 // The backend will mark the transaction completed.
 export const TRANSITION_COMPLETE = 'transition/complete';
