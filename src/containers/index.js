@@ -1,4 +1,6 @@
 export { default as AboutPage } from './AboutPage/AboutPage';
+export { default as StoryPage } from './StoryPage/StoryPage';
+export { default as BlogPage } from './BlogPage/BlogPage';
 export { default as AuthenticationPage } from './AuthenticationPage/AuthenticationPage';
 export { default as CheckoutPage } from './CheckoutPage/CheckoutPage';
 export { default as ContactDetailsPage } from './ContactDetailsPage/ContactDetailsPage';

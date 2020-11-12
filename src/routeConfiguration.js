@@ -1,6 +1,8 @@
 import React from 'react';
 import {
   AboutPage,
+  StoryPage,
+  BlogPage,
   AuthenticationPage,
   CheckoutPage,
   ContactDetailsPage,
@@ -87,6 +89,30 @@ const routeConfiguration = () => {
       path: '/ro/about',
       name: 'AboutPageRo',
       component: AboutPage,
+    },
+    {
+      path: '/blog/:date/:title',
+      name: 'StoryPage',
+      component: props => <StoryPage {...props} />,
+      //loadData: ThemeTestPage.loadData,
+    },
+    {
+      path: '/ro/blog/:date/:title',
+      name: 'StoryPageRo',
+      component: props => <StoryPage {...props} />,
+      //loadData: ThemeTestPage.loadData,
+    },
+    {
+      path: '/blog',
+      name: 'BlogPage',
+      component: props => <BlogPage {...props} />,
+      //loadData: ThemeTestPage.loadData,
+    },
+    {
+      path: '/ro/blog',
+      name: 'BlogPageRo',
+      component: props => <BlogPage {...props} />,
+      //loadData: ThemeTestPage.loadData,
     },
     {
       path: '/s',
