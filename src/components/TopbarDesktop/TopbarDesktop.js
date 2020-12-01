@@ -26,7 +26,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 import css from './TopbarDesktop.css';
 
-function refreshPage(){ 
+function refreshPage1(){ 
   const isServer = typeof window === 'undefined';
   if (!isServer)
   {
@@ -37,7 +37,8 @@ function refreshPage(){
       .bind(this),
       1000
     );
-    //window.location.reload(); 
+    //this.forceUpdate();
+    //props.dispatch (push ('/ro'))
   }
 }
 
@@ -216,21 +217,21 @@ const TopbarDesktop = props => {
 
 
   {/* show only one TODO */}
-  var languageLinkRo = 
-    (<NamedLink name="LandingPageRo" className={css.loginLink} title="RO">
-      <span className={css.login} onClick={ refreshPage }>
-        RO
-      </span>
-    </NamedLink>
-    );
+  var languageLinkRo = (<a href="/ro"><span className={css.login}>RO</span></a>);
+    // (<NamedLink name="LandingPageRo" className={css.loginLink} title="RO">
+    //   <span className={css.login} onClick={ ()=> { } }>
+    //     RO
+    //   </span>
+    // </NamedLink>
+    // );
 
-    var languageLinkEn = 
-    (<NamedLink name="LandingPage" className={css.loginLink} title="EN" >
-      <span className={css.login} onClick={ refreshPage }>
-        EN
-      </span>
-    </NamedLink>
-    );
+    var languageLinkEn = (<a href="/"><span className={css.login}>EN</span></a>);
+    // (<NamedLink name="LandingPage" className={css.loginLink} title="EN" >
+    //   <span className={css.login} onClick={ ()=> { } }>
+    //     EN
+    //   </span>
+    // </NamedLink>
+    // );
 
     var blogLink = 
     (<NamedLink name="BlogPage" className={css.loginLink} title="Blog" >
@@ -299,8 +300,9 @@ const TopbarDesktop = props => {
       {profileMenu}
       {signupLink}
       {loginLink}
-      {languageLinkRo}
-      {languageLinkEn}
+      <table><tr><td>{languageLinkRo}</td><td>&nbsp;</td><td>{languageLinkEn}</td></tr></table>
+      
+      
     </nav>
   );
 };

@@ -83,9 +83,10 @@ const setupLocale = () => {
   moment.locale(config.locale);
 };
 
+
 export const ClientApp = props => {
   const { store } = props;
-  setupLocale();
+  setupLocale();  
   return (
     <IntlProvider locale={config.locale} messages={localeMessages} textComponent="span">
       <Provider store={store}>

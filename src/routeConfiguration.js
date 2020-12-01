@@ -74,11 +74,13 @@ const routeConfiguration = () => {
       path: '/',
       name: 'LandingPage',
       component: props => <LandingPage {...props} />,
+      //loadData: LandingPage.loadData1,
     },
     {
       path: '/ro',
       name: 'LandingPageRo',
       component: props => <LandingPage {...props} />,
+      //loadData: LandingPage.loadDataRo2,
     },
     {
       path: '/about',

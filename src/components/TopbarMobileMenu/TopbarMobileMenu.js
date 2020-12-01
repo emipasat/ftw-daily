@@ -79,22 +79,25 @@ const TopbarMobileMenu = props => {
             {/* show only one TODO */}
             <br/>
             <br/>
-        <NamedLink
+        {/* <NamedLink
           className={classNames(css.navigationLink, currentPageClass('LandingPageRo'))}
           name="LandingPageRo"
           title="RO"
         >
           <span onClick={ refreshPage }>RO</span>
-        </NamedLink>
+        </NamedLink> */}
+
+       <a href="/ro"><span className={css.navigationLink}>RO</span></a>
         <br/>
-            <br/>
-        <NamedLink
+        <br/>
+       <a href="/"><span className={css.navigationLink}>EN</span></a>
+        {/* <NamedLink
           className={classNames(css.navigationLink, currentPageClass('LandingPage'))}
           name="LandingPage"
           title="EN"
         >
           <span onClick={ refreshPage }>EN</span>
-        </NamedLink>
+        </NamedLink> */}
 
           </div>
         </div>
