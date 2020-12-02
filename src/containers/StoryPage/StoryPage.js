@@ -434,7 +434,7 @@ export class StoryPageComponent extends Component {
 
                 
 
-                {languageFromUrl === 'ro' ? 
+                {languageFromUrl == 'ro' ? 
                 (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph2Ro}}></p></div>)
                 : 
                 (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph2En}}></p></div>)
@@ -442,7 +442,7 @@ export class StoryPageComponent extends Component {
 
                 <img className={css.coverImage} src={image3} alt="Zabola Estate 3" />
                 <img className={css.coverImage} src={image4} alt="Zabola Estate 4" />
-                {languageFromUrl === 'ro' ? 
+                {languageFromUrl == 'ro' ? 
                 (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph3Ro}}></p></div>)
                 : 
                 (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph3En}}></p></div>)
@@ -451,7 +451,7 @@ export class StoryPageComponent extends Component {
   
                 <img className={css.coverImage} src={image5} alt="Zabola Estate 5" />
                 <img className={css.coverImage} src={image6} alt="Zabola Estate 6" />
-                {languageFromUrl === 'ro' ? 
+                {languageFromUrl == 'ro' ? 
                 (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph4Ro}}></p></div>)
                 : 
                 (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph4En}}></p></div>)
@@ -459,7 +459,7 @@ export class StoryPageComponent extends Component {
                 
   
                 <img className={css.coverImage} src={image7} alt="Zabola Estate 7" />
-                {languageFromUrl === 'ro' ? 
+                {languageFromUrl == 'ro' ? 
                 (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p></div>)
                 : 
                 (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph5En}}></p></div>)
