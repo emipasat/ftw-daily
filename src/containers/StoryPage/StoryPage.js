@@ -431,7 +431,10 @@ export class StoryPageComponent extends Component {
                 <img className={css.coverImage} src={image1} alt="Zabola Estate 1" />
                 <img className={css.coverImage} src={image2} alt="Zabola Estate 2" />
 
-                {languageFromUrl === 'ro' ? 
+                {languageFromUrl}
+                {config.locale}
+
+                {languageFromUrl == 'ro' ? 
                 <p dangerouslySetInnerHTML={{__html: paragraph2Ro}}></p>
                 : 
                 <p dangerouslySetInnerHTML={{__html: paragraph2En}}></p>
