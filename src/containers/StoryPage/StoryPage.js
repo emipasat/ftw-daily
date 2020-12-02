@@ -225,7 +225,7 @@ export class StoryPageComponent extends Component {
 
 
 
-    var paragraph3 = languageFromUrl === 'ro' ? `Încă de la primul pas în Hotel vei intra într-o lume aparte, unde fiecare cameră este un
+    var paragraph3Ro = `Încă de la primul pas în Hotel vei intra într-o lume aparte, unde fiecare cameră este un
         alt capitol al poveștii, cu o tematică aparte. Momentele tale de relaxare pot continua în zona de masaj, în fața șemineului sau în cada poziționată în centrul camerei tale, unde
         te poți bucura de o baie care să te îmbrace în lapte și miere. În clipele în care simți
         furnicăturile adrenalinei, vei fi invitat să observi urșii și alte animale sălbatice, chiar din
@@ -242,8 +242,7 @@ export class StoryPageComponent extends Component {
         pictate în nuanțele toamnei. Poți alege între o drumeție sau o călătorie ecvestră. Seara
         se poate încheia cu un grătar, cu o cină romantică la lumina lumânărilor sau cu o baie
         fierbinte în sauna dintre copaci.`
-                  : 
-                                `When you enter the hotel a unique world will be uncovered, where each room tells a
+    var paragraph3En =  `When you enter the hotel a unique world will be uncovered, where each room tells a
                                 chapter of the Zabola history book, with authentic and enchanting thematics. YOur
                                 moments of relaxation will continue in the massage area, in front of the cozy fireplace,
                                 or maybe right in the bathtub comfortably positioned in the middle of your room. A
@@ -262,7 +261,7 @@ export class StoryPageComponent extends Component {
                                 romantic dinner and candlelight, or even a hot bathtub in the treehouse sauna.`;
 
 
-    var paragraph4 = languageFromUrl === 'ro' ? `Iar vizita ta epică nu se încheie aici!
+    var paragraph4Ro = `Iar vizita ta epică nu se încheie aici!
     <br/><br/>
     Împrejurimile sunt o mină de aur pentru exploratori: de la apele minerale naturale
     carbogazoase de la Peteni și Covasna, la bisericile fortificate cu tavan pictat în secolele
@@ -290,7 +289,7 @@ export class StoryPageComponent extends Component {
     După-amiază am opta pentru un program mai palpitant: observatorul de urși, după care
     o cină în pavilionul din pădure, iar cireasa de pe tort: o baie Cleopatra înainte de
     culcare”.`
-                    : 
+    var paragraph4En =  
                     `Your journey doesn't end here!
                     <br/><br/>
                     The natural landscapes are a gold mine for the explorers: from the crystal clear mineral
@@ -319,7 +318,7 @@ export class StoryPageComponent extends Component {
                     icing on the cake would be a Cleopatra bath, right before going to bed’`;
 
 
-    var paragraph5 = languageFromUrl === 'ro' ? `O astfel de zi trebuie să existe în albumul de amintiri al fiecărei persoane, tocmai de
+    var paragraph5Ro = `O astfel de zi trebuie să existe în albumul de amintiri al fiecărei persoane, tocmai de
     aceea am conturat pentru tine pachete de vacanță tematice, care să te poarte, alături
     de cei dragi, în incredibila lume oferită de Zabola Estate.
     <br/><br/>
@@ -346,7 +345,8 @@ export class StoryPageComponent extends Component {
     experiențele.
     <br/><br/>
     <a href="https://youtu.be/KxQFxRWwg70"><i>Iar povestea va continua</i></a>` 
-    : 
+
+    var paragraph5En = 
       `A day like this should exist in everyone’s memories, and this is exactly why we crafted
       especially for your thematic vacation pancakes, which will take you and your beloved
       one deep into the fairytale experience offered by Zabola Estate.
@@ -372,6 +372,7 @@ export class StoryPageComponent extends Component {
       we encourage you to share your experience with us.
       <br/><br/>
       <a href="https://youtu.be/KxQFxRWwg70"><i>And the story will go on...</i><a/>`;
+
     return (
       <StaticPage
         title="Story"
@@ -434,23 +435,35 @@ export class StoryPageComponent extends Component {
                 
 
                 {languageFromUrl === 'ro' ? 
-                (<div><b>fasdfasdfsdfsadf</b><p dangerouslySetInnerHTML={{__html: paragraph2Ro}}></p></div>)
+                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph2Ro}}></p></div>)
                 : 
-                (<p dangerouslySetInnerHTML={{__html: paragraph2En}}></p>)
+                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph2En}}></p></div>)
                 }
 
                 <img className={css.coverImage} src={image3} alt="Zabola Estate 3" />
                 <img className={css.coverImage} src={image4} alt="Zabola Estate 4" />
-                <p dangerouslySetInnerHTML={{__html: paragraph3}}></p>
+                {languageFromUrl === 'ro' ? 
+                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph3Ro}}></p></div>)
+                : 
+                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph3En}}></p></div>)
+                }
   
   
                 <img className={css.coverImage} src={image5} alt="Zabola Estate 5" />
                 <img className={css.coverImage} src={image6} alt="Zabola Estate 6" />
-                <p dangerouslySetInnerHTML={{__html: paragraph4}}></p>
+                {languageFromUrl === 'ro' ? 
+                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph4Ro}}></p></div>)
+                : 
+                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph4En}}></p></div>)
+                }
                 
   
                 <img className={css.coverImage} src={image7} alt="Zabola Estate 7" />
-                <p dangerouslySetInnerHTML={{__html: paragraph5}}></p>
+                {languageFromUrl === 'ro' ? 
+                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p></div>)
+                : 
+                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph5En}}></p></div>)
+                }
   
                 
               </div>
