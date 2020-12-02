@@ -189,7 +189,7 @@ export class StoryPageComponent extends Component {
 
     //var thisIsMyCopy = "<b>Test xxx<br/>asfasdf </b>";
 
-    var paragraph2Ro = `Locul cu o istorie care impresionează a servit de-a lungul anilor sub diverse forme: întâi
+    const paragraph2Ro = `Locul cu o istorie care impresionează a servit de-a lungul anilor sub diverse forme: întâi
       sat de vacanță al presei comuniste, apoi preventoriu, orfelinat, școală și, ulterior,
       sanatoriu. După eforturi considerabile, proprietarii actuali îl recuperează în anul 2005,
       iar de 15 ani locul ce spune povestea generațiilor este în continuă conservare și
@@ -203,7 +203,7 @@ export class StoryPageComponent extends Component {
       la interior, spre exterior și împrejurimi, vei pătrunde într-o incursiune în timp și spațiu, o
       lecție de geografie pentru toate vârstele și o școală a emoțiilor autentice.`;
 
-    var paragraph2En =  
+    const paragraph2En =  
                   `The local history of the place has shifted its significance depending on the context and
                   the regimes: a village retreat, then it was transformed into a preventorium, orphanage,
                   school, and finally in a sanatorium. Every historical change left a mark that damaged the
@@ -431,13 +431,12 @@ export class StoryPageComponent extends Component {
                 <img className={css.coverImage} src={image1} alt="Zabola Estate 1" />
                 <img className={css.coverImage} src={image2} alt="Zabola Estate 2" />
 
-                {languageFromUrl}
-                {config.locale}
+                
 
-                {languageFromUrl == 'ro' ? 
-                <p dangerouslySetInnerHTML={{__html: paragraph2Ro}}></p>
+                {languageFromUrl === 'ro' ? 
+                (<div><b>fasdfasdfsdfsadf</b><p dangerouslySetInnerHTML={{__html: paragraph2Ro}}></p></div>)
                 : 
-                <p dangerouslySetInnerHTML={{__html: paragraph2En}}></p>
+                (<p dangerouslySetInnerHTML={{__html: paragraph2En}}></p>)
                 }
 
                 <img className={css.coverImage} src={image3} alt="Zabola Estate 3" />
