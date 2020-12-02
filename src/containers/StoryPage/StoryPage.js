@@ -25,6 +25,8 @@ import image5 from './images/zabola-estate-5.jpg';
 import image6 from './images/zabola-estate-6.jpg';
 import image7 from './images/zabola-estate-7.jpg';
 
+var languageFromUrl = 'en';
+
 const setLanguageFromUrl111 = () => {
 
   const isServer = typeof window === 'undefined';
@@ -38,10 +40,12 @@ const setLanguageFromUrl111 = () => {
     if (first1[3] == 'ro')
     {
       config.locale = 'ro';
+      languageFromUrl = 'ro';
     }
     else 
     {
       config.locale = 'en';
+      languageFromUrl = 'en';
     }
   }
   
@@ -185,7 +189,7 @@ export class StoryPageComponent extends Component {
 
     //var thisIsMyCopy = "<b>Test xxx<br/>asfasdf </b>";
 
-    var paragraph2 = config.locale === 'ro' ? `Locul cu o istorie care impresionează a servit de-a lungul anilor sub diverse forme: întâi
+    var paragraph2 = languageFromUrl === 'ro' ? `Locul cu o istorie care impresionează a servit de-a lungul anilor sub diverse forme: întâi
       sat de vacanță al presei comuniste, apoi preventoriu, orfelinat, școală și, ulterior,
       sanatoriu. După eforturi considerabile, proprietarii actuali îl recuperează în anul 2005,
       iar de 15 ani locul ce spune povestea generațiilor este în continuă conservare și
@@ -220,7 +224,7 @@ export class StoryPageComponent extends Component {
 
 
 
-    var paragraph3 = config.locale === 'ro' ? `Încă de la primul pas în Hotel vei intra într-o lume aparte, unde fiecare cameră este un
+    var paragraph3 = languageFromUrl === 'ro' ? `Încă de la primul pas în Hotel vei intra într-o lume aparte, unde fiecare cameră este un
         alt capitol al poveștii, cu o tematică aparte. Momentele tale de relaxare pot continua în zona de masaj, în fața șemineului sau în cada poziționată în centrul camerei tale, unde
         te poți bucura de o baie care să te îmbrace în lapte și miere. În clipele în care simți
         furnicăturile adrenalinei, vei fi invitat să observi urșii și alte animale sălbatice, chiar din
@@ -257,7 +261,7 @@ export class StoryPageComponent extends Component {
                                 romantic dinner and candlelight, or even a hot bathtub in the treehouse sauna.`;
 
 
-    var paragraph4 = config.locale === 'ro' ? `Iar vizita ta epică nu se încheie aici!
+    var paragraph4 = languageFromUrl === 'ro' ? `Iar vizita ta epică nu se încheie aici!
     <br/><br/>
     Împrejurimile sunt o mină de aur pentru exploratori: de la apele minerale naturale
     carbogazoase de la Peteni și Covasna, la bisericile fortificate cu tavan pictat în secolele
@@ -314,7 +318,7 @@ export class StoryPageComponent extends Component {
                     icing on the cake would be a Cleopatra bath, right before going to bed’`;
 
 
-    var paragraph5 = config.locale === 'ro' ? `O astfel de zi trebuie să existe în albumul de amintiri al fiecărei persoane, tocmai de
+    var paragraph5 = languageFromUrl === 'ro' ? `O astfel de zi trebuie să existe în albumul de amintiri al fiecărei persoane, tocmai de
     aceea am conturat pentru tine pachete de vacanță tematice, care să te poarte, alături
     de cei dragi, în incredibila lume oferită de Zabola Estate.
     <br/><br/>
