@@ -189,20 +189,21 @@ export class StoryPageComponent extends Component {
 
     //var thisIsMyCopy = "<b>Test xxx<br/>asfasdf </b>";
 
-    var paragraph2 = languageFromUrl === 'ro' ? `Locul cu o istorie care impresionează a servit de-a lungul anilor sub diverse forme: întâi
+    var paragraph2Ro = `Locul cu o istorie care impresionează a servit de-a lungul anilor sub diverse forme: întâi
       sat de vacanță al presei comuniste, apoi preventoriu, orfelinat, școală și, ulterior,
       sanatoriu. După eforturi considerabile, proprietarii actuali îl recuperează în anul 2005,
       iar de 15 ani locul ce spune povestea generațiilor este în continuă conservare și
       reabilitare. Proiectul de refacere a fost și încă este însă o demonstrație de respect
       pentru natură, chiar și sub amprenta modernizării. Meritul proprietarilor stă în tehnicile
-      green de renovare, dar și în programul de protejare a naturii dezvoltat: <a href="https://www.conservationtransylvania.com" target="_blank">Conservation
-      Transylvania</a>.
+      green de renovare, dar și în programul de protejare a naturii dezvoltat: 
+      <a href="https://www.conservationtransylvania.com" target="_blank">Conservation Transylvania</a>.
       <br/><br/>
       Vizita la Zabola nu este doar un concediu. Este mai degrabă o experiență epică, care
       așteaptă să fie descoperită. Este o atracție turistică diferită, inedită, spectaculoasă. De
       la interior, spre exterior și împrejurimi, vei pătrunde într-o incursiune în timp și spațiu, o
-      lecție de geografie pentru toate vârstele și o școală a emoțiilor autentice.`
-    : 
+      lecție de geografie pentru toate vârstele și o școală a emoțiilor autentice.`;
+
+    var paragraph2En =  
                   `The local history of the place has shifted its significance depending on the context and
                   the regimes: a village retreat, then it was transformed into a preventorium, orphanage,
                   school, and finally in a sanatorium. Every historical change left a mark that damaged the
@@ -213,8 +214,8 @@ export class StoryPageComponent extends Component {
                   project represents more than rehabilitation actions, it is a statement of respect towards
                   history and nature. The main merit of the actual owners is that they promoted a style of
                   green renovation, which puts emphasis on modernization, natural surrounding
-                  conservations, and keeping the historical landmarks alive through Conservation
-                  Transylvania (hyperlinked cu www.conservationtransylvania.com).
+                  conservations, and keeping the historical landmarks alive through 
+                  <a href="https://www.conservationtransylvania.com">Conservation Transylvania</a>.
                   <br/><br/>
                   Visiting Zabola is more than a simple vacation, it is indeed an epic experience, which is
                   awaiting to be discovered. A tourist attraction defined by unicity, spectacularity and its
@@ -429,7 +430,12 @@ export class StoryPageComponent extends Component {
 
                 <img className={css.coverImage} src={image1} alt="Zabola Estate 1" />
                 <img className={css.coverImage} src={image2} alt="Zabola Estate 2" />
-                <p dangerouslySetInnerHTML={{__html: paragraph2}}></p>
+
+                {config.locale === 'ro' ? 
+                <p dangerouslySetInnerHTML={{__html: paragraph2Ro}}></p>
+                : 
+                <p dangerouslySetInnerHTML={{__html: paragraph2En}}></p>
+                }
 
                 <img className={css.coverImage} src={image3} alt="Zabola Estate 3" />
                 <img className={css.coverImage} src={image4} alt="Zabola Estate 4" />
