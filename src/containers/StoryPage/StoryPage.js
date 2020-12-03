@@ -318,7 +318,7 @@ export class StoryPageComponent extends Component {
                     icing on the cake would be a Cleopatra bath, right before going to bed’`;
 
 
-    var paragraph5Ro = `O astfel de zi trebuie să existe în albumul de amintiri al fiecărei persoane, tocmai de
+    const paragraph5Ro = `O astfel de zi trebuie să existe în albumul de amintiri al fiecărei persoane, tocmai de
     aceea am conturat pentru tine pachete de vacanță tematice, care să te poarte, alături
     de cei dragi, în incredibila lume oferită de Zabola Estate.
     <br/><br/>
@@ -346,7 +346,7 @@ export class StoryPageComponent extends Component {
     <br/><br/>
     <a href="https://youtu.be/KxQFxRWwg70"><i>Iar povestea va continua</i></a>` 
 
-    var paragraph5En = 
+    const paragraph5En = 
       `A day like this should exist in everyone’s memories, and this is exactly why we crafted
       especially for your thematic vacation pancakes, which will take you and your beloved
       one deep into the fairytale experience offered by Zabola Estate.
@@ -460,9 +460,9 @@ export class StoryPageComponent extends Component {
   
                 <img className={css.coverImage} src={image7} alt="Zabola Estate 7" />
                 {languageFromUrl === 'ro' ? 
-                (<div><b><font color='white'>{languageFromUrl}</font></b><p dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p></div>)
+                (<p key={Date()} dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p>)
                 : 
-                (<div><b><font color='white'>{languageFromUrl}</font></b><p dangerouslySetInnerHTML={{__html: paragraph5En}}></p></div>)
+                (<p key={Date()} dangerouslySetInnerHTML={{__html: paragraph5En}}></p>)
                 }
   
                 
