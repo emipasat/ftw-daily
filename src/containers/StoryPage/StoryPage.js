@@ -459,10 +459,10 @@ export class StoryPageComponent extends Component {
                 
   
                 <img className={css.coverImage} src={image7} alt="Zabola Estate 7" />
-                {languageFromUrl == 'ro' ? 
-                (<div><b><font color='white'>a&nbsp;</font></b><p dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p></div>)
+                {languageFromUrl === 'ro' ? 
+                (<div><b><font color='white'>{languageFromUrl}</font></b><p dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p></div>)
                 : 
-                (<div><b><font color='white'>a&nbsp;</font></b><p dangerouslySetInnerHTML={{__html: paragraph5En}}></p></div>)
+                (<div><b><font color='white'>{languageFromUrl}</font></b><p dangerouslySetInnerHTML={{__html: paragraph5En}}></p></div>)
                 }
   
                 
