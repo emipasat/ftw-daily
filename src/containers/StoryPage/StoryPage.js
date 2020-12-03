@@ -460,9 +460,9 @@ export class StoryPageComponent extends Component {
   
                 <img className={css.coverImage} src={image7} alt="Zabola Estate 7" />
                 {languageFromUrl === 'ro' ? 
-                (<p key={Date()} dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p>)
+                (<p key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p>)
                 : 
-                (<p key={Date()} dangerouslySetInnerHTML={{__html: paragraph5En}}></p>)
+                (<p key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph5En}}></p>)
                 }
   
                 
