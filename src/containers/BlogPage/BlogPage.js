@@ -219,7 +219,7 @@ export class BlogPageComponent extends Component {
   
                 <i>{config.locale==='ro' ? ('A fost odată ca niciodată… și încă mai este.') : ('Once upon a time there was… and still is.')}</i>
   
-                <p dangerouslySetInnerHTML={{__html: teaser}}></p>
+                <div dangerouslySetInnerHTML={{__html: teaser}}></div>
 
                 <img className={css.coverImage} src={image1} alt="Zabola Estate 1" />
 

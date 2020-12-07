@@ -438,14 +438,18 @@ export class StoryPageComponent extends Component {
                 (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph2Ro}}></div>)
                 : 
                 (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph2En}}></div>)
+                // paragraph2Ro
+                // : 
+                // paragraph2En
                 }
 
                 <img className={css.coverImage} src={image3} alt="Zabola Estate 3" />
                 <img className={css.coverImage} src={image4} alt="Zabola Estate 4" />
+
                 {config.locale === 'ro' ? 
-                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph3Ro}}></div>)
+                (<div key={Date()} dangerouslySetInnerHTML={{__html: paragraph3Ro}}></div>)
                 : 
-                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph3En}}></div>)
+                (<div key={Date()} dangerouslySetInnerHTML={{__html: paragraph3En}}></div>)
                 }
   
   
