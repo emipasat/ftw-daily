@@ -435,9 +435,9 @@ export class StoryPageComponent extends Component {
                 
 
                 {config.locale === 'ro' ? 
-                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph2Ro}}></div>)
+                (<div key={Date.now()} dangerouslySetInnerHTML={{__html: paragraph2Ro}}></div>)
                 : 
-                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph2En}}></div>)
+                (<div key={Date.now()} dangerouslySetInnerHTML={{__html: paragraph2En}}></div>)
                 // paragraph2Ro
                 // : 
                 // paragraph2En
@@ -447,26 +447,26 @@ export class StoryPageComponent extends Component {
                 <img className={css.coverImage} src={image4} alt="Zabola Estate 4" />
 
                 {config.locale === 'ro' ? 
-                (<div key={Date()} dangerouslySetInnerHTML={{__html: paragraph3Ro}}></div>)
+                (<div key={Date.now()} dangerouslySetInnerHTML={{__html: paragraph3Ro}}></div>)
                 : 
-                (<div key={Date()} dangerouslySetInnerHTML={{__html: paragraph3En}}></div>)
+                (<div key={Date.now()} dangerouslySetInnerHTML={{__html: paragraph3En}}></div>)
                 }
   
   
                 <img className={css.coverImage} src={image5} alt="Zabola Estate 5" />
                 <img className={css.coverImage} src={image6} alt="Zabola Estate 6" />
                 {config.locale === 'ro' ? 
-                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph4Ro}}></div>)
+                (<div key={Date.now()} dangerouslySetInnerHTML={{__html: paragraph4Ro}}></div>)
                 : 
-                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph4En}}></div>)
+                (<div key={Date.now()} dangerouslySetInnerHTML={{__html: paragraph4En}}></div>)
                 }
                 
   
                 <img className={css.coverImage} src={image7} alt="Zabola Estate 7" />
                 {config.locale === 'ro' ? 
-                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph5Ro}}></div>)
+                (<div key={Date.now()} dangerouslySetInnerHTML={{__html: paragraph5Ro}}></div>)
                 : 
-                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph5En}}></div>)
+                (<div key={Date.now()} dangerouslySetInnerHTML={{__html: paragraph5En}}></div>)
                 }
   
                 
