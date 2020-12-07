@@ -348,7 +348,7 @@ export class StoryPageComponent extends Component {
 
     const paragraph5En = 
       `A day like this should exist in everyone’s memories, and this is exactly why we crafted
-      especially for your thematic vacation pancakes, which will take you and your beloved
+      especially for you thematic vacation packages, which will take you and your beloved
       one deep into the fairytale experience offered by Zabola Estate.
       You can choose between the packages: <a href="https://www.epicvisits.com/l/zabala-history-and-wildlife-stories-3-nights/5f465078-ac91-4826-8395-b9e02150c4e0">"History and Wildlife Stories"</a> (explore the local history and enjoy the wildlife and beauty
       of the surroundings),
@@ -434,35 +434,35 @@ export class StoryPageComponent extends Component {
 
                 
 
-                {languageFromUrl == 'ro' ? 
-                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph2Ro}}></p></div>)
+                {config.locale === 'ro' ? 
+                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph2Ro}}></div>)
                 : 
-                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph2En}}></p></div>)
+                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph2En}}></div>)
                 }
 
                 <img className={css.coverImage} src={image3} alt="Zabola Estate 3" />
                 <img className={css.coverImage} src={image4} alt="Zabola Estate 4" />
-                {languageFromUrl == 'ro' ? 
-                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph3Ro}}></p></div>)
+                {config.locale === 'ro' ? 
+                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph3Ro}}></div>)
                 : 
-                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph3En}}></p></div>)
+                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph3En}}></div>)
                 }
   
   
                 <img className={css.coverImage} src={image5} alt="Zabola Estate 5" />
                 <img className={css.coverImage} src={image6} alt="Zabola Estate 6" />
-                {languageFromUrl == 'ro' ? 
-                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph4Ro}}></p></div>)
+                {config.locale === 'ro' ? 
+                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph4Ro}}></div>)
                 : 
-                (<div><b>&nbsp;</b><p dangerouslySetInnerHTML={{__html: paragraph4En}}></p></div>)
+                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph4En}}></div>)
                 }
                 
   
                 <img className={css.coverImage} src={image7} alt="Zabola Estate 7" />
-                {languageFromUrl === 'ro' ? 
-                (<p key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph5Ro}}></p>)
+                {config.locale === 'ro' ? 
+                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph5Ro}}></div>)
                 : 
-                (<p key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph5En}}></p>)
+                (<div key={Math.random()} dangerouslySetInnerHTML={{__html: paragraph5En}}></div>)
                 }
   
                 

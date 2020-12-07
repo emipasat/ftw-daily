@@ -10,6 +10,7 @@ import { ACCOUNT_SETTINGS_PAGES } from '../../routeConfiguration';
 import { propTypes } from '../../util/types';
 import { ensureCurrentUser } from '../../util/data';
 import { AvatarLarge, InlineTextButton, NamedLink, NotificationBadge } from '../../components';
+import config from '../../config';
 
 import css from './TopbarMobileMenu.css';
 
@@ -28,6 +29,36 @@ function refreshPage(){
     //window.location.reload(); 
   }
 }
+
+
+var languageFromUrl = 'en';
+
+const setLanguageFromUrl111 = () => {
+
+  const isServer = typeof window === 'undefined';
+
+  if (!isServer)
+  {
+    var first = window.location.href;
+    var first1 = first.split('/');
+    console.log(first1)
+  
+    if (first1[3] == 'ro')
+    {
+      config.locale = 'ro';
+      languageFromUrl = 'ro';
+    }
+    else 
+    {
+      config.locale = 'en';
+      languageFromUrl = 'en';
+    }
+  }
+  
+};
+
+setLanguageFromUrl111();
+
 
 const TopbarMobileMenu = props => {
   const {
@@ -91,6 +122,24 @@ const TopbarMobileMenu = props => {
         <br/>
         <br/>
        <a href="/"><span className={css.navigationLink}>EN</span></a>
+
+       <br/>
+        <br/>
+
+        {languageFromUrl === 'ro' ? 
+        <NamedLink name="BlogPageRo" className={css.loginLink} title="Blog" >
+          <span className={css.login}>
+            <b>Blog</b>
+          </span>
+        </NamedLink>
+        :
+        <NamedLink name="BlogPage" className={css.loginLink} title="Blog" >
+          <span className={css.login}>
+            <b>Blog</b>
+          </span>
+        </NamedLink>}
+
+
         {/* <NamedLink
           className={classNames(css.navigationLink, currentPageClass('LandingPage'))}
           name="LandingPage"
@@ -164,7 +213,7 @@ const TopbarMobileMenu = props => {
         </NamedLink>
 
 {/* show only one TODO */}
-        <NamedLink
+        {/* <NamedLink
           className={classNames(css.navigationLink, currentPageClass('LandingPageRo'))}
           name="LandingPageRo"
         >
@@ -175,7 +224,29 @@ const TopbarMobileMenu = props => {
           name="LandingPage"
         >
           <span onClick={ refreshPage }>EN</span>
+        </NamedLink> */}
+
+        <a href="/ro"><span className={css.login}><b>RO</b></span></a>
+        <br/>
+
+        <a href="/"><span className={css.login}><b>EN</b></span></a>
+        <br/>
+
+
+        
+
+        {languageFromUrl === 'ro' ? 
+        <NamedLink name="BlogPageRo" className={css.loginLink} title="Blog" >
+          <span className={css.login}>
+            <b>Blog1</b>
+          </span>
         </NamedLink>
+        :
+        <NamedLink name="BlogPage" className={css.loginLink} title="Blog" >
+          <span className={css.login}>
+            <b>Blog2</b>
+          </span>
+        </NamedLink>}
 
 
       </div>
