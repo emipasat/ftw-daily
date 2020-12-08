@@ -46,7 +46,7 @@ const ThemeResultsPanel = props => {
       <Container fluid>
         <Row>
         {listings.map(l => (
-          <Col>
+          // <Col>
           <ListingCardLight
             className={css.listingCard}
             key={l.id.uuid}
@@ -54,7 +54,7 @@ const ThemeResultsPanel = props => {
             renderSizes={cardRenderSizes}
             setActiveListing={setActiveListing}
           />
-          </Col>
+          // </Col>
         ))}
         </Row>
         </Container>
