@@ -5,6 +5,12 @@ import { propTypes } from '../../util/types';
 import { ListingCardLight, PaginationLinks } from '../../components';
 import css from './ThemeResultsPanel.css';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button'
+
+
 const ThemeResultsPanel = props => {
   const { className, rootClassName, listings, pagination, search, setActiveListing } = props;
   const classes = classNames(rootClassName || css.root, className);
@@ -29,10 +35,18 @@ const ThemeResultsPanel = props => {
     `${panelLargeWidth / 3}vw`,
   ].join(', ');
 
+  
+
   return (
+
     <div className={classes}>
+
       <div className={css.listingCards}>
+
+      <Container fluid>
+        <Row>
         {listings.map(l => (
+          <Col>
           <ListingCardLight
             className={css.listingCard}
             key={l.id.uuid}
@@ -40,7 +54,10 @@ const ThemeResultsPanel = props => {
             renderSizes={cardRenderSizes}
             setActiveListing={setActiveListing}
           />
+          </Col>
         ))}
+        </Row>
+        </Container>
         {props.children}
       </div>
       {paginationLinks}

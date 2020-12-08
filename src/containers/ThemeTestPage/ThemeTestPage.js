@@ -18,6 +18,10 @@ import { ModalInMobile, Page } from '../../components';
 import { TopbarContainer } from '../../containers';
 
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button'
 
 
 
@@ -305,6 +309,9 @@ export class ThemeTestPageComponent extends Component {
       >
 
 
+
+
+
       
       <LayoutSingleColumn>
         <LayoutWrapperTopbar>
@@ -315,7 +322,15 @@ export class ThemeTestPageComponent extends Component {
           />
         </LayoutWrapperTopbar>
 
-        <LayoutWrapperMain className={css1.staticPageWrapper}>
+
+        
+
+        
+        <LayoutWrapperMain  className={css1.staticPageWrapper}>
+
+        
+
+
           <h1 className={css1.pageTitle}>{config.locale === 'en' ? detectedTheme.title : detectedTheme.title_ro }</h1>
           {/* <img className={css1.coverImage} src={getCats()[0]} alt="Simply Chill" /> */}
 
@@ -325,15 +340,7 @@ export class ThemeTestPageComponent extends Component {
 
           
 
-          <div dangerouslySetInnerHTML={{__html: getCats()[position]}} />
-
-
-
-
-          <div className={css1.contentWrapper}>
-            <div className={css1.contentSide}>
-              {/* <div className={css1.container}> */}
-                <MainThemePanel
+          <MainThemePanel
                   urlQueryParams={validQueryParams}
                   listings={listings}
                   searchInProgress={searchInProgress}
@@ -349,29 +356,24 @@ export class ThemeTestPageComponent extends Component {
                   showAsModalMaxWidth={MODAL_BREAKPOINT}
                   history={history}
                 />
-                {/* <ModalInMobile
-                  className={css.mapPanel}
-                  id="ThemeTestPage.map"
-                  isModalOpenOnMobile={this.state.isSearchMapOpenOnMobile}
-                  onClose={() => this.setState({ isSearchMapOpenOnMobile: false })}
-                  showAsModalMaxWidth={MODAL_BREAKPOINT}
-                  onManageDisableScrolling={onManageDisableScrolling}
-                >
+
+
+          {/*don't show big picture, is ugly*/}
+          {/* <div dangerouslySetInnerHTML={{__html: getCats()[position]}} /> */}
+
+          <div className={css1.contentWrapper}>
+          
             
-                </ModalInMobile> */}
-              {/* </div> */}
-            </div>
-
-            <div className={css1.contentMain}>
-              <h2>
+            {/* <div className={css1.contentMain}> */}
+              {/* <h2>
               {config.locale === 'en' ? detectedTheme.title : detectedTheme.title_ro }
-              </h2>
+              </h2> */}
 
-              <p>
+              
               {/* {images.filter(x=>x.id === themeQuerystring)[0] ? images.filter(x=>x.id === themeQuerystring)[0].description : null} */}
               {config.locale === 'en' ? detectedTheme.description : detectedTheme.description_ro }
-              </p> 
-            </div>
+              
+            {/* </div> */}
           </div>
         </LayoutWrapperMain>
 

@@ -33,7 +33,10 @@ import * as log from './util/log';
 import { LoggingAnalyticsHandler, GoogleAnalyticsHandler } from './analytics/handlers';
 
 
+import 'bootstrap/dist/css/bootstrap.css';
 import './marketplaceIndex.css';
+
+
 
 
 const { BigDecimal } = sdkTypes;
