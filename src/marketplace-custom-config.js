@@ -253,6 +253,10 @@ export const filters = [
           key: 'entire_places',
           label: 'Entire Places',
         },
+        {
+          key: 'epic_month',
+          label: 'Epic Month',
+        },
       ],
     },
   },

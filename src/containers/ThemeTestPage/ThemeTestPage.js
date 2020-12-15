@@ -152,6 +152,15 @@ const images = [
   description_ro: 'Ți-ai pierdut motivația de a studia sau de a munci? Simți un gol interior și ai senzația că te pierzi pe tine din ce în ce mai mult? Ia o pauză și dispari...într-o călătorie. Am pregătit niște vizite epice care îți vor hrăni mintea și sufletul. Alege cazări unice și experiențe memorabile grupate în pachete tematice!' 
 },
 
+
+{ id: 'epic_month', src: './epic_month.jpg', 
+  title: 'Epic Month', 
+  description: 'You can now book a unique accommodation experience in Romania for a whole month! If you\'re planning to leave the city during winter months and work remotely, check out these unique stays and their special offer available exclusively on epicvisits.com.' ,
+  title_ro: 'Luna epica', 
+  description_ro: 'Poti sa rezervi acum o cazare unica din Romania pentru o luna intreaga! Daca planuiesti sa evadezi din oras in lunile mohorate de iarna si sa lucrezi remote, arunca un ochi aici. Cateva dintre cele mai frumoase locuri de cazare din Romania au oferte speciale disponibile exclusiv pe epicvisits.com.' 
+},
+
+
 ];
 
 
