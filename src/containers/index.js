@@ -38,3 +38,4 @@ export { default as ThemeTastyTreasuresPage } from './ThemeTastyTreasuresPage/Th
 export { default as ThemeUrbanDiscoveriesPage } from './ThemeUrbanDiscoveriesPage/ThemeUrbanDiscoveriesPage';
 export { default as ThemeLivingTraditionsPage } from './ThemeLivingTraditionsPage/ThemeLivingTraditionsPage';
 export { default as ContactStaticPage } from './ContactStaticPage/ContactStaticPage';
+export { default as ZoomPage } from './ZoomPage/ZoomPage';

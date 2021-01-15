@@ -1,10 +1,29 @@
 {
     "configurations": [
         {
+            "command": "yarn run dev",
+            "name": "Run yarn dev",
+            "request": "launch",
+            "type": "node-terminal",
+            "outFiles": [
+                "${workspaceFolder}/**/*.js",
+                "!**/node_modules/**"
+            ]
+        },
+    // {
+    //     "name": "Launch Program",
+    //     "program": "${workspaceFolder}/yarn run dev",
+    //     "request": "launch",
+    //     "skipFiles": [
+    //         "<node_internals>/**"
+    //     ],
+    //     "type": "pwa-node"
+    // },
+        {
             "type": "pwa-msedge",
             "name": "http://localhost:3000",
             "request": "launch",
             "url": "http://localhost:3000"
-        }
+        },
     ]
 }

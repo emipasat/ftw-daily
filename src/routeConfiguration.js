@@ -38,6 +38,7 @@ import {
   ThemeUrbanDiscoveriesPage,
   ThemeLivingTraditionsPage,
   ContactStaticPage,
+  ZoomPage
 } from './containers';
 
 // routeConfiguration needs to initialize containers first
@@ -185,6 +186,13 @@ const routeConfiguration = () => {
     //   name: 'ThemeLivingTraditionsPage',
     //   component: ThemeLivingTraditionsPage,
     // },
+
+    {
+       path: '/zoom/:meetingId',
+       name: 'zoompage',
+       component: ZoomPage,
+    },
+
     {
       path: '/contact',
       name: 'ContactStaticPage',

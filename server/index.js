@@ -40,6 +40,9 @@ const log = require('./log');
 const { sitemapStructure } = require('./sitemap');
 const csp = require('./csp');
 
+const jwt = require('jsonwebtoken');
+const rp = require('request-promise');
+
 const buildPath = path.resolve(__dirname, '..', 'build');
 const env = process.env.REACT_APP_ENV;
 const dev = process.env.REACT_APP_ENV === 'development';
@@ -53,6 +56,8 @@ const CSP = process.env.REACT_APP_CSP;
 const cspReportUrl = '/csp-report';
 const cspEnabled = CSP === 'block' || CSP === 'report';
 const app = express();
+
+
 
 const errorPage = fs.readFileSync(path.join(buildPath, '500.html'), 'utf-8');
 
@@ -147,6 +152,12 @@ const noCacheHeaders = {
 const httpAgent = new http.Agent({ keepAlive: true });
 const httpsAgent = new https.Agent({ keepAlive: true });
 
+//app.get('/zoom', (req,res) => res.send(req.body));
+
+console.log('test1');
+
+//app.get('/zoom', (req,res) => res.send(req.body)); 
+
 app.get('*', (req, res) => {
   if (req.url.startsWith('/static/')) {
     // The express.static middleware only handles static resources
@@ -159,6 +170,54 @@ app.get('*', (req, res) => {
   if (req.url === '/_status.json') {
     return res.status(200).send({ status: 'ok' });
   }
+
+
+  if (req.url === '/zoom')
+  {
+    
+    //return res.send(req.body);
+    //Use the ApiKey and APISecret from config.js
+    const payload = {
+      iss: 'd1CVEB65Q6OSiUVli6Kbdg', //config.APIKey,
+      exp: ((new Date()).getTime() + 5000)
+    };
+    const token = jwt.sign(payload, '4inbZO6SZ9Bsz8838j6rkCAtQGrShXONglJV');//config.APISecret);
+
+    console.log(token); 
+
+    //Make Zoom API call
+    var options = {
+      uri: 'https://api.zoom.us/v2/users',
+      qs: {
+          status: 'active' // -> uri + '?status=active'
+      },
+      auth: {
+        //Provide your token here
+        'bearer': token
+      },
+      headers: {
+          'User-Agent': 'Zoom-Jwt-Request',
+          'content-type': 'application/json'
+      },
+      json: true // Automatically parses the JSON string in the response
+    };
+
+    rp(options)
+      .then(function (response) {
+        //logic for your response
+          console.log('User has', response);
+      })
+      .catch(function (err) {
+          // API call failed...
+          console.log('API call failed, reason ', err);
+      });
+
+
+
+    return res.status(200).send({test: 'ok'});
+  }
+
+ console.log('xxx');
 
   const context = {};
 

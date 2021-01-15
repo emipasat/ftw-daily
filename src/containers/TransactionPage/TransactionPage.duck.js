@@ -742,8 +742,108 @@ export const fetchMoreMessages = txId => (dispatch, getState, sdk) => {
   return dispatch(fetchMessages(txId, nextPage));
 };
 
+export const callMeetingApi = async () => {
+  const response = await fetch('/api/zoom');
+  const body = await response.json();
+  console.log(body);
+  if (response.status !== 200) throw Error(body.message);
+  
+  return body;
+};
+
 export const sendMessage = (txId, message) => (dispatch, getState, sdk) => {
   dispatch(sendMessageRequest());
+
+  if (message === 'Meeting requested')
+  {
+    return sdk.transactions
+      .show(
+        {
+          id: txId,
+          include: [
+            'listing'
+          ],
+        },
+        { expand: true }
+      )
+      .then(response => {
+
+        console.log(response);
+        const listingId = listingRelationship(response).id;
+        const entities = updatedEntities({}, response.data);
+        const listingRef = { id: listingId, type: 'listing' };
+        const transactionRef = { id: txId, type: 'transaction' };
+        const denormalised = denormalisedEntities(entities, [listingRef, transactionRef]);
+        const listing = denormalised[0];
+        const transaction = denormalised[1];
+
+        const canFetchListing = listing && listing.attributes && !listing.attributes.deleted;
+        if (canFetchListing) {
+          return sdk.listings.show({
+            id: listingId,
+            //include: ['author', 'author.profileImage', 'images'],
+            //...IMAGE_VARIANTS,
+          })
+          .then(response => {
+      
+            console.log(response);
+            //create meeting;
+
+            callMeetingApi()
+              .then(res => { 
+                
+                console.log(res.zoomResponse.start_url); 
+
+                // copy paste message with start_url
+
+                return sdk.messages
+                  .send({ transactionId: txId, content: message + "\r\n" + 
+                        //"<a href='" + res.zoomResponse.start_url +"'>Start URL</a>" + '<br/>' + 
+                        "http://localhost:3000/zoom/" + res.zoomResponse.id 
+                        })
+                  .then(response => {
+                    const messageId = response.data.data.id;
+
+                  // We fetch the first page again to add sent message to the page data
+                  // and update possible incoming messages too.
+                  // TODO if there're more than 100 incoming messages,
+                  // this should loop through most recent pages instead of fetching just the first one.
+              return dispatch(fetchMessages(txId, 1))
+                .then(() => {
+                  dispatch(sendMessageSuccess());
+                  return messageId;
+                })
+                .catch(() => dispatch(sendMessageSuccess()));
+                })
+                .catch(e => {
+                  dispatch(sendMessageError(storableError(e)));
+                  // Rethrow so the page can track whether the sending failed, and
+                  // keep the message in the form for a retry.
+                  throw e;
+                });
+                // end copy paster
+
+            })
+            .catch(err => console.log(err));
+
+
+        });
+      } else {
+        
+      }
+      })
+      .then(response => {
+        
+        //return response;
+      })
+      .catch(e => {
+        //dispatch(fetchTransactionError(storableError(e)));
+        throw e;
+      });
+  }
+  
+  
+  
 
   return sdk.messages
     .send({ transactionId: txId, content: message })

@@ -113,6 +113,7 @@ export class ListingPageComponent extends Component {
       pageClassNames: [],
       imageCarouselOpen: false,
       enquiryModalOpen: enquiryModalOpenForListingId === params.id,
+      zoomResponse : {}
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -207,12 +208,35 @@ export class ListingPageComponent extends Component {
     }
   }
 
+  callApi = async () => {
+    const response = await fetch('/api/zoom');
+    const body = await response.json();
+    console.log(body);
+    if (response.status !== 200) throw Error(body.message);
+    
+    return body;
+  };
+
   onSubmitEnquiry(values) {
     const { history, params, onSendEnquiry } = this.props;
     const routes = routeConfiguration();
     const listingId = new UUID(params.id);
     const { message } = values;
+    
 
+    // ask him to setup a meeting
+    /*
+    this.callApi()
+      .then(res => { 
+        
+        console.log(res.zoomResponse.startUrl); 
+
+      })
+      .catch(err => console.log(err));
+
+    
+    return;
+*/
     onSendEnquiry(listingId, message.trim())
       .then(txId => {
         this.setState({ enquiryModalOpen: false });

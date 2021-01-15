@@ -9,7 +9,10 @@ import {
   LayoutWrapperFooter,
   Footer,
   ExternalLink,
+  Modal
 } from '../../components';
+
+
 
 import css from './AboutPage.css';
 import image from './about-us-1056.jpg';
@@ -42,6 +45,8 @@ const AboutPage = () => {
   const { siteTwitterHandle, siteFacebookPage } = config;
   const siteTwitterPage = twitterPageURL(siteTwitterHandle);
 
+  var zoomModalOpen = true;
+
   // prettier-ignore
   return (
     <StaticPage
@@ -59,6 +64,9 @@ const AboutPage = () => {
         </LayoutWrapperTopbar>
 
         <LayoutWrapperMain className={css.staticPageWrapper}>
+
+       
+
     <h1 className={css.pageTitle}>{config.locale === 'ro' ? ('Despre EpicVisits') : ('About Epicvisits') }</h1>
           {/* <img className={css.coverImage} src={image} alt="My first ice cream." /> */}
 
